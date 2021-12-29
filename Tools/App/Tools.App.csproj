@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -28,27 +28,6 @@
       <DefineConstants>TRACECOREAPP;NOT_UNITY</DefineConstants>
       <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
-    
-    <ItemGroup>
-        <Compile Include="..\..\Unity\Codes\Model\Core\**\*.cs">
-            <Link>Core\%(RecursiveDir)%(FileName)%(Extension)</Link>
-        </Compile>
-        <Compile Include="..\..\Unity\Assets\Mono\Core\**\*.cs">
-            <Link>Core\%(RecursiveDir)%(FileName)%(Extension)</Link>
-        </Compile>
-
-        <Compile Include="..\..\Server\Model\Base\**\*.cs">
-            <Link>Base\%(RecursiveDir)%(FileName)%(Extension)</Link>
-        </Compile>
-
-        <Compile Include="..\..\Unity\Codes\Model\Module\Config\**\*.cs">
-            <Link>Module\Config\%(RecursiveDir)%(FileName)%(Extension)</Link>
-        </Compile>
-
-        <Compile Include="..\..\Unity\Codes\Model\Module\Message\OpcodeRangeDefine.cs">
-            <Link>Module\Message\OpcodeRangeDefine.cs</Link>
-        </Compile>
-    </ItemGroup>
     
     <ItemGroup>
       <ProjectReference Include="..\..\ThirdParty\ETTask\ETTask.csproj" />
