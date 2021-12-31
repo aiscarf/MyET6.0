@@ -27,6 +27,7 @@ namespace ET
         {
             if (Input.GetMouseButtonDown(1))
             {
+                Log.Info("测试232222222222");
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 1000, self.mapMask))

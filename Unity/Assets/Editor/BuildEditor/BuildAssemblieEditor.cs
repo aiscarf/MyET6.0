@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using ILRuntime.Mono.Cecil;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Compilation;
@@ -17,12 +16,12 @@ namespace ET
         [MenuItem("Tools/BuildCodeDebug _F5")]
         public static void BuildCodeDebug()
         {
-            BuildAssemblieEditor.BuildMuteAssembly("Code", new []
+            BuildAssemblieEditor.BuildMuteAssembly("Hotfix", new []
             {
-                "Codes/Model/",
-                "Codes/ModelView/",
-                "Codes/Hotfix/",
-                "Codes/HotfixView/"
+                "Hotfix/ShareEntity/",
+                "Hotfix/ShareLogic/",
+                "Hotfix/ViewEntity/",
+                "Hotfix/ViewLogic/"
             }, Array.Empty<string>(), CodeOptimization.Debug);
 
             AfterCompiling();
@@ -33,12 +32,12 @@ namespace ET
         [MenuItem("Tools/BuildCodeRelease _F6")]
         public static void BuildCodeRelease()
         {
-            BuildAssemblieEditor.BuildMuteAssembly("Code", new []
+            BuildAssemblieEditor.BuildMuteAssembly("Hotfix", new []
             {
-                "Codes/Model/",
-                "Codes/ModelView/",
-                "Codes/Hotfix/",
-                "Codes/HotfixView/"
+                "Hotfix/ShareEntity/",
+                "Hotfix/ShareLogic/",
+                "Hotfix/ViewEntity/",
+                "Hotfix/ViewLogic/"
             }, Array.Empty<string>(), CodeOptimization.Release);
 
             AfterCompiling();
@@ -51,8 +50,8 @@ namespace ET
         {
             BuildAssemblieEditor.BuildMuteAssembly("Data", new []
             {
-                "Codes/Model/",
-                "Codes/ModelView/",
+                "Hotfix/ShareEntity/",
+                "Hotfix/ViewEntity/",
             }, Array.Empty<string>(), CodeOptimization.Debug);
         }
         
@@ -71,8 +70,8 @@ namespace ET
             
             BuildAssemblieEditor.BuildMuteAssembly(logicFile, new []
             {
-                "Codes/Hotfix/",
-                "Codes/HotfixView/",
+                "Hotfix/ShareLogic/",
+                "Hotfix/ViewLogic/",
             }, new[]{Path.Combine(Define.BuildOutputDir, "Data.dll")}, CodeOptimization.Debug);
         }
 
@@ -166,15 +165,15 @@ namespace ET
             Debug.Log("Compiling finish");
 
             Directory.CreateDirectory(CodeDir);
-            File.Copy(Path.Combine(Define.BuildOutputDir, "Code.dll"), Path.Combine(CodeDir, "Code.dll.bytes"), true);
-            File.Copy(Path.Combine(Define.BuildOutputDir, "Code.pdb"), Path.Combine(CodeDir, "Code.pdb.bytes"), true);
+            File.Copy(Path.Combine(Define.BuildOutputDir, "Hotfix.dll"), Path.Combine(CodeDir, "Hotfix.dll.bytes"), true);
+            File.Copy(Path.Combine(Define.BuildOutputDir, "Hotfix.pdb"), Path.Combine(CodeDir, "Hotfix.pdb.bytes"), true);
             AssetDatabase.Refresh();
-            Debug.Log("copy Code.dll to Bundles/Code success!");
+            Debug.Log("copy Hotfix.dll to Bundles/Code success!");
             
             // 设置ab包
-            AssetImporter assetImporter1 = AssetImporter.GetAtPath("Assets/Bundles/Code/Code.dll.bytes");
+            AssetImporter assetImporter1 = AssetImporter.GetAtPath("Assets/Bundles/Code/Hotfix.dll.bytes");
             assetImporter1.assetBundleName = "Code.unity3d";
-            AssetImporter assetImporter2 = AssetImporter.GetAtPath("Assets/Bundles/Code/Code.pdb.bytes");
+            AssetImporter assetImporter2 = AssetImporter.GetAtPath("Assets/Bundles/Code/Hotfix.pdb.bytes");
             assetImporter2.assetBundleName = "Code.unity3d";
             AssetDatabase.Refresh();
             Debug.Log("set assetbundle success!");

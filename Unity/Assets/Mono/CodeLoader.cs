@@ -21,7 +21,8 @@ namespace ET
 		
 		private Type[] allTypes;
 		
-		public CodeMode CodeMode { get; set; }
+		public CodeMode CodeMode { get; private set; }
+		private bool IsDebug { get; set; }
 
 		private CodeLoader()
 		{
@@ -32,17 +33,30 @@ namespace ET
 			this.appDomain?.Dispose();
 		}
 		
-		public void Start()
+		public void Start(CodeMode codeMode, bool bDebug)
 		{
+			this.CodeMode = codeMode;
+			this.IsDebug = bDebug;
+			
 			switch (this.CodeMode)
 			{
 				case CodeMode.Mono:
 				{
 					Dictionary<string, UnityEngine.Object> dictionary = AssetsBundleHelper.LoadBundle("code.unity3d");
-					byte[] assBytes = ((TextAsset)dictionary["Code.dll"]).bytes;
-					byte[] pdbBytes = ((TextAsset)dictionary["Code.pdb"]).bytes;
-					
-					assembly = Assembly.Load(assBytes, pdbBytes);
+
+					if (this.IsDebug)
+					{
+						byte[] assBytes = ((TextAsset)dictionary["Hotfix.dll"]).bytes;
+						byte[] mdbBytes = ((TextAsset)dictionary["Hotfix.mdb"]).bytes;
+						assembly = Assembly.Load(assBytes, mdbBytes);
+					}
+					else
+					{
+						byte[] assBytes = ((TextAsset)dictionary["Hotfix.dll"]).bytes;
+						byte[] pdbBytes = ((TextAsset)dictionary["Hotfix.pdb"]).bytes;
+						assembly = Assembly.Load(assBytes, pdbBytes);
+					}
+
 					this.allTypes = assembly.GetTypes();
 					IStaticMethod start = new MonoStaticMethod(assembly, "ET.Entry", "Start");
 					start.Run();

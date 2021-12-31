@@ -4,6 +4,8 @@ namespace ET
     {
         protected override async ETTask Run(EventType.AppStart args)
         {
+            Log.Debug("App正确启动!");
+            
             Game.Scene.AddComponent<TimerComponent>();
             Game.Scene.AddComponent<CoroutineLockComponent>();
 
