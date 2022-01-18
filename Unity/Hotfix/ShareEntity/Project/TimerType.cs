@@ -7,5 +7,10 @@
         public const int AITimer = 1002;
         public const int SessionAcceptTimeout = 1003;
         // 不能超过10000
+
+        public const int TestTimer = 1004;
+
+        public const int LocalDownlinkDelayTimer = 1005;
+        public const int LocalUplinkDelayTimer = 1006;
     }
 }

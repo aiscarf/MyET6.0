@@ -222,7 +222,6 @@
         public static bool CheckRectangleAndRectangle(SVector3 rectCenter1, int halfWight1, int halfHeight1,
             SVector3 rectCenter2, int halfWight2, int halfHeight2)
         {
-            // TODO 
             int num_1_1 = rectCenter1.x - halfWight1;
             int num_1_2 = rectCenter1.x + halfWight1;
             int num_1_3 = rectCenter1.z - halfWight1;

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Net;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace ET
 {
-	public class UILoginComponent: Entity
+	[UITag(UIType.UILogin)]
+	public class UILoginComponent : Entity
 	{
-		public GameObject account;
-		public GameObject password;
-		public GameObject loginBtn;
+		public InputField account;
+		public InputField password;
+		public Button loginBtn;
 	}
 }

@@ -6,17 +6,6 @@ namespace ET
     {
         public static void Start()
         {
-            Log.Debug("顺利进入Entry");
-
-            if (CodeLoader.Instance == null)
-            {
-                Log.Debug("热更工程访问不到主工程");
-                return;
-            }
-
-            var types = CodeLoader.Instance.GetTypes();
-            Log.Debug("加载到的类数量: " + types.Length);
-            
             try
             {
                 CodeLoader.Instance.Update += Game.Update;
@@ -28,7 +17,6 @@ namespace ET
             }
             catch (Exception e)
             {
-                Log.Error("不幸发生错误");
                 Log.Error(e);
             }
         }

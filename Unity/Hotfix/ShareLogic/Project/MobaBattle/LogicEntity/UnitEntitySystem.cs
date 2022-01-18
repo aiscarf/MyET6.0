@@ -1,39 +1,41 @@
 namespace ET
 {
     [ObjectSystem]
-    public class UnitEntityAwakeSystem : AwakeSystem<BaseUnit>
+    public class UnitEntityAwakeSystem : AwakeSystem<Unit>
     {
-        public override void Awake(BaseUnit self)
+        public override void Awake(Unit self)
         {
         }
     }
 
     [ObjectSystem]
-    public class UnitEntityDestroySystem : DestroySystem<BaseUnit>
+    public class UnitEntityDestroySystem : DestroySystem<Unit>
     {
-        public override void Destroy(BaseUnit self)
+        public override void Destroy(Unit self)
         {
         }
     }
 
-    // TODO 逻辑上的Update.
-
     public static class UnitEntitySystem
     {
-        public static void SetLogicPos(this BaseUnit self, SVector3 pos)
+        #region 逻辑移动
+
+        public static void SetLogicPos(this Unit self, SVector3 pos)
         {
             self.LogicPos = pos;
         }
 
-        public static void UpdateLogicPos(this BaseUnit self, SVector3 pos)
+        public static void UpdateLogicPos(this Unit self, SVector3 pos)
         {
             self.LogicPos = pos;
             // TODO 通知变动.
         }
-
+        
+        #endregion
+        
         #region 逻辑旋转
 
-        public static void SetForward(this BaseUnit self, SVector3 sForward, bool bImmediately,
+        public static void SetForward(this Unit self, SVector3 sForward, bool bImmediately,
             EForwardType forwardType)
         {
             if (!self.CanForward(forwardType) || sForward.x == 0 && sForward.z == 0)
@@ -47,6 +49,8 @@ namespace ET
                 self.m_sTargetForward = self.m_sCurForward;
                 self.m_bRotating = false;
                 self.m_sForwardType = EForwardType.ENone;
+                
+                Game.EventSystem.Publish(new EventType.MobaUnitForward() { unit = self, forward = self.m_sCurForward, bImmediately = true });
             }
             else
             {
@@ -67,21 +71,23 @@ namespace ET
 
                 self.m_sTargetForward = sForward;
                 self.m_sCurForward = sForward;
+
+                Game.EventSystem.Publish(new EventType.MobaUnitForward() { unit = self, forward = self.m_sTargetForward, bImmediately = false });
             }
         }
 
-        public static bool CanForward(this BaseUnit self, EForwardType forwardType)
+        public static bool CanForward(this Unit self, EForwardType forwardType)
         {
             return true; //(forwardType == EForwardType.EPlayer || forwardType == EForwardType.EMove);
         }
 
-        private static void UpdateRotate(this BaseUnit self)
+        private static void UpdateRotate(this Unit self)
         {
             if (!self.m_bRotating)
                 return;
             if (self.m_nRemainAngle != 0)
             {
-                self.m_nOnFrameRotateAngle = FrameSyncComponent.LOGIC_FRAME_DELTA * self.m_nRotateSpeed / 1000;
+                self.m_nOnFrameRotateAngle = self.GetFrameSyncComponent().LOGIC_FRAME_DELTA * self.m_nRotateSpeed / 1000;
                 if (self.m_nRemainAngle > 0 && self.m_nRemainAngle < self.m_nOnFrameRotateAngle)
                     self.m_nOnFrameRotateAngle = self.m_nRemainAngle;
                 self.m_nRemainAngle -= self.m_nOnFrameRotateAngle;
@@ -96,9 +102,23 @@ namespace ET
                 self.m_sCurForward = self.m_sTargetForward;
                 self.m_bRotating = false;
                 self.m_sForwardType = EForwardType.ENone;
+                
+                // 抛出Command, 关注的人, 主动监听.
+                Game.EventSystem.Publish(new EventType.MobaUnitForward() { unit = self, forward = self.m_sCurForward, bImmediately = true});
             }
         }
 
         #endregion
+
+        public static void OnFrameSyncUpdate(this Unit self)
+        {
+            self.UpdateRotate();
+            var unitMoveComponent = self.GetComponent<UnitMoveComponent>();
+            if (unitMoveComponent == null)
+                return;
+            unitMoveComponent.OnLogicFrame();
+            // TODO 处理复活.
+            // self.UpdateReborn();
+        }
     }
 }

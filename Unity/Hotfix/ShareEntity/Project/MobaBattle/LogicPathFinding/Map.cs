@@ -4,7 +4,6 @@ namespace ET
 {
     public class Map
     {
-        private byte m_btCurGrassId = 2;
         private int m_nHeight;
         private int m_nWidth;
         private int m_nCellSize;
@@ -146,54 +145,54 @@ namespace ET
             return svector3;
         }
 
-//         public void LoadMapFile(MapData mapData)
-//         {
-//             this.m_nCellSize = mapData.CellSize * 1000; // Cell大小
-//             this.m_nRowCount = mapData.RowCount; // 地图行数
-//             this.m_nColumnCount = mapData.ColumnCount; // 地图列数
-//             this.m_mapCenterPos.x = 0; // 地图中心点x
-//             this.m_mapCenterPos.y = 0; // 地图中心点y
-//
-//             this.m_nHeight = this.m_nCellSize * this.m_nRowCount; // 地图长度
-//             this.m_nHalfHeight = this.m_nHeight / 2; // 地图半长度
-//             this.m_nWidth = this.m_nCellSize * this.m_nColumnCount; // 地图宽度
-//             this.m_nHalfWidth = this.m_nWidth / 2; // 地图半宽度
-//             int num3 = this.m_mapCenterPos.x + (-this.m_nHalfWidth + this.m_nCellSize / 2);
-//             int num4 = this.m_mapCenterPos.y + (this.m_nHalfHeight - this.m_nCellSize / 2);
-// //        this.mCellsArry = new Cell[this.rowCount, this.columnCount];
-//             this.mCellList = new List<Cell>(this.rowCount * this.columnCount);
-//
-//             for (int index1 = 0; index1 < this.rowCount; ++index1)
-//             {
-//                 int z = num4 - index1 * this.cellSize;
-//                 for (int index2 = 0; index2 < this.columnCount; ++index2)
-//                 {
-//                     SVector3 centerPos = new SVector3(num3 + index2 * this.cellSize, 0, z);
-//                     centerPos.y = 0; // 该Cell的高度
-//                     byte flag = 0; // 碰撞物体类型 {0,1}
-//                     //byte num5 = 0; // 是否是草丛
-//                     //if (num5 > (byte) 1)
-//                     //    num5 = (byte) 1;
-//                     Cell cell = new Cell(centerPos, flag);
-// //                this.mCellsArry[index1, index2] = cell;
-//                     cell.rowIndex = (short)index1; // 第几行索引
-//                     cell.columnIndex = (short)index2; // 第几列索引
-//                     //cell.mGrassId = num5; // 草类型赋值
-//                     this.mCellList.Add(cell);
-//                 }
-//             }
-//
-//             if (mapData.CellList != null && mapData.CellList.Count > 0)
-//             {
-//                 int count = mapData.CellList.Count;
-//                 for (int i = 0; i < count; i++)
-//                 {
-//                     var cellData = mapData.CellList[i];
-//                     var mapCell = this[cellData.x, cellData.z];
-//                     mapCell.mFlagValue = (byte)cellData.Obstacle;
-//                 }
-//             }
-//         }
+        public void LoadMapFile(MapData mapData)
+        {
+            this.m_nCellSize = mapData.CellSize * 1000; // Cell大小
+            this.m_nRowCount = mapData.RowCount; // 地图行数
+            this.m_nColumnCount = mapData.ColumnCount; // 地图列数
+            this.m_mapCenterPos.x = 0; // 地图中心点x
+            this.m_mapCenterPos.y = 0; // 地图中心点y
+
+            this.m_nHeight = this.m_nCellSize * this.m_nRowCount; // 地图长度
+            this.m_nHalfHeight = this.m_nHeight / 2; // 地图半长度
+            this.m_nWidth = this.m_nCellSize * this.m_nColumnCount; // 地图宽度
+            this.m_nHalfWidth = this.m_nWidth / 2; // 地图半宽度
+            int num3 = this.m_mapCenterPos.x + (-this.m_nHalfWidth + this.m_nCellSize / 2);
+            int num4 = this.m_mapCenterPos.y + (this.m_nHalfHeight - this.m_nCellSize / 2);
+//        this.mCellsArry = new Cell[this.rowCount, this.columnCount];
+            this.mCellList = new List<Cell>(this.rowCount * this.columnCount);
+
+            for (int index1 = 0; index1 < this.rowCount; ++index1)
+            {
+                int z = num4 - index1 * this.cellSize;
+                for (int index2 = 0; index2 < this.columnCount; ++index2)
+                {
+                    SVector3 centerPos = new SVector3(num3 + index2 * this.cellSize, 0, z);
+                    centerPos.y = 0; // 该Cell的高度
+                    byte flag = 0; // 碰撞物体类型 {0,1}
+                    //byte num5 = 0; // 是否是草丛
+                    //if (num5 > (byte) 1)
+                    //    num5 = (byte) 1;
+                    Cell cell = new Cell(centerPos, flag);
+//                this.mCellsArry[index1, index2] = cell;
+                    cell.rowIndex = (short)index1; // 第几行索引
+                    cell.columnIndex = (short)index2; // 第几列索引
+                    //cell.mGrassId = num5; // 草类型赋值
+                    this.mCellList.Add(cell);
+                }
+            }
+
+            if (mapData.CellList != null && mapData.CellList.Count > 0)
+            {
+                int count = mapData.CellList.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    var cellData = mapData.CellList[i];
+                    var mapCell = this[cellData.x, cellData.z];
+                    mapCell.mFlagValue = (byte)cellData.Obstacle;
+                }
+            }
+        }
 
         public bool IsValidateCell(int nRow, int nColumn)
         {

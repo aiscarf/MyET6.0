@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ET
+﻿namespace ET
 {
     public class ZoneSceneFlagComponent: Entity
     {

@@ -1,41 +1,20 @@
-﻿using UnityEngine;
-
-namespace ET
+﻿namespace ET
 {
     namespace EventType
     {
+        /// <summary>
+        /// 启动App
+        /// </summary>
         public struct AppStart
         {
         }
 
-        public struct ChangePosition
-        {
-            public Unit Unit;
-            public Vector3 OldPos;
-        }
-
-        public struct ChangeRotation
-        {
-            public Unit Unit;
-        }
-
-        public struct PingChange
-        {
-            public Scene ZoneScene;
-            public long Ping;
-        }
-        
-        public struct AfterCreateZoneScene
+        public struct LeaveZoneScene
         {
             public Scene ZoneScene;
         }
-        
-        public struct AfterCreateLoginScene
-        {
-            public Scene LoginScene;
-        }
 
-        public struct AppStartInitFinish
+        public struct EnterZoneScene
         {
             public Scene ZoneScene;
         }
@@ -45,38 +24,22 @@ namespace ET
             public Scene ZoneScene;
         }
 
-        public struct LoadingBegin
+        #region Moba事件流
+
+        /// <summary>
+        /// 开始加载moba场景资源
+        /// </summary>
+        public struct EnterMobaBegin
         {
-            public Scene Scene;
+            public MobaBattleLoadData MobaBattleLoadData;
         }
 
-        public struct LoadingFinish
+        // 结束加载moba场景资源
+        public struct EnterMobaFinish
         {
-            public Scene Scene;
-        }
-
-        public struct EnterMapFinish
-        {
-            public Scene ZoneScene;
-        }
-
-        public struct AfterUnitCreate
-        {
-            public Unit Unit;
+            public MobaBattleLoadData MobaBattleLoadData;
         }
         
-        public struct MoveStart
-        {
-            public Unit Unit;
-        }
-
-        public struct MoveStop
-        {
-            public Unit Unit;
-        }
-
-        public struct UnitEnterSightRange
-        {
-        }
+        #endregion
     }
 }

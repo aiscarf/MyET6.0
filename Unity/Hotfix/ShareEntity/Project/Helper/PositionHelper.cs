@@ -30,14 +30,7 @@ namespace ET
 			return Quaternion.LookRotation(direction, Vector3.up);
 		}
 
-        public static float Distance2D(Unit u1, Unit u2)
-        {
-            Vector2 v1 = new Vector2(u1.Position.x, u1.Position.z);
-            Vector2 v2 = new Vector2(u2.Position.x, u2.Position.z);
-            return Vector2.Distance(v1, v2);
-        }
-
-        public static float Distance2D(Vector3 v1, Vector3 v2)
+		public static float Distance2D(Vector3 v1, Vector3 v2)
         {
             Vector2 d1 = new Vector2(v1.x, v1.z);
             Vector2 d2 = new Vector2(v2.x, v2.z);

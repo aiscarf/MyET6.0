@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 using UnityEngine;
 
 namespace ET
@@ -9,7 +8,6 @@ namespace ET
 	{
 		public override void Awake(UI self, string name, GameObject gameObject)
 		{
-
 			self.Awake(name, gameObject);
 		}
 	}
@@ -17,16 +15,21 @@ namespace ET
 	public sealed class UI: Entity
 	{
 		public GameObject GameObject;
-		
-		public string Name { get; private set; }
 
-		public Dictionary<string, UI> nameChildren = new Dictionary<string, UI>();
+		public int ZoneSceneId { get; set; }
+		public string Name { get; private set; }
+		
+		public bool IsActived { get; set; }
+		public bool IsCovered { get; set; }
+		
+		/// <summary>
+		/// 如何管理 子UI.
+		/// </summary>
+		public Dictionary<string, UI> m_children = new Dictionary<string, UI>();
 		
 		public void Awake(string name, GameObject gameObject)
 		{
-			this.nameChildren.Clear();
-			gameObject.AddComponent<ComponentView>().Component = this;
-			gameObject.layer = LayerMask.NameToLayer(LayerNames.UI);
+			this.m_children.Clear();
 			this.Name = name;
 			this.GameObject = gameObject;
 		}
@@ -40,40 +43,40 @@ namespace ET
 			
 			base.Dispose();
 
-			foreach (UI ui in this.nameChildren.Values)
+			foreach (UI ui in this.m_children.Values)
 			{
 				ui.Dispose();
 			}
 			
 			UnityEngine.Object.Destroy(this.GameObject);
-			this.nameChildren.Clear();
+			this.m_children.Clear();
 		}
 
-		public void SetAsFirstSibling()
-		{
-			this.GameObject.transform.SetAsFirstSibling();
-		}
+		// public void SetAsFirstSibling()
+		// {
+		// 	this.GameObject.transform.SetAsFirstSibling();
+		// }
 
 		public void Add(UI ui)
 		{
-			this.nameChildren.Add(ui.Name, ui);
+			this.m_children.Add(ui.Name, ui);
 		}
 
 		public void Remove(string name)
 		{
 			UI ui;
-			if (!this.nameChildren.TryGetValue(name, out ui))
+			if (!this.m_children.TryGetValue(name, out ui))
 			{
 				return;
 			}
-			this.nameChildren.Remove(name);
+			this.m_children.Remove(name);
 			ui.Dispose();
 		}
 
 		public UI Get(string name)
 		{
 			UI child;
-			if (this.nameChildren.TryGetValue(name, out child))
+			if (this.m_children.TryGetValue(name, out child))
 			{
 				return child;
 			}
