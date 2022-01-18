@@ -51,8 +51,7 @@ Server/.DS_Store
 /*.user
 /ToolsApp/
 /Unity/Unity.Editor.csproj
-/Unity/Assets/Mono/ILRuntime/Generate/*
-/Unity/Assets/Bundles/Code/*
+/Unity/Assets/Bundles/Code
+/Unity/Assets/Mono/ILRuntime/Generate/
 /Unity/Assembly-CSharp.csproj
 /Excel/~$*.xlsx
-
