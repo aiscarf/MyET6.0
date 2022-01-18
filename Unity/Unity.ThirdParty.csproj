@@ -46,15 +46,20 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\CSBindBreakpoint.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\CLRBinding\CLRBindingUtils.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.PE\ImageWriter.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCInput.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Meta\TypeModel.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\MapDecorator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeSpecification.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickTap.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\ListDecorator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\FileAttributes.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\CSResolveVariable.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\PortablePdb.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\SCBindBreakpointResult.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\PropertyDecorator.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\EasyTouchTriggerInspector.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\EasyTouchInspector.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Component\ETCSetDirectActionTransform.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\ArrayDecorator.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\ISerializerProxy.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MethodSpecification.cs" />
@@ -70,6 +75,7 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbInfo.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Meta\CallbackSet.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\IProtoSerializer.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\FPSExample\FPSPlayerControl.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Meta\TypeFormatEventArgs.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MethodReferenceComparer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\AssemblyHashAlgorithm.cs" />
@@ -79,24 +85,27 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.PE\TextMap.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\ILRuntimeException.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\Int64Serializer.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Engine\EasyTouch.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\RegisterVM\Optimizer.InlineMethod.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Stack\StackObject.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.PE\Image.cs" />
      <Compile Include="Assets\ThirdParty\ETTask\ETCancellationToken.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\CodeReader.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\GenericParameter.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MetadataSystem.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\GenericParameter.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Compiler\CompilerContext.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\SurrogateSerializer.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\MemberSpecifiedDecorator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\CLRBinding\FieldBindingGenerator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Mono.Cecil.Pdb\SymWriter.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\VariableReference.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Other\ByReferenceKeyComparer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MemberReference.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\AssemblyNameReference.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ProtoIgnoreAttribute.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Engine\EasyTouchInput.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\IExtension.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Enviorment\CLRRedirections.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.PE\BinaryStreamWriter.cs" />
@@ -107,11 +116,15 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Other\UncheckedStack.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\CSEnumChildren.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\FieldDecorator.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 2.X_New Features\Script\CharacterAnimationDungeon.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TargetRuntime.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\RegisterVM\Optimizer.BCP.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MethodAttributes.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickSwipe.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\MetadataToken.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbFunction.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickPinch.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Examples\5.X new features\Script\RTS_NewSyntaxe.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\DefaultValueDecorator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\SCStepComplete.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\DataFormat.cs" />
@@ -121,6 +134,7 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\DebugSocket.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Enviorment\DelegateManager.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MethodCallingConvention.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Editor\ETCAxisInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\CSResolveIndexer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\BlobHeap.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Mono.Cecil.Pdb\ISymUnmanagedDocumentWriter.cs" />
@@ -132,21 +146,29 @@
      <Compile Include="Assets\ThirdParty\LitJson\JsonReader.cs" />
      <Compile Include="Assets\ThirdParty\ETTask\ETTask.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\IProtoTypeSerializer.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\RegisterVM\Optimizer.RegisterCleanup.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Engine\TwoFingerGesture.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\mdb\Mono.CompilerServices.SymbolWriter\SourceMethodBuilder.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbException.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\RegisterVM\Optimizer.RegisterCleanup.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ImplicitFields.cs" />
      <Compile Include="Assets\ThirdParty\ShareLib\Recast\Recast.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Editor\ETCAreaInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\OpCodes\OpCodeREnum.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\Button-Event-Input\ButtonInputUI.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickTouch.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\EmbeddedResource.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickDrag.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\Resource.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\SequencePoint.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\CLR\Utils\Extensions.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\ProtoDecoratorBase.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\IMarshalInfoProvider.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCAxis.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\FieldReference.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\TagDecorator.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\Button-Event-Input\ButtonUIEvent.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\UInt32Serializer.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\TouchPad-Event-Input\TouchPadUIEvent.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeParser.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Meta\RuntimeTypeModel.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ProtoConverterAttribute.cs" />
@@ -165,6 +187,8 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\SCAttachResult.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\SByteSerializer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ReferenceType.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCButton.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\QuickEnterExitInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Extensions.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\SubItemSerializer.cs" />
      <Compile Include="Assets\ThirdParty\ETTask\AsyncETVoidMethodBuilder.cs" />
@@ -176,56 +200,68 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\AssemblyNameDefinition.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\FieldAttributes.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\RegisterVM\JITCompiler.cs" />
-     <Compile Include="Assets\ThirdParty\protobuf-net\WireType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Enviorment\AppDomain.cs" />
+     <Compile Include="Assets\ThirdParty\protobuf-net\WireType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Mono.Cecil.Pdb\PdbHelper.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\OpCode.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ArrayType.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ProtoContractAttribute.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Helpers.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\PropertyAttributes.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ParameterAttributes.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\PropertyAttributes.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Adaptors\CLRCrossBindingAdaptors.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\LoadLevelScript.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeSystem.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\JsonException.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\CLRBinding\BindingGeneratorExtensions.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickEnterOverExist.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickTwist.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\CharSerializer.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\NullDecorator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\RegisterVM\Optimizer.Utils.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeReferenceEqualityComparer.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\DiscriminatedUnion.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeReferenceEqualityComparer.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\JoystickParameter\AxisXUi.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\CallSite.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\RegisterVM\CodeBasicBlock.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\BreakpointInfo.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\CodeWriter.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ExtensibleUtil.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeReference.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\QuickSwipeInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\CLR\TypeSystem\CLRType.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ComponentExtensions.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCDPad.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbFileHeader.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\SCEnumChildrenResult.cs" />
      <Compile Include="Assets\ThirdParty\ETTask\AsyncMethodBuilderAttribute.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbSource.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\ElementType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\Code.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\ILIntepreter.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\EasyTouchWelcomeScreen.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\CSStep.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\ILIntepreter.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbSlot.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Reflection\ILRuntimeFieldInfo.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\NativeType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.PE\DataDirectory.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.PE\Section.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.PE\BinaryStreamReader.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\EasytouchHierachyCallBack.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\CLRBinding\BindingCodeGenerator.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\KeyValuePairProxy.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\JsonWriter.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Enviorment\CrossBindingMethodInfo.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\DateTimeSerializer.cs" />
      <Compile Include="Assets\ThirdParty\ETTask\IAwaiter.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickLongTap.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\CLR\Method\ExceptionHandler.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\Extensions.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\Document.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Reflection\ILRuntimePropertyInfo.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCBase.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\Document.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\CLRBinding\ConstructorBindingGenerator.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\FPSExample\ImpactEffect.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\IntHashTable.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Compiler\CompilerDelegates.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\JsonData.cs" />
@@ -237,16 +273,20 @@
      <Compile Include="Assets\ThirdParty\protobuf-net\Meta\BasicList.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbFile.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\Buffers.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Enviorment\CrossBindingCodeGenerator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\mdb\Mono.Cecil.Mdb\MdbReader.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\SentinelType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\ILTypeInstance.cs" />
+     <Compile Include="Assets\ThirdParty\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\CSDeleteBreakpoint.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\SCResolveVariableResult.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Enviorment\InvocationContext.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\ControlEventInput\ControlUIEvent.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\JsonMockWrapper.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MethodImplAttributes.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\GenericParameterResolver.cs" />
+     <Compile Include="Assets\ThirdParty\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ManifestResourceAttributes.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Stack\RuntimeStack.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\StringHeap.cs" />
@@ -255,14 +295,16 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\BitAccess.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\EventDefinition.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\BreakPointContext.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\QuickTwistInspector.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Editor\ETCMenu.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\SerializationContext.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ICustomAttributeProvider.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MethodDefinition.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono\Empty.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MethodReturnType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.PE\ByteBuffer.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbScope.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbDebugException.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbScope.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\ExceptionHandler.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\BaseAssemblyResolver.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MemberDefinitionCollection.cs" />
@@ -274,39 +316,48 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Other\DelegateExportAttribute.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\PinnedType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ParameterDefinition.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\QuickTouchInspector.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\Lexer.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\QuickPinchInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MethodReference.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\ILRuntimeJITAttribute.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\UnityTypeBindings.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\PointerType.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\ReflectedUriDecorator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\EventReference.cs" />
+     <Compile Include="Assets\ThirdParty\EasyJoystick\Joystick\EasyJoystick.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Other\UncheckedList.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Engine\BaseFinger.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ServiceModel\ProtoOperationBehavior.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Mono.Cecil.Pdb\NativePdbWriter.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ServiceModel\XmlProtoSerializer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Mono.Cecil.Pdb\ModuleMetadata.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ProtoException.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Engine\Finger.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\OpCodes\OpCodeEnum.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\QuickTapInspector.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\JsonMapper.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Extensible.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\CodedIndex.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\SCModuleLoaded.cs" />
-     <Compile Include="Assets\ThirdParty\protobuf-net\Meta\ValueMember.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ProtoReader.cs" />
+     <Compile Include="Assets\ThirdParty\protobuf-net\Meta\ValueMember.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\DbiSecCon.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Stack\StackObjectAllocator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ModuleReference.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Stack\StackObjectAllocator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Collections.Generic\ReadOnlyCollection.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\PdbHeap.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\QuickLongTapInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\GenericInstanceType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\MsfDirectory.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\AssemblyDefinition.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Editor\ETCButtonInspector.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\DecimalSerializer.cs" />
      <Compile Include="Assets\ThirdParty\ETTask\AsyncETTaskMethodBuilder.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MarshalInfo.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\BooleanSerializer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbTokenLine.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\QuickDragInspector.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\DoubleSerializer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Security.Cryptography\CryptoConvert.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Security.Cryptography\CryptoService.cs" />
@@ -318,24 +369,29 @@
      <Compile Include="Assets\ThirdParty\protobuf-net\Meta\SubType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeDefinition.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\FunctionPointerType.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\DPadClassicalTime\DPadParameterUI.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\SecurityDeclaration.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\FieldDefinition.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\GenericInstanceMethod.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\CLR\Method\CLRMethod.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\AssemblyLinkedResource.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Editor\ETCJoystickInspector.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\TypeSerializer.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Editor\ETCTouchPadInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Mono.Cecil.Pdb\SymDocumentWriter.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\DataStream.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\GuidHeap.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\Import.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\IExtensible.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono\StreamExtensions.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Engine\ECamera.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Reflection\Extensions.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\DbiDbgHdr.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\PropertyDefinition.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\TokenType.cs" />
      <Compile Include="Assets\ThirdParty\ETTask\ETVoid.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeAttributes.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\EasyTouchTrigger.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\PropertyReference.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Enviorment\ValueTypeBinder.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\Instruction.cs" />
@@ -348,10 +404,13 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MethodSemanticsAttributes.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\CLRBinding\MethodBindingGenerator.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Meta\MetaType.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickBase.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Meta\AttributeMap.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\OpCodes.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Editor\ETCGuiTools.cs" />
      <Compile Include="Assets\ThirdParty\ETTask\ETTaskCompleted.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\ParserToken.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 2.X_New Features\Script\CharacterAnimation.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Collections.Generic\Collection.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\Netstandard15Polyfill.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\mdb\Mono.CompilerServices.SymbolWriter\SymbolWriterImpl.cs" />
@@ -362,9 +421,13 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ParameterDefinitionCollection.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\PrefixStyle.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\CvInfo.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Examples\5.X new features\Script\SimpleActionExample.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\ControlEventInput\ControlUIInput.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeDefinitionCollection.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\_Medias\SliderText.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\DebugService.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Mono.Cecil.Pdb\NativePdbReader.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Editor\ETCDPadInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbLine.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\TimeSpanSerializer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\PInvokeAttributes.cs" />
@@ -376,11 +439,14 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\SCThreadStarted.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\OpCodes\OpCode.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\CLR\Method\ILMethod.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCArea.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Mono.Cecil.Pdb\ISymUnmanagedWriter2.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\DelegateAdapter.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\GlobalSuppressions.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\CustomAttribute.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbReader.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\HTGuiTools.cs" />
+     <Compile Include="Assets\ThirdParty\EasyJoystick\Joystick\Editor\CreateJoystick.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ProtoMemberAttribute.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\EventAttributes.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\RegisterVM\Optimizer.ELDC.cs" />
@@ -411,21 +477,39 @@
      <Compile Include="Assets\ThirdParty\protobuf-net\PType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\IGenericParameterProvider.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\BitSet.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\CLR\TypeSystem\ILGenericParameterType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\Consts.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\CLR\TypeSystem\ILGenericParameterType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Other\ThreadSafeDictionary.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Enviorment\CrossBindingAdaptor.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\EasyTouchMenu.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Reflection\ILRuntimeConstructorInfo.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ModuleDefinition.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\mdb\Mono.CompilerServices.SymbolWriter\MonoSymbolFile.cs" />
      <Compile Include="Assets\ThirdParty\ETTask\ETTaskHelper.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Other\NeedAdaptorAttribute.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\PdbConstant.cs" />
-     <Compile Include="Assets\ThirdParty\LitJson\IJsonWrapper.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Meta\ProtoSyntax.cs" />
+     <Compile Include="Assets\ThirdParty\LitJson\IJsonWrapper.cs" />
+     <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Engine\Gesture.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\UInt16Serializer.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\AssemblyFlags.cs" />
+     <None Include="Assets\ThirdParty\EasyTouchBundle\Readme.txt" />
+     <None Include="Assets\ThirdParty\Demigiant\DOTween\DOTween43.xml" />
+     <None Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
+     <None Include="Assets\ThirdParty\Demigiant\DOTween\DOTween46.xml" />
+     <None Include="Assets\ThirdParty\Demigiant\DOTween\DOTween50.xml" />
+     <None Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\_Documentation\How to migrate from EasyTouch 4.X.txt" />
+     <None Include="Assets\ThirdParty\Demigiant\readme_DOTweenPro.txt" />
+     <None Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
+     <None Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Documentation\Version 2.0.txt" />
+     <None Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
+     <None Include="Assets\ThirdParty\Demigiant\DemiLib\Core\DemiLib.xml" />
      <None Include="Assets\ThirdParty\Unity.ThirdParty.asmdef" />
+     <None Include="Assets\ThirdParty\Demigiant\DOTweenPro\readme.txt" />
+     <None Include="Assets\ThirdParty\Demigiant\DOTween\readme.txt" />
+     <None Include="Assets\ThirdParty\EasyJoystick\READMEE.txt" />
+     <None Include="Assets\ThirdParty\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
+     <None Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\RealseNotes.txt" />
      <Reference Include="UnityEngine">
      <HintPath>D:/Unity/2020.3.3f1c1/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
@@ -630,11 +714,38 @@
      <Reference Include="UnityEditor.WindowsStandalone.Extensions">
      <HintPath>D:/Unity/2020.3.3f1c1/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
+     <Reference Include="DOTweenProEditor">
+     <HintPath>E:/ServerProject/ET/Unity/Assets/ThirdParty/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiLib">
+     <HintPath>E:/ServerProject/ET/Unity/Assets/ThirdParty/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenEditor">
+     <HintPath>E:/ServerProject/ET/Unity/Assets/ThirdParty/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiEditor">
+     <HintPath>E:/ServerProject/ET/Unity/Assets/ThirdParty/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+     </Reference>
      <Reference Include="CommandLine">
      <HintPath>E:/ServerProject/ET/Unity/Assets/Plugins/CommandLine.dll</HintPath>
      </Reference>
+     <Reference Include="DOTween">
+     <HintPath>E:/ServerProject/ET/Unity/Assets/ThirdParty/Demigiant/DOTween/DOTween.dll</HintPath>
+     </Reference>
      <Reference Include="ICSharpCode.SharpZipLib">
      <HintPath>E:/ServerProject/ET/Unity/Assets/Plugins/ICSharpCode.SharpZipLib.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween46">
+     <HintPath>E:/ServerProject/ET/Unity/Assets/ThirdParty/Demigiant/DOTween/DOTween46.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween43">
+     <HintPath>E:/ServerProject/ET/Unity/Assets/ThirdParty/Demigiant/DOTween/DOTween43.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenPro">
+     <HintPath>E:/ServerProject/ET/Unity/Assets/ThirdParty/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween50">
+     <HintPath>E:/ServerProject/ET/Unity/Assets/ThirdParty/Demigiant/DOTween/DOTween50.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>D:/Unity/2020.3.3f1c1/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
