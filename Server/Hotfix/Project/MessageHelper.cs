@@ -1,24 +1,20 @@
-﻿
-
-using System.Collections.Generic;
-
-namespace ET
+﻿namespace ET
 {
     public static class MessageHelper
     {
-        public static void Broadcast(Unit unit, IActorMessage message)
-        {
-            Dictionary<long, AOIEntity> dict = unit.GetBeSeePlayers();
-            foreach (AOIEntity u in dict.Values)
-            {
-                SendToClient(u.Unit, message);
-            }
-        }
-        
-        public static void SendToClient(Unit unit, IActorMessage message)
-        {
-            SendActor(unit.GetComponent<UnitGateComponent>().GateSessionActorId, message);
-        }
+        // public static void Broadcast(Unit unit, IActorMessage message)
+        // {
+        //     Dictionary<long, AOIEntity> dict = unit.GetBeSeePlayers();
+        //     foreach (AOIEntity u in dict.Values)
+        //     {
+        //         SendToClient(u.Unit, message);
+        //     }
+        // }
+        //
+        // public static void SendToClient(Unit unit, IActorMessage message)
+        // {
+        //     SendActor(unit.GetComponent<UnitGateComponent>().GateSessionActorId, message);
+        // }
         
         
         /// <summary>
