@@ -54,4 +54,7 @@ Server/.DS_Store
 /Unity/Assets/Bundles/Code
 /Unity/Assets/Mono/ILRuntime/Generate/
 /Unity/Assembly-CSharp.csproj
+/Unity/Tools/Pdb2Mdb/4.5/Hotfix.dll
+/Unity/Tools/Pdb2Mdb/4.5/Hotfix.dll.mdb
+/Unity/Tools/Pdb2Mdb/4.5/Hotfix.pdb
 /Excel/~$*.xlsx
