@@ -66,7 +66,7 @@
             }
 
             self.CurScene = scene;
-            Game.EventSystem.Publish(new EventType.EnterZoneScene() { ZoneScene = self.CurScene });
+            Game.EventSystem.Publish(new EventType.EnterZoneSceneBefore() { ZoneScene = self.CurScene });
         }
     }
 }

@@ -2,12 +2,15 @@
 {
     public static class UIType
     {
-        // public const string Root = "Root";
-        public const string UILoading = "UILoading";
-        public const string UILogin = "UILogin";
-        public const string UILobby = "UILobby";
+        // 登录场景
+        public const string UILogin = nameof(UILogin);
+        // end
+        
+        // 主场景
+        public const string UIMain = nameof(UIMain);
+        // end
 
-        // moba战斗
+        // 战斗场景
         public const string UIBattleLoading = nameof(UIBattleLoading);
         public const string UIBattleBloodBar = nameof(UIBattleBloodBar);
         public const string UIBattle = nameof(UIBattle);

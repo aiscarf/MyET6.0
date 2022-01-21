@@ -7,9 +7,9 @@ namespace ET
     {
         public override void OnInit()
         {
-            self.account = referenceCollector.Get<GameObject>("LoginBtn").GetComponent<InputField>();
+            self.account = referenceCollector.Get<GameObject>("Account").GetComponent<InputField>();
             self.password = referenceCollector.Get<GameObject>("Password").GetComponent<InputField>();
-            self.loginBtn = referenceCollector.Get<GameObject>("Account").GetComponent<Button>();
+            self.loginBtn = referenceCollector.Get<GameObject>("LoginBtn").GetComponent<Button>();
             
             self.loginBtn.onClick.AddListener(OnBtnLoginClick);
         }
@@ -35,9 +35,10 @@ namespace ET
         {
         }
 
-        private void OnBtnLoginClick()
+        private async void OnBtnLoginClick()
         {
-            
+            // TODO 1.应对账号密码进行初步的格式校验.
+            await LoginHelper.Login(self.DomainScene(), ConstValue.LoginAddress, self.account.text, self.password.text);
         }
     }
 }

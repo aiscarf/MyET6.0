@@ -13,7 +13,7 @@ namespace ET
             }
             else if (zone == 2)
             {
-                // TODO 主场景不进行卸载.
+                args.ZoneScene.Dispose();
             }
             else if (zone == 3)
             {

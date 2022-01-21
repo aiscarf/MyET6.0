@@ -14,7 +14,12 @@
             public Scene ZoneScene;
         }
 
-        public struct EnterZoneScene
+        public struct EnterZoneSceneBefore
+        {
+            public Scene ZoneScene;
+        }
+
+        public struct EnterZoneSceneAfter
         {
             public Scene ZoneScene;
         }

@@ -49,6 +49,8 @@ namespace ET
             ui.GameObject.AddComponent<ComponentView>().Component = ui;
             ui.GameObject.AddComponent<UIDepth>();
             ui.GameObject.SetActive(false);
+            ui.IsActived = false;
+            ui.IsCovered = false;
             var type = self.m_allUiType[uiType];
             ui.AddComponent(type);
             self.m_allUiMap.Add(uiType, ui);
