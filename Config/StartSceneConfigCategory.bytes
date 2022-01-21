@@ -4,4 +4,17 @@
 "Gate*Gate20”N
 "Location*Location0•N
 "Map*Map0–N
-È"Robot*Robot01
+
+
+"Realm*ServerRealm70±ê
+
+
+"Gate*ServerGate80²ê
+	
+
+"Map*
+ServerMap90³ê
+ 
+"Realm*ServerRealm100±ê
+"Gate*ServerGate110²ê
+"Map*ServerMap120³ê

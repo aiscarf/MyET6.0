@@ -50,7 +50,6 @@ message G2C_LoginGate // IResponse
 	int64 PlayerId = 1;
 }
 
-// Match服下发通知客户端.
 message M2C_OnGameStart // IActorLocationMessage
 { 
 	int32 RpcId = 90;
@@ -84,7 +83,7 @@ message PlayerInfo
 	repeated int32 unlockedSkill = 16;
 }
 
-// moba战斗部分使用的消息.
+//ResponseType B2C_GameMainEnter
 message C2B_GameMainEnter // IActorLocationRequest
 {
 	int32 RpcId = 90;
@@ -100,6 +99,7 @@ message B2C_GameMainEnter // IActorLocationResponse
 	string Message = 92;
 }
 
+//ResponseType B2C_FrameMsg
 message C2B_FrameMsg // IActorLocationRequest
 {
 	int32 RpcId = 90;

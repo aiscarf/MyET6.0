@@ -108,7 +108,6 @@ namespace ET
 
 	}
 
-// Match服下发通知客户端.
 	[Message(OuterOpcode.M2C_OnGameStart)]
 	[ProtoContract]
 	public partial class M2C_OnGameStart: Object, IActorLocationMessage
@@ -196,7 +195,7 @@ namespace ET
 
 	}
 
-// moba战斗部分使用的消息.
+	[ResponseType(nameof(B2C_GameMainEnter))]
 	[Message(OuterOpcode.C2B_GameMainEnter)]
 	[ProtoContract]
 	public partial class C2B_GameMainEnter: Object, IActorLocationRequest
@@ -230,6 +229,7 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(B2C_FrameMsg))]
 	[Message(OuterOpcode.C2B_FrameMsg)]
 	[ProtoContract]
 	public partial class C2B_FrameMsg: Object, IActorLocationRequest
