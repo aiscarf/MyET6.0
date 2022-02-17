@@ -25,6 +25,20 @@ namespace ET
         {
             return this.ZoneScenesByName[zone][name];
         }
+
+        public StartSceneConfig GetBySceneType(int zone, SceneType sceneType)
+        {
+            var map = this.ZoneScenesByName[zone];
+            foreach (var kv in map)
+            {
+                if (kv.Value.SceneType == sceneType.ToString())
+                {
+                    return kv.Value;
+                }
+            }
+
+            return null;
+        }
         
         public override void AfterEndInit()
         {
@@ -40,6 +54,9 @@ namespace ET
                 
                 switch (startSceneConfig.Type)
                 {
+                    case SceneType.Login:
+                        
+                        break;
                     case SceneType.Gate:
                         this.Gates.Add(startSceneConfig.Zone, startSceneConfig);
                         break;

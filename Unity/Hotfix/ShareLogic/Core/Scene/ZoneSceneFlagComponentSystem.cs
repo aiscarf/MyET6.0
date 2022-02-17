@@ -5,7 +5,10 @@
     {
         public override void Awake(ZoneSceneFlagComponent self)
         {
-            ZoneSceneManagerComponent.Instance.Add(self.GetParent<Scene>());
+            // 场景创建的事件.
+            var scene = self.GetParent<Scene>();
+            Game.EventSystem.Publish(new EventType.CreateZoneScene() { ZoneScene = scene });
+            ZoneSceneManagerComponent.Instance.Add(scene);
         }
     }
 
@@ -14,7 +17,10 @@
     {
         public override void Destroy(ZoneSceneFlagComponent self)
         {
-            ZoneSceneManagerComponent.Instance.Remove(self.DomainZone());
+            // 场景销毁的事件.
+            var scene = self.DomainScene();
+            Game.EventSystem.Publish(new EventType.DestroyZoneScene() { ZoneScene = scene });
+            ZoneSceneManagerComponent.Instance.Remove(scene.Zone);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace ET
 {
-    [ObjectSystem]
     public class UIMediatorManagerComponentAwakeSystem : AwakeSystem<UIMediatorManager>
     {
         public override void Awake(UIMediatorManager self)
@@ -117,7 +116,5 @@ namespace ET
                 throw new Exception($"UIMediatorManagerComponentSystem.UnCover: {uiType}Mediator error", e);
             }
         }
-        
-        // TODO 重载逻辑.
     }
 }

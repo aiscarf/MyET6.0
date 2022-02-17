@@ -26,6 +26,11 @@ namespace ET
             Game.Scene.AddComponent<NumericWatcherComponent>();
             
             Game.Scene.AddComponent<NetThreadComponent>();
+            
+            // mongo数据库管理器
+            Game.Scene.AddComponent<DBManagerComponent>();
+            
+            // Realm
 
             switch (Game.Options.AppType)
             {

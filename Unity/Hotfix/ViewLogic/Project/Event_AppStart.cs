@@ -33,19 +33,8 @@ namespace ET
 
             // 全局声音管理器.
             
-            // TODO 切换至登录场景.
-            ZoneSceneManagerComponent.Instance.ChangeScene(1);
-
-            // // TODO 切换至主场景.
-            // ZoneSceneManagerComponent.Instance.ChangeScene(2);
-            //
-            // TODO 切换至战斗场景.
-            // ZoneSceneManagerComponent.Instance.ChangeScene(3);
-            //
-            // // TODO 收到服务器通知, 匹配成功 => 进入加载界面, 等待服务器通知所有人都加载完成 => 则立马开始游戏.
-            // var local3V3BattleLoadData = new Local3v3BattleLoadData();
-            // var battleLoadData = local3V3BattleLoadData.GetLoadData();
-            // await Game.EventSystem.PublishAsync(new EventType.EnterMobaBegin() { MobaBattleLoadData = battleLoadData });
+            // DONE: 切换至登录场景.
+            ZoneSceneManagerComponent.Instance.ChangeScene(SceneType.Login);
         }
     }
 }

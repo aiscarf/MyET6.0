@@ -3,7 +3,10 @@
     public static class UIType
     {
         // 登录场景
+        public const string UILoginScene = nameof(UILoginScene);
         public const string UILogin = nameof(UILogin);
+        public const string UIRegister = nameof(UIRegister);
+        public const string UIServerList = nameof(UIServerList);
         // end
         
         // 主场景

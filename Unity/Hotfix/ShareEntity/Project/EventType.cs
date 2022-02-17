@@ -9,9 +9,19 @@
         {
         }
 
-        public struct LeaveZoneScene
+        public struct CreateZoneScene
         {
             public Scene ZoneScene;
+        }
+
+        public struct DestroyZoneScene
+        {
+            public Scene ZoneScene;
+        }
+
+        public struct LeaveZoneScene
+        {
+            public Scene LeaveZone;
         }
 
         public struct EnterZoneSceneBefore
@@ -24,9 +34,14 @@
             public Scene ZoneScene;
         }
 
-        public struct LoginFinish
+        public struct LoginRealmFinish
         {
-            public Scene ZoneScene;
+            
+        }
+
+        public struct LoginGateFinish
+        {
+            
         }
 
         #region Moba事件流

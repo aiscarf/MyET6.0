@@ -10,13 +10,3 @@ message ObjectQueryResponse // IActorResponse
 
 	Entity entity = 1;
 }
-
-/// <summary>
-/// 传送unit
-/// </summary>
-//ResponseType M2M_TrasferUnitResponse
-message M2M_TrasferUnitRequest // IActorRequest
-{
-	int32 RpcId = 90;
-	Unit Unit = 1;
-}

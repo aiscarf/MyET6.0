@@ -64,13 +64,102 @@ namespace ET
 		public string Message { get; set; }
 
 		[ProtoMember(1)]
-		public string Address { get; set; }
+		public string RealmToken { get; set; }
+
+	}
+
+	[ResponseType(nameof(R2C_Register))]
+	[Message(OuterOpcode.C2R_Register)]
+	[ProtoContract]
+	public partial class C2R_Register: Object, IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string Account { get; set; }
 
 		[ProtoMember(2)]
-		public long Key { get; set; }
+		public string Password { get; set; }
+
+	}
+
+	[Message(OuterOpcode.R2C_Register)]
+	[ProtoContract]
+	public partial class R2C_Register: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(R2C_ServiceList))]
+	[Message(OuterOpcode.C2R_ServiceList)]
+	[ProtoContract]
+	public partial class C2R_ServiceList: Object, IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.R2C_ServiceList)]
+	[ProtoContract]
+	public partial class R2C_ServiceList: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public List<GameService> ServiceList = new List<GameService>();
+
+		[ProtoMember(2)]
+		public List<GameRegion> RegionList = new List<GameRegion>();
+
+	}
+
+	[Message(OuterOpcode.GameService)]
+	[ProtoContract]
+	public partial class GameService: Object
+	{
+		[ProtoMember(1)]
+		public int ServiceId { get; set; }
+
+		[ProtoMember(2)]
+		public string ServiceName { get; set; }
 
 		[ProtoMember(3)]
-		public long GateId { get; set; }
+		public long ServiceStartTime { get; set; }
+
+	}
+
+	[Message(OuterOpcode.GameRegion)]
+	[ProtoContract]
+	public partial class GameRegion: Object
+	{
+		[ProtoMember(1)]
+		public int RegionId { get; set; }
+
+		[ProtoMember(2)]
+		public string RegionName { get; set; }
+
+		[ProtoMember(3)]
+		public int State { get; set; }
+
+		[ProtoMember(4)]
+		public string Address { get; set; }
 
 	}
 
@@ -83,10 +172,7 @@ namespace ET
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
-		public long Key { get; set; }
-
-		[ProtoMember(2)]
-		public long GateId { get; set; }
+		public string RealmToken { get; set; }
 
 	}
 
@@ -104,11 +190,10 @@ namespace ET
 		public string Message { get; set; }
 
 		[ProtoMember(1)]
-		public long PlayerId { get; set; }
+		public string GateToken { get; set; }
 
 	}
 
-// Match服下发通知客户端.
 	[Message(OuterOpcode.M2C_OnGameStart)]
 	[ProtoContract]
 	public partial class M2C_OnGameStart: Object, IActorLocationMessage
@@ -196,7 +281,7 @@ namespace ET
 
 	}
 
-// moba战斗部分使用的消息.
+	[ResponseType(nameof(B2C_GameMainEnter))]
 	[Message(OuterOpcode.C2B_GameMainEnter)]
 	[ProtoContract]
 	public partial class C2B_GameMainEnter: Object, IActorLocationRequest
@@ -230,6 +315,7 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(B2C_FrameMsg))]
 	[Message(OuterOpcode.C2B_FrameMsg)]
 	[ProtoContract]
 	public partial class C2B_FrameMsg: Object, IActorLocationRequest

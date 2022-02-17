@@ -429,31 +429,7 @@ namespace ET
             this.IsRegister = false;
             this.InstanceId = 0;
 
-            // 清理Component
-            if (this.components != null)
-            {
-                foreach (KeyValuePair<Type, Entity> kv in this.components)
-                {
-                    kv.Value.Dispose();
-                }
-
-                this.components.Clear();
-                MonoPool.Instance.Recycle(this.components);
-                this.components = null;
-
-                // 创建的才需要回到池中,从db中不需要回收
-                if (this.componentsDB != null)
-                {
-                    this.componentsDB.Clear();
-                    if (this.IsNew)
-                    {
-                        MonoPool.Instance.Recycle(this.componentsDB);
-                        this.componentsDB = null;
-                    }
-                }
-            }
-
-            // 清理Children
+            // 先清理Children
             if (this.children != null)
             {
                 foreach (Entity child in this.children.Values)
@@ -476,7 +452,31 @@ namespace ET
                     }
                 }
             }
+            
+            // 再清理Component
+            if (this.components != null)
+            {
+                foreach (KeyValuePair<Type, Entity> kv in this.components)
+                {
+                    kv.Value.Dispose();
+                }
 
+                this.components.Clear();
+                MonoPool.Instance.Recycle(this.components);
+                this.components = null;
+
+                // 创建的才需要回到池中,从db中不需要回收
+                if (this.componentsDB != null)
+                {
+                    this.componentsDB.Clear();
+                    if (this.IsNew)
+                    {
+                        MonoPool.Instance.Recycle(this.componentsDB);
+                        this.componentsDB = null;
+                    }
+                }
+            }
+            
             // 触发Destroy事件
             EventSystem.Instance.Destroy(this);
 

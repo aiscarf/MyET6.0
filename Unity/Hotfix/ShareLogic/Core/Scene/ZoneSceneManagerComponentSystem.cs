@@ -41,32 +41,22 @@
             self.ZoneScenes.Remove(zone);
         }
 
-        public static void ChangeScene(this ZoneSceneManagerComponent self, int zone)
+        public static async void ChangeScene(this ZoneSceneManagerComponent self, SceneType sceneType)
         {
             if (self.CurScene != null)
             {
-                Game.EventSystem.Publish(new EventType.LeaveZoneScene() { ZoneScene = self.CurScene });
+                Game.EventSystem.Publish(new EventType.LeaveZoneScene() { LeaveZone = self.CurScene });
             }
             
-            var scene = self.Get(zone);
+            var scene = self.Get((int) sceneType);
             if (scene == null)
             {
-                switch (zone)
-                {
-                    case 1:
-                        scene = SceneFactory.CreateLoginScene();
-                        break;
-                    case 2:
-                        scene = SceneFactory.CreateMainScene();
-                        break;
-                    case 3:
-                        scene = SceneFactory.CreateBattleScene();
-                        break;
-                }
+                scene = await SceneFactory.CreateZoneScene((int)sceneType, sceneType, sceneType.ToString(), Game.Scene);
             }
-
+            
             self.CurScene = scene;
             Game.EventSystem.Publish(new EventType.EnterZoneSceneBefore() { ZoneScene = self.CurScene });
+            Game.EventSystem.Publish(new EventType.EnterZoneSceneAfter() { ZoneScene = self.CurScene });
         }
     }
 }

@@ -4,22 +4,9 @@ namespace ET
     {
         protected override async ETTask Run(EventType.LeaveZoneScene args)
         {
-            if (args.ZoneScene == null)
+            if (args.LeaveZone == null)
                 return;
-            int zone = args.ZoneScene.Zone;
-            if (zone == 1)
-            {
-                args.ZoneScene.Dispose();
-            }
-            else if (zone == 2)
-            {
-                args.ZoneScene.Dispose();
-            }
-            else if (zone == 3)
-            {
-                args.ZoneScene.Dispose();
-            }
-
+            args.LeaveZone.Dispose();
             await ETTask.CompletedTask;
         }
     }

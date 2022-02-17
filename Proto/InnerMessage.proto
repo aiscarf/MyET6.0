@@ -9,15 +9,6 @@ message ObjectQueryRequest // IActorRequest
 	int64 InstanceId = 2;
 }
 
-message M2M_TrasferUnitResponse // IActorResponse
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-
-	int64 InstanceId = 1;
-}
-
 //ResponseType A2M_Reload
 message M2A_Reload // IActorRequest
 {
@@ -25,36 +16,6 @@ message M2A_Reload // IActorRequest
 }
 
 message A2M_Reload // IActorResponse
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-}
-
-//ResponseType G2G_LockResponse
-message G2G_LockRequest // IActorRequest
-{
-	int32 RpcId = 90;
-	int64 Id = 1;
-	string Address = 2;
-}
-
-message G2G_LockResponse // IActorResponse
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-}
-
-//ResponseType G2G_LockReleaseResponse
-message G2G_LockReleaseRequest // IActorRequest
-{
-	int32 RpcId = 90;
-	int64 Id = 1;
-	string Address = 2;
-}
-
-message G2G_LockReleaseResponse // IActorResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
@@ -134,42 +95,54 @@ message ObjectGetResponse // IActorResponse
 	int64 InstanceId = 1;
 }
 
-//ResponseType G2R_GetLoginKey
-message R2G_GetLoginKey // IActorRequest
+//ResponseType R2G_VerifyTokenResponse
+message G2R_VerifyTokenRequest // IActorRequest
 {
 	int32 RpcId = 90;
-	string Account = 1;
+	string RealmToken = 1;
 }
-
-message G2R_GetLoginKey // IActorResponse
+message R2G_VerifyTokenResponse // IActorResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-
-	int64 Key = 1;
-	int64 GateId = 2;
 }
 
-//ResponseType M2G_CreateUnit
-message G2M_CreateUnit // IActorRequest
+//ResponseType R2G_PlayerOnlineResponse
+message G2R_PlayerOnlineRequest // IActorRequest
 {
 	int32 RpcId = 90;
-	int64 PlayerId = 1;
-	int64 GateSessionId = 2;
+	string RealmToken = 1;
 }
-
-message M2G_CreateUnit // IActorResponse
+message R2G_PlayerOnlineResponse // IActorResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-
-	// 所有的unit
-	int64 MyId = 1;
 }
 
-message G2M_SessionDisconnect // IActorLocationMessage
+//ResponseType R2G_PlayerOfflineResponse
+message G2R_PlayerOfflineRequest // IActorRequest
 {
 	int32 RpcId = 90;
+	string RealmToken = 1;
+}
+message R2G_PlayerOfflineResponse // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2R_PlayerKickOutResponse
+message R2G_PlayerKickOutRequest // IActorRequest
+{
+	int32 RpcId = 90;
+	string RealmToken = 1;
+}
+message G2R_PlayerKickOutResponse // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
 }

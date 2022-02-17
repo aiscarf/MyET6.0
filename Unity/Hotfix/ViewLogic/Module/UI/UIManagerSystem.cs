@@ -32,12 +32,35 @@ namespace ET
 
     public static class UIManagerSystem
     {
+        public static async ETTask DestroyScene(this UIManager self, Scene scene)
+        {
+            var list = new List<UI>();
+            foreach (var kv in self.m_allUiMap)
+            {
+                var ui = kv.Value;
+                if (ui.ZoneSceneId == scene.Zone)
+                {
+                    list.Add(ui);
+                }
+            }
+            
+            // DONE: 将打开的界面先移除.
+            list.Sort((a, b) =>
+            {
+                return self.m_openUis.IndexOf(a) - self.m_openUis.IndexOf(b);
+            });
+
+            for (int i = list.Count - 1; i >= 0; --i)
+            {
+                self.DestroyUI(list[i].Name).Coroutine();
+            }
+            
+            await ETTask.CompletedTask;
+        }
+        
         public static async ETTask<UI> CreateUI(this UIManager self, string uiType)
         {
-            await ETTask.CompletedTask;
-            
             // TODO 加载数据包.
-            
             await ResourcesComponent.Instance.LoadBundleAsync(uiType.StringToAB());
             GameObject bundleGameObject = (GameObject)ResourcesComponent.Instance.GetAsset(uiType.StringToAB(), uiType);
             GameObject go = UnityEngine.Object.Instantiate(bundleGameObject);
@@ -54,11 +77,13 @@ namespace ET
             var type = self.m_allUiType[uiType];
             ui.AddComponent(type);
             self.m_allUiMap.Add(uiType, ui);
+            
+            // TODO 自动生成 UILoginComponent 与 UILoginSystem 组件脚本.
             UIMediatorManager.Instance.Init(ui);
             return ui;
         }
 
-        public static void DestroyUI(this UIManager self, string uiType)
+        public static async ETTask DestroyUI(this UIManager self, string uiType)
         {
             if (!self.m_allUiMap.TryGetValue(uiType, out UI ui))
             {
@@ -68,7 +93,7 @@ namespace ET
             // 该UI处于打开状态, 先关闭了再销毁.
             if (self.GetUIStatus(uiType))
             {
-                self.CloseUI(uiType);
+                await self.CloseUI(uiType);
             }
 
             UIMediatorManager.Instance.Destroy(uiType);
@@ -85,9 +110,6 @@ namespace ET
             return ui;
         }
 
-        /// <summary>
-        /// 打开UI, 不冻结Ui.
-        /// </summary>
         public static async ETTask OpenUI(this UIManager self, string uiType, object data)
         {
             string coverUi = null;
@@ -96,19 +118,12 @@ namespace ET
             await self.OpenAndCoverUI(uiType, data, coverUi);
         }
 
-        /// <summary>
-        /// 永久打开UI, 不记录打开的流程.
-        /// </summary>
         public static async ETTask OpenForeverUI(this UIManager self, string uiType, object data)
         {
             await self.OpenUIWithCoverList(uiType, data, null, true);
         }
 
-        /// <summary>
-        /// 打开UI并且冻结coverUi
-        /// </summary>
-        public static async ETTask OpenAndCoverUI(this UIManager self, string uiType, object data,
-            string coverUi = null)
+        public static async ETTask OpenAndCoverUI(this UIManager self, string uiType, object data, string coverUi = null)
         {
             List<string> coverUis = null;
             if (coverUi != null)
@@ -118,10 +133,7 @@ namespace ET
 
             await self.OpenUIWithCoverList(uiType, data, coverUis, false);
         }
-
-        /// <summary>
-        /// 打开UI并且冻结所有UI
-        /// </summary>
+        
         public static async ETTask OpenAndCoverAll(this UIManager self, string uiType, object data)
         {
             List<string> coverUis = new List<string>();
@@ -134,8 +146,7 @@ namespace ET
             await self.OpenUIWithCoverList(uiType, data, coverUis, false);
         }
 
-        public static async ETTask OpenUIWithCoverList(this UIManager self, string uiType, object data,
-            List<string> coverUis, bool forever)
+        public static async ETTask OpenUIWithCoverList(this UIManager self, string uiType, object data, List<string> coverUis, bool forever)
         {
             // TODO 动画放在这里统一进行实现.
             await ETTask.CompletedTask;
@@ -143,8 +154,7 @@ namespace ET
             var ui = self.GetUI(uiType);
             if (ui == null)
             {
-                Log.Info($"要打开的ui不存在: {uiType}");
-                return;
+                ui = await self.CreateUI(uiType);
             }
 
             if (self.GetUIStatus(ui.Name))
@@ -190,8 +200,10 @@ namespace ET
 
         }
 
-        public static void CloseUI(this UIManager self, string uiType)
+        public static async ETTask CloseUI(this UIManager self, string uiType)
         {
+            await ETTask.CompletedTask;
+            
             var ui = self.GetUI(uiType);
             if (ui == null)
             {

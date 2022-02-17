@@ -67,5 +67,13 @@ namespace ET
         {
             return typeof (Response);
         }
+        
+        protected static void ReplyError(Response response, Exception e, Action reply)
+        {
+            Log.Error(e);
+            response.Error = ErrorCore.ERR_RpcFail;
+            response.Message = e.ToString();
+            reply();
+        }
     }
 }

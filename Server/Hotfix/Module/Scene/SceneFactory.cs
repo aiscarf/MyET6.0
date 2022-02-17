@@ -22,11 +22,13 @@ namespace ET
             {
                 case SceneType.Realm:
                     scene.AddComponent<NetKcpComponent, IPEndPoint, int>(startSceneConfig.OuterIPPort, SessionStreamDispatcherType.SessionStreamDispatcherServerOuter);
+                    scene.AddComponent<RealmTokenComponent>();
+                    scene.AddComponent<OnlineComponent>();
                     break;
                 case SceneType.Gate:
                     scene.AddComponent<NetKcpComponent, IPEndPoint, int>(startSceneConfig.OuterIPPort, SessionStreamDispatcherType.SessionStreamDispatcherServerOuter);
                     scene.AddComponent<PlayerComponent>();
-                    scene.AddComponent<GateSessionKeyComponent>();
+                    // scene.AddComponent<GateSessionKeyComponent>();
                     break;
                 case SceneType.Map:
                     // scene.AddComponent<UnitComponent>();

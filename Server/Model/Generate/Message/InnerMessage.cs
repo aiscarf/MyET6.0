@@ -19,24 +19,6 @@ namespace ET
 
 	}
 
-	[Message(InnerOpcode.M2M_TrasferUnitResponse)]
-	[ProtoContract]
-	public partial class M2M_TrasferUnitResponse: Object, IActorResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-		[ProtoMember(1)]
-		public long InstanceId { get; set; }
-
-	}
-
 	[ResponseType(nameof(A2M_Reload))]
 	[Message(InnerOpcode.M2A_Reload)]
 	[ProtoContract]
@@ -50,68 +32,6 @@ namespace ET
 	[Message(InnerOpcode.A2M_Reload)]
 	[ProtoContract]
 	public partial class A2M_Reload: Object, IActorResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-	}
-
-	[ResponseType(nameof(G2G_LockResponse))]
-	[Message(InnerOpcode.G2G_LockRequest)]
-	[ProtoContract]
-	public partial class G2G_LockRequest: Object, IActorRequest
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(1)]
-		public long Id { get; set; }
-
-		[ProtoMember(2)]
-		public string Address { get; set; }
-
-	}
-
-	[Message(InnerOpcode.G2G_LockResponse)]
-	[ProtoContract]
-	public partial class G2G_LockResponse: Object, IActorResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-	}
-
-	[ResponseType(nameof(G2G_LockReleaseResponse))]
-	[Message(InnerOpcode.G2G_LockReleaseRequest)]
-	[ProtoContract]
-	public partial class G2G_LockReleaseRequest: Object, IActorRequest
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(1)]
-		public long Id { get; set; }
-
-		[ProtoMember(2)]
-		public string Address { get; set; }
-
-	}
-
-	[Message(InnerOpcode.G2G_LockReleaseResponse)]
-	[ProtoContract]
-	public partial class G2G_LockReleaseResponse: Object, IActorResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -282,22 +202,22 @@ namespace ET
 
 	}
 
-	[ResponseType(nameof(G2R_GetLoginKey))]
-	[Message(InnerOpcode.R2G_GetLoginKey)]
+	[ResponseType(nameof(R2G_VerifyTokenResponse))]
+	[Message(InnerOpcode.G2R_VerifyTokenRequest)]
 	[ProtoContract]
-	public partial class R2G_GetLoginKey: Object, IActorRequest
+	public partial class G2R_VerifyTokenRequest: Object, IActorRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
-		public string Account { get; set; }
+		public string RealmToken { get; set; }
 
 	}
 
-	[Message(InnerOpcode.G2R_GetLoginKey)]
+	[Message(InnerOpcode.R2G_VerifyTokenResponse)]
 	[ProtoContract]
-	public partial class G2R_GetLoginKey: Object, IActorResponse
+	public partial class R2G_VerifyTokenResponse: Object, IActorResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -308,33 +228,24 @@ namespace ET
 		[ProtoMember(92)]
 		public string Message { get; set; }
 
-		[ProtoMember(1)]
-		public long Key { get; set; }
-
-		[ProtoMember(2)]
-		public long GateId { get; set; }
-
 	}
 
-	[ResponseType(nameof(M2G_CreateUnit))]
-	[Message(InnerOpcode.G2M_CreateUnit)]
+	[ResponseType(nameof(R2G_PlayerOnlineResponse))]
+	[Message(InnerOpcode.G2R_PlayerOnlineRequest)]
 	[ProtoContract]
-	public partial class G2M_CreateUnit: Object, IActorRequest
+	public partial class G2R_PlayerOnlineRequest: Object, IActorRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
-		public long PlayerId { get; set; }
-
-		[ProtoMember(2)]
-		public long GateSessionId { get; set; }
+		public string RealmToken { get; set; }
 
 	}
 
-	[Message(InnerOpcode.M2G_CreateUnit)]
+	[Message(InnerOpcode.R2G_PlayerOnlineResponse)]
 	[ProtoContract]
-	public partial class M2G_CreateUnit: Object, IActorResponse
+	public partial class R2G_PlayerOnlineResponse: Object, IActorResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -345,18 +256,61 @@ namespace ET
 		[ProtoMember(92)]
 		public string Message { get; set; }
 
-// 所有的unit
-		[ProtoMember(1)]
-		public long MyId { get; set; }
-
 	}
 
-	[Message(InnerOpcode.G2M_SessionDisconnect)]
+	[ResponseType(nameof(R2G_PlayerOfflineResponse))]
+	[Message(InnerOpcode.G2R_PlayerOfflineRequest)]
 	[ProtoContract]
-	public partial class G2M_SessionDisconnect: Object, IActorLocationMessage
+	public partial class G2R_PlayerOfflineRequest: Object, IActorRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string RealmToken { get; set; }
+
+	}
+
+	[Message(InnerOpcode.R2G_PlayerOfflineResponse)]
+	[ProtoContract]
+	public partial class R2G_PlayerOfflineResponse: Object, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(G2R_PlayerKickOutResponse))]
+	[Message(InnerOpcode.R2G_PlayerKickOutRequest)]
+	[ProtoContract]
+	public partial class R2G_PlayerKickOutRequest: Object, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string RealmToken { get; set; }
+
+	}
+
+	[Message(InnerOpcode.G2R_PlayerKickOutResponse)]
+	[ProtoContract]
+	public partial class G2R_PlayerKickOutResponse: Object, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
 
 	}
 

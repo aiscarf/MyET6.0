@@ -8,7 +8,6 @@ message C2M_Reload // IRequest
 	string Account = 1;
 	string Password = 2;
 }
-
 message M2C_Reload // IResponse
 {
 	int32 RpcId = 90;
@@ -20,34 +19,73 @@ message M2C_Reload // IResponse
 message C2R_Login // IRequest
 {
 	int32 RpcId = 90;
-	string Account = 1;  // 帐号
-	string Password = 2;  // 密码
+	string Account = 1;  	// 帐号
+	string Password = 2;  	// 密码
 }
-
 message R2C_Login // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-	string Address = 1;
-	int64 Key = 2;
-	int64 GateId = 3;
+	string RealmToken = 1;
+}
+
+//ResponseType R2C_Register
+message C2R_Register // IRequest
+{
+	int32 RpcId = 90;
+
+	string Account = 1;		// 账号
+	string Password = 2;	// 密码
+}
+message R2C_Register // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType R2C_ServiceList
+message C2R_ServiceList // IRequest
+{
+	int32 RpcId = 90;
+}
+message R2C_ServiceList // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated GameService ServiceList = 1;
+	repeated GameRegion RegionList = 2;
+}
+
+message GameService
+{
+	int32 ServiceId = 1;		// 服务器Id
+	string ServiceName = 2;		// 服务器名字
+	int64 ServiceStartTime = 3; // 开服时间
+}
+
+message GameRegion
+{
+	int32 RegionId = 1;		// 区域Id
+	string RegionName = 2;	// 区域名字
+	int32 State = 3; 		// 区域状态 {0:维护 1:空闲 2:繁忙}
+	string Address = 4; 	// 区域地址
 }
 
 //ResponseType G2C_LoginGate
 message C2G_LoginGate // IRequest
 {
 	int32 RpcId = 90;
-	int64 Key = 1;  // 帐号
-	int64 GateId = 2;
+	string RealmToken = 1;
 }
-
 message G2C_LoginGate // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-	int64 PlayerId = 1;
+	string GateToken = 1;
 }
 
 message M2C_OnGameStart // IActorLocationMessage
@@ -91,7 +129,6 @@ message C2B_GameMainEnter // IActorLocationRequest
 	int32 Uid = 2;
 	int32 Token = 3;
 }
-
 message B2C_GameMainEnter // IActorLocationResponse
 {
 	int32 RpcId = 90;
@@ -106,7 +143,6 @@ message C2B_FrameMsg // IActorLocationRequest
 	int32 FrameId = 1;
 	FrameMsg Msg = 2;
 }
-
 message B2C_FrameMsg // IActorLocationResponse
 {
 	int32 RpcId = 90;
@@ -134,7 +170,6 @@ message C2G_Ping // IRequest
 {
 	int32 RpcId = 90;
 }
-
 message G2C_Ping // IResponse
 {
 	int32 RpcId = 90;

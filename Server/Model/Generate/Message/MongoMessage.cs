@@ -21,20 +21,4 @@ namespace ET
 
 	}
 
-/// <summary>
-/// 传送unit
-/// </summary>
-	[ResponseType(nameof(M2M_TrasferUnitResponse))]
-	[Message(MongoOpcode.M2M_TrasferUnitRequest)]
-	[ProtoContract]
-	public partial class M2M_TrasferUnitRequest: Object, IActorRequest
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		// [ProtoMember(1)]
-		// public Unit Unit { get; set; }
-
-	}
-
 }
