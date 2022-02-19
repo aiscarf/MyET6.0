@@ -66,6 +66,7 @@ namespace ET
             sb.Append("{\n");
 
             bool isMsgStart = false;
+            bool isEnumStart = false;
             foreach (string line in s.Split('\n'))
             {
                 string newline = line.Trim();
@@ -121,6 +122,15 @@ namespace ET
                     continue;
                 }
 
+                if (newline.StartsWith("enum"))
+                {
+                    isEnumStart = true;
+                    string enumName = newline.Split(splitChars, StringSplitOptions.RemoveEmptyEntries)[1];
+                    sb.Append($"\tpublic enum {enumName}");
+                    sb.Append("\n");
+                    continue;
+                }
+
                 if (isMsgStart)
                 {
                     if (newline == "{")
@@ -152,6 +162,35 @@ namespace ET
                         {
                             Members(sb, newline, true);
                         }
+                    }
+                }
+
+                if (isEnumStart)
+                {
+                    if (newline == "{")
+                    {
+                        sb.Append("\t{\n");
+                        continue;
+                    }
+
+                    if (newline == "}")
+                    {
+                        isEnumStart = false;
+                        sb.Append("\t}\n\n");
+                        continue;
+                    }
+                    
+                    if (newline.Trim().StartsWith("//"))
+                    {
+                        sb.AppendLine(newline);
+                        continue;
+                    }
+                    
+                    if (newline.Trim() != "" && newline != "}")
+                    {
+                        var newChar = newline.Replace(';', ',').TrimEnd();
+                        sb.Append($"\t\t{newChar}");
+                        sb.Append("\n");
                     }
                 }
             }

@@ -85,8 +85,202 @@ message G2C_LoginGate // IResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
+	
 	string GateToken = 1;
+	PlayerInfo PlayerInfo = 2;
+	int32 Time = 3;
+	FriendInfo Friends = 4;
 }
+
+message PlayerInfo
+{
+    int32 Uid						 		 = 1;  // uid
+    string Nickname					 		 = 2;  // 昵称
+    string FriendCode				 		 = 3;  // 好友码
+    uint32 Gold 					 		 = 4;  // 金币
+    uint32 Diamond					 		 = 5;  // 钻石
+    int32 HeroId 					 		 = 6;  // 当前选择的英雄id
+    repeated HeroInfo Heros 		 		 = 7;  // 拥有的英雄列表
+    int32 PetId 					 		 = 8;  // 当前宠物id
+    repeated PetInfo Pets 			 		 = 9;  // 宠物列表
+    repeated int32 PublicTowerSkins  		 = 10; // 公用防御塔皮肤列表
+    repeated int32 PublicFaces 				 = 11; // 公用表情列表
+    repeated int32 PublicVoices              = 12; // 公用声音列表
+    repeated BagInfo Bags 					 = 13; // 背包
+    HeadInfo HeadInfo 						 = 14; // 头像等信息
+    repeated int32 HeadIdArr			     = 15; // 头像Id数组
+    repeated int32 FrameIdArr 				 = 16; // 头像框Id数组
+    repeated int32 ShowIdArr				 = 17; // 展示Id数组
+    int32 token 							 = 18; // token
+    string svr 								 = 19; // 不为空则表示在匹配或战斗中
+    bool isMatch 							 = 20; // 根据 svr 字段，表示是否是在匹配
+    string TeamId 							 = 21; // 队伍id，空字符串表示无队伍
+    repeated TeamPlayerInfo TeamUsers		 = 22; // 队伍成员信息
+    int32 Score								 = 23; // 本赛季杯数
+    RoleWinInfo WinInfo						 = 24; // 战绩信息
+    int32 Guide								 = 25; // 新手引导标志
+    TaskInfo TaskInfo						 = 26; // 任务相关信息
+    repeated TaskSingleInfo TaskOverall		 = 27; // 各任务进度及领取情况
+    repeated int32 TaskIdArr				 = 28; // 当日能看到的任务id
+    int32 Charge 							 = 29; // 充值数
+    MinerInfo MinerInfo						 = 30; // 矿工系统信息
+    int32 MaxScore							 = 31; // 本赛季达到的最高分
+    repeated int32 SeasonAward				 = 32; // 本赛季积分奖励领取情况
+    int32 FriendAskOk 						 = 33; // 是否接收好友请求  1接收  0不接收
+    repeated MapInfo MapList				 = 34; // 副本列表
+    int32 MapId								 = 35; // 当前选择的副本Id
+    repeated int32 UnlockedSkills			 = 37; // 已解锁技能
+    repeated int32 TimeLimitItems		     = 38; // 限时体验的东西
+    repeated int32 TeamInviteBlack			 = 39; // 组队邀请屏蔽
+    int32 SeasonEndTime						 = 40; // 赛季结束时刻
+    int32 IfTeamInvite						 = 41; // 是否接收组队邀请，1接收，0拒绝
+}
+
+message HeroInfo
+{
+	int32 HeroId				 		 	 = 1;
+	int32 Level					 		 	 = 2;  // 等级
+	int32 SkinId				 		 	 = 3;  // 当前皮肤
+	repeated int32 Skins		 		 	 = 4;  // 专属皮肤列表
+	int32 TowerSkinId			 		 	 = 5;  // 当前防御塔皮肤
+	repeated int32 TowerSkins	 		 	 = 6;  // 专属防御塔皮肤列表
+	int32 PieceNum 				 		 	 = 7;  // 碎片数
+	int32 Exp					 		 	 = 8;  // 熟练度经验值
+	repeated int32 Faces		 		 	 = 9;  // 专属表情
+	repeated int32 Voices		 		 	 = 10; // 专属语音
+	repeated FaceVoice FaceVoice		 	 = 11; // 表情语音设置
+	int32 TimeLimit						 	 = 12; // 体验过期时间戳，秒，0表示永久的
+}	                                         
+											 
+message FaceVoice	                         
+{	                                         
+	int32 Index							 	 = 1;  // 序号 0-5
+	int32 Face							 	 = 2;  // 表情
+	int32 Voice							 	 = 3;  // 声音
+}	                                         
+											 
+message PetInfo 	                         
+{	                                         
+	int32 PetId							 	 = 1;
+	int32 Level							 	 = 2;  // 养成等级
+	int32 SkinId						 	 = 3;  // 皮肤
+	repeated int32 Skins                 	 = 4;
+	int32 PieceNum						 	 = 5;  // 碎片数
+	int32 TimeLimit						 	 = 6;  // 体验过期时间戳，秒，0表示永久的
+}	                                         
+											 
+message HeadInfo	                         
+{	                                         
+	int32 HeadId						 	 = 1;  // 头像id
+	int32 FrameId						 	 = 2;  // 头像框id
+	int32 ShowId						 	 = 3;  // 局内展示id
+}	                                         
+											 
+message RoleWinInfo	                         
+{	                                         
+	int32 MaxScore						 	 = 1;  // 生涯最高奖杯数
+	int32 Mvp							 	 = 2;  // mvp次数
+	int32 Kill2							 	 = 3;  // 双杀次数
+	int32 Kill3							 	 = 4;  // 三杀次数
+	repeated int32 MapMain				 	 = 5;  // 主图：胜数，负数
+	repeated int32 MapPk				 	 = 6;  // 单人pk：胜数，负数
+	repeated int32 MapLuan				 	 = 7;  // 乱斗图：胜数，负数
+	repeated int32 MapBoss				 	 = 8;  // boss: 最高伤害，最高伤害排名
+}
+
+message TaskInfo
+{
+	int32 DayExp						     = 1;  // 日活跃度
+	int32 WeekExp						     = 2;  // 周活跃度
+	int32 AwardGet						     = 3;  // 奖励领取情况
+}                                            
+										     
+message MinerInfo                            
+{                                            
+	repeated int32 IdArr				     = 1;  // 任务列表
+	int32 Lv							     = 2;  // 等级
+	int32 Exp							     = 3;  // 经验
+	repeated int32 Award1				     = 4;  // 矿道1奖励领取情况
+	repeated int32 Award2				     = 5;
+	repeated int32 Award3				     = 6;
+	repeated int32 Unlocked				     = 7;  // 矿道2和矿道3是否解锁
+	repeated int32 Refreshed			     = 8;  // 每日、每周任务，今日刷新次数
+	repeated TaskSingleInfo Tasks		     = 9;  // 各任务进度及领取情况 
+	bool MinerStop						     = 10; // 是否赛季即将结束
+}
+
+message BagInfo
+{
+	int32 Id								 = 1;  // 道具Id
+	int32 Num							     = 2;  // 数量
+	int32 Time							     = 3;  // 获得时间
+}
+
+message TeamPlayerInfo
+{
+    int32 Uid								 = 1;
+    int32 HeroId							 = 2;
+    int32 SkinId							 = 3;
+    ETeamPlayerState State					 = 4;
+    string Nickname							 = 5;
+}
+
+enum ETeamPlayerState
+{
+	None									 = 0;  // 大厅界面
+	Offline									 = 1;  // 离线
+	HeroChoose								 = 2;  // 选择英雄
+	Ready									 = 3;  // 准备就绪
+	Match									 = 4;  // 匹配中
+	Game									 = 5;  // 对战中
+}
+
+message TaskSingleInfo
+{
+	int32 TaskId 						     = 1;  // 任务Id
+	int32 Num								 = 2;  // 进度
+	int32 HasGet							 = 3;  // 0未领取, 1已领取
+}
+
+message MapInfo
+{
+    int32 Id								 = 1;  // 副本Id
+    int32 Arrange							 = 2;  // 排序
+    int32 ID_Child							 = 3;  // 副本资源id
+    int32 StartTime							 = 5;  // 开启时间
+    int32 EndTime							 = 6;  // 结束时间
+}
+
+message FriendInfo
+{
+    int32 Uid								 = 1;
+    string Nickname							 = 2;
+    int32 HeadId							 = 3;
+    int32 Score								 = 4;
+    int32 Time								 = 5;
+    EFriendState State						 = 6;
+    EFriendFromT FromT						 = 7;
+    int32 FrameId							 = 8;
+    string TeamId							 = 9;
+    repeated string ChatList				 = 10;  // 好友离线聊天列表（只在登录或重连时进行判断）
+}
+
+enum EFriendState
+{
+    None									 = 0;
+    Ask										 = 1;
+    Friend									 = 2;
+}
+
+enum EFriendFromT
+{
+	None									 = 0;
+	System									 = 1; // 系统推荐
+	Search									 = 2; // 标签搜索
+	Game									 = 3; // 对战日志
+}
+
+
 
 message M2C_OnGameStart // IActorLocationMessage
 { 
@@ -96,12 +290,12 @@ message M2C_OnGameStart // IActorLocationMessage
     int32 roomId = 3;
     int32 token = 4;
     int32 randomSeed = 5;
-    repeated PlayerInfo players = 6;
+    repeated MobaPlayerInfo players = 6;
     string host = 7;
     int32 port = 8;
 }
 
-message PlayerInfo
+message MobaPlayerInfo
 {
 	int32 uid = 1;
 	string nickname = 2;
