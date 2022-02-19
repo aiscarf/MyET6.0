@@ -3,6 +3,8 @@
 	public static class Define
 	{
 		public const string BuildOutputDir = "./Temp/Bin/Debug";
+		public const string UIComponentOutputDir = "./Hotfix/View/ViewEntity/Project/UI/";
+		public const string UIBindingOutputDir = "./Hotfix/View/ViewLogic/Project/UI/";
 
 #if UNITY_EDITOR && !ASYNC
 		public static bool IsAsync = false;
