@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-  - key: MoveJoystick
+  - key: EUI_ETCJoystick_MoveJoystick
     gameObject: {fileID: 5498615516159661741}
 --- !u!1 &3689319997342540169
 GameObject:
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2727223623309794469}
   - component: {fileID: 775339467162009818}
   m_Layer: 5
-  m_Name: MoveJoystick
+  m_Name: EUI_ETCJoystick_MoveJoystick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

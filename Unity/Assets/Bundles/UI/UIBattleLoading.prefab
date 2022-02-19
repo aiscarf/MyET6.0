@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-  - key: Slider
+  - key: EUI_Slider_Slider
     gameObject: {fileID: 1034029330660880603}
 --- !u!1 &43122318168413771
 GameObject:
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 2098310751750433953}
   - component: {fileID: 2885969334481800867}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: EUI_Slider_Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

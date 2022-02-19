@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 554087336804720598}
   - component: {fileID: 7450255818008726743}
   m_Layer: 5
-  m_Name: EUI_Text_Time
+  m_Name: txt_time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 3190658122393906786}
   - component: {fileID: 1943199236746771291}
   m_Layer: 5
-  m_Name: EUI_Text_Name
+  m_Name: txt_name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1202,7 +1202,7 @@ GameObject:
   - component: {fileID: 5757971529957393585}
   - component: {fileID: 4587749055065167687}
   m_Layer: 5
-  m_Name: EUI_Button_Bg
+  m_Name: btn_bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -130,14 +130,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
+  - key: EUI_Button_Close
+    gameObject: {fileID: 2761267219639030214}
   - key: EUI_InputField_Account
     gameObject: {fileID: 1670632076201042}
   - key: EUI_InputField_Password
     gameObject: {fileID: 1568484768885604}
   - key: EUI_Button_Register
     gameObject: {fileID: 1920061237828514}
-  - key: EUI_Button_Close
-    gameObject: {fileID: 2761267219639030214}
 --- !u!1 &1568484768885604
 GameObject:
   m_ObjectHideFlags: 0
