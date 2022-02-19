@@ -18,10 +18,10 @@ namespace ET
         {
             BuildAssemblieEditor.BuildMuteAssembly("Hotfix", new []
             {
-                "Hotfix/ShareEntity/",
-                "Hotfix/ShareLogic/",
-                "Hotfix/ViewEntity/",
-                "Hotfix/ViewLogic/"
+                "Hotfix/Share/ShareEntity/",
+                "Hotfix/Share/ShareLogic/",
+                "Hotfix/View/ViewEntity/",
+                "Hotfix/View/ViewLogic/"
             }, Array.Empty<string>(), CodeOptimization.Debug);
 
             AfterCompiling();
@@ -34,10 +34,10 @@ namespace ET
         {
             BuildAssemblieEditor.BuildMuteAssembly("Hotfix", new []
             {
-                "Hotfix/ShareEntity/",
-                "Hotfix/ShareLogic/",
-                "Hotfix/ViewEntity/",
-                "Hotfix/ViewLogic/"
+                "Hotfix/Share/ShareEntity/",
+                "Hotfix/Share/ShareLogic/",
+                "Hotfix/View/ViewEntity/",
+                "Hotfix/View/ViewLogic/"
             }, Array.Empty<string>(), CodeOptimization.Release);
 
             AfterCompiling();
@@ -50,8 +50,8 @@ namespace ET
         {
             BuildAssemblieEditor.BuildMuteAssembly("Data", new []
             {
-                "Hotfix/ShareEntity/",
-                "Hotfix/ViewEntity/",
+                "Hotfix/Share/ShareEntity/",
+                "Hotfix/View/ViewEntity/",
             }, Array.Empty<string>(), CodeOptimization.Debug);
         }
         
@@ -70,8 +70,8 @@ namespace ET
             
             BuildAssemblieEditor.BuildMuteAssembly(logicFile, new []
             {
-                "Hotfix/ShareLogic/",
-                "Hotfix/ViewLogic/",
+                "Hotfix/Share/ShareLogic/",
+                "Hotfix/View/ViewLogic/"
             }, new[]{Path.Combine(Define.BuildOutputDir, "Data.dll")}, CodeOptimization.Debug);
         }
 
