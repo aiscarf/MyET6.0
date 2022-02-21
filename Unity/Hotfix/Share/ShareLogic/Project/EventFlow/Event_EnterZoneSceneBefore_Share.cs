@@ -16,6 +16,7 @@ namespace ET
                     break;
             }
 
+            Log.Info($"ChangeScene_Before: {sceneType}");
             await ETTask.CompletedTask;
         }
     }

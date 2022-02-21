@@ -14,6 +14,7 @@ namespace ET
                 // await UIManager.Instance.OpenUI(UIType.UIMain, null);
             }
 
+            Log.Info($"ChangeScene_After: {args.ZoneScene.SceneType}");
             await ETTask.CompletedTask;
         }
     }

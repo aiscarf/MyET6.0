@@ -10,9 +10,9 @@ namespace ET
             result.RandomSeed = 10000;
             result.ScenePfbPath = "map_json_1";
             result.MapConfigPath = "config_map_json_1";
-            result.PlayerInfos = new List<PlayerInfo>()
+            result.PlayerInfos = new List<MobaPlayerInfo>()
             {
-                new PlayerInfo()
+                new MobaPlayerInfo()
                 {
                     uid = 1001,
                     nickname = "玩家角色",

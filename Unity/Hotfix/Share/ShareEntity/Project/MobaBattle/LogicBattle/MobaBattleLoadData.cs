@@ -7,7 +7,7 @@ namespace ET
         public int RandomSeed;
         public string ScenePfbPath = null;
         public string MapConfigPath = null;
-        public List<PlayerInfo> PlayerInfos = null;
+        public List<MobaPlayerInfo> PlayerInfos = null;
         public List<string> NeedLoadPanelIds = new List<string>();
     }
 }

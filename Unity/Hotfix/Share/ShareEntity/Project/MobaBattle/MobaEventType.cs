@@ -9,7 +9,7 @@ namespace ET
             public EBattleMode eBattleMode;
             public bool bIsNet;
             public MapData mapData;
-            public List<PlayerInfo> lstPlayerInfos;
+            public List<MobaPlayerInfo> lstPlayerInfos;
         }
 
         public struct MobaGameEntryAwake

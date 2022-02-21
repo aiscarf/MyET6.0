@@ -21,7 +21,8 @@ namespace ET
                 "Hotfix/Share/ShareEntity/",
                 "Hotfix/Share/ShareLogic/",
                 "Hotfix/View/ViewEntity/",
-                "Hotfix/View/ViewLogic/"
+                "Hotfix/View/ViewLogic/",
+                "Hotfix/Hotfix/",
             }, Array.Empty<string>(), CodeOptimization.Debug);
 
             AfterCompiling();
@@ -37,7 +38,8 @@ namespace ET
                 "Hotfix/Share/ShareEntity/",
                 "Hotfix/Share/ShareLogic/",
                 "Hotfix/View/ViewEntity/",
-                "Hotfix/View/ViewLogic/"
+                "Hotfix/View/ViewLogic/",
+                "Hotfix/Hotfix/",
             }, Array.Empty<string>(), CodeOptimization.Release);
 
             AfterCompiling();
@@ -52,6 +54,7 @@ namespace ET
             {
                 "Hotfix/Share/ShareEntity/",
                 "Hotfix/View/ViewEntity/",
+                "Hotfix/Hotfix/",
             }, Array.Empty<string>(), CodeOptimization.Debug);
         }
         
@@ -71,7 +74,7 @@ namespace ET
             BuildAssemblieEditor.BuildMuteAssembly(logicFile, new []
             {
                 "Hotfix/Share/ShareLogic/",
-                "Hotfix/View/ViewLogic/"
+                "Hotfix/View/ViewLogic/",
             }, new[]{Path.Combine(Define.BuildOutputDir, "Data.dll")}, CodeOptimization.Debug);
         }
 

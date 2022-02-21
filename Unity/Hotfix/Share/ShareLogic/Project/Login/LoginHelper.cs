@@ -21,6 +21,7 @@ namespace ET
 
                 // DONE: RealmToken记录起来.
                 var loginDataComponent = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
+                loginDataComponent.Uid = r2CLogin.Uid;
                 loginDataComponent.RealmToken = r2CLogin.RealmToken;
                 loginDataComponent.IsLoginRealm = true;
                 await Game.EventSystem.PublishAsync(new EventType.LoginRealmFinish());
@@ -91,9 +92,10 @@ namespace ET
                 }
 
                 // DONE: 尝试连接Gate服务器.
-                string realmToken = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>().RealmToken;
+                var loginDataComponent = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
                 Session gateSession = mainScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(gateAddress));
-                G2C_LoginGate g2CLoginGate = (G2C_LoginGate)await gateSession.Call(new C2G_LoginGate() { RealmToken = realmToken });
+                G2C_LoginGate g2CLoginGate = (G2C_LoginGate)await gateSession.Call(new C2G_LoginGate()
+                    { Uid = loginDataComponent.Uid, RealmToken = loginDataComponent.RealmToken });
                 if (g2CLoginGate.Error > ErrorCode.ERR_Success)
                 {
                     mainScene.Dispose();
