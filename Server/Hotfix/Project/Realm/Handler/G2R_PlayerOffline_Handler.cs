@@ -9,8 +9,10 @@ namespace ET
             try
             {
                 await ETTask.CompletedTask;
-                scene.GetComponent<OnlineComponent>().RemoveByToken(request.RealmToken);
-                scene.GetComponent<RealmTokenComponent>().RemoveToken(request.RealmToken);
+                scene.GetComponent<OnlineComponent>().RemoveByUid(request.Uid);
+                scene.GetComponent<RealmTokenComponent>().RemoveToken(request.Uid);
+
+                LogHelper.Console(SceneType.Realm, $"玩家[{request.Uid}]已下线");
                 reply();
             }
             catch (Exception e)

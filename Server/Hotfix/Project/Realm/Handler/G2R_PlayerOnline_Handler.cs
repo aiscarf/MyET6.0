@@ -10,8 +10,9 @@ namespace ET
             {
                 await ETTask.CompletedTask;
 
-                var account = scene.GetComponent<RealmTokenComponent>().GetAccount(request.RealmToken);
-                if (string.IsNullOrEmpty(account) || string.IsNullOrWhiteSpace(account))
+                // DONE: 验证Token.
+                var realmToken = scene.GetComponent<RealmTokenComponent>().GetToken(request.Uid);
+                if (string.IsNullOrEmpty(realmToken) || string.IsNullOrWhiteSpace(realmToken) || realmToken != request.RealmToken)
                 {
                     response.Error = ErrorCode.ERR_LOGIN_VALID_REALMTOKEN;
                     response.Message = "验证失败";
@@ -19,7 +20,8 @@ namespace ET
                     return;
                 }
 
-                scene.GetComponent<OnlineComponent>().AddAccount(account, request.RealmToken);
+                scene.GetComponent<OnlineComponent>().AddUid(request.Uid, request.GateId);
+                LogHelper.Console(SceneType.Realm, $"玩家[{request.Uid}]已上线");
                 reply();
             }
             catch (Exception e)

@@ -2,26 +2,26 @@ namespace ET
 {
     public class RealmTokenComponent: Entity
     {
-        private DoubleMap<string, string> dictionary = new DoubleMap<string, string>();
+        private DoubleMap<long, string> dictionary = new DoubleMap<long, string>();
 
-        public void AddToken(string account, string token)
+        public void AddToken(long uid, string token)
         {
-            this.dictionary.Add(account, token);
+            this.dictionary.Add(uid, token);
         }
 
-        public string GetAccount(string token)
+        public long GetUid(string token)
         {
             return this.dictionary.GetKeyByValue(token);
         }
 
-        public string GetToken(string account)
+        public string GetToken(long uid)
         {
-            return this.dictionary.GetValueByKey(account);
+            return this.dictionary.GetValueByKey(uid);
         }
 
-        public void RemoveToken(string account)
+        public void RemoveToken(long uid)
         {
-            this.dictionary.RemoveByKey(account);
+            this.dictionary.RemoveByKey(uid);
         }
     }
 }

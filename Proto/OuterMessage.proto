@@ -27,7 +27,9 @@ message R2C_Login // IResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-	string RealmToken = 1;
+	
+	long Uid = 1;
+	string RealmToken = 2;
 }
 
 //ResponseType R2C_Register
@@ -78,6 +80,8 @@ message GameRegion
 message C2G_LoginGate // IRequest
 {
 	int32 RpcId = 90;
+	
+	long Uid = 2;
 	string RealmToken = 1;
 }
 message G2C_LoginGate // IResponse
@@ -88,17 +92,17 @@ message G2C_LoginGate // IResponse
 	
 	string GateToken = 1;
 	PlayerInfo PlayerInfo = 2;
-	int32 Time = 3;
-	FriendInfo Friends = 4;
+	long Time = 3;
+	repeated FriendInfo Friends = 4;
 }
 
 message PlayerInfo
 {
-    int32 Uid						 		 = 1;  // uid
+    long Uid						 		 = 1;  // uid
     string Nickname					 		 = 2;  // 昵称
     string FriendCode				 		 = 3;  // 好友码
-    uint32 Gold 					 		 = 4;  // 金币
-    uint32 Diamond					 		 = 5;  // 钻石
+    int32 Gold 					 			 = 4;  // 金币
+    int32 Diamond					 		 = 5;  // 钻石
     int32 HeroId 					 		 = 6;  // 当前选择的英雄id
     repeated HeroInfo Heros 		 		 = 7;  // 拥有的英雄列表
     int32 PetId 					 		 = 8;  // 当前宠物id
@@ -218,7 +222,7 @@ message BagInfo
 
 message TeamPlayerInfo
 {
-    int32 Uid								 = 1;
+    long Uid								 = 1;
     int32 HeroId							 = 2;
     int32 SkinId							 = 3;
     ETeamPlayerState State					 = 4;
@@ -253,7 +257,7 @@ message MapInfo
 
 message FriendInfo
 {
-    int32 Uid								 = 1;
+    long Uid								 = 1;
     string Nickname							 = 2;
     int32 HeadId							 = 3;
     int32 Score								 = 4;

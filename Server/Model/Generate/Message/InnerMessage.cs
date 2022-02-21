@@ -202,34 +202,6 @@ namespace ET
 
 	}
 
-	[ResponseType(nameof(R2G_VerifyTokenResponse))]
-	[Message(InnerOpcode.G2R_VerifyTokenRequest)]
-	[ProtoContract]
-	public partial class G2R_VerifyTokenRequest: Object, IActorRequest
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(1)]
-		public string RealmToken { get; set; }
-
-	}
-
-	[Message(InnerOpcode.R2G_VerifyTokenResponse)]
-	[ProtoContract]
-	public partial class R2G_VerifyTokenResponse: Object, IActorResponse
-	{
-		[ProtoMember(90)]
-		public int RpcId { get; set; }
-
-		[ProtoMember(91)]
-		public int Error { get; set; }
-
-		[ProtoMember(92)]
-		public string Message { get; set; }
-
-	}
-
 	[ResponseType(nameof(R2G_PlayerOnlineResponse))]
 	[Message(InnerOpcode.G2R_PlayerOnlineRequest)]
 	[ProtoContract]
@@ -239,7 +211,13 @@ namespace ET
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
+		public long Uid { get; set; }
+
+		[ProtoMember(2)]
 		public string RealmToken { get; set; }
+
+		[ProtoMember(3)]
+		public long GateId { get; set; }
 
 	}
 
@@ -267,6 +245,9 @@ namespace ET
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
+		public long Uid { get; set; }
+
+		[ProtoMember(2)]
 		public string RealmToken { get; set; }
 
 	}
@@ -295,7 +276,7 @@ namespace ET
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
-		public string RealmToken { get; set; }
+		public long Uid { get; set; }
 
 	}
 

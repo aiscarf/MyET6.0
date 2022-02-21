@@ -64,6 +64,9 @@ namespace ET
 		public string Message { get; set; }
 
 		[ProtoMember(1)]
+		public long Uid { get; set; }
+
+		[ProtoMember(2)]
 		public string RealmToken { get; set; }
 
 	}
@@ -171,6 +174,9 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
+		[ProtoMember(2)]
+		public long Uid { get; set; }
+
 		[ProtoMember(1)]
 		public string RealmToken { get; set; }
 
@@ -196,10 +202,10 @@ namespace ET
 		public PlayerInfo PlayerInfo { get; set; }
 
 		[ProtoMember(3)]
-		public int Time { get; set; }
+		public long Time { get; set; }
 
 		[ProtoMember(4)]
-		public FriendInfo Friends { get; set; }
+		public List<FriendInfo> Friends = new List<FriendInfo>();
 
 	}
 
@@ -208,7 +214,7 @@ namespace ET
 	public partial class PlayerInfo: Object
 	{
 		[ProtoMember(1)]
-		public int Uid { get; set; }
+		public long Uid { get; set; }
 
 		[ProtoMember(2)]
 		public string Nickname { get; set; }
@@ -217,10 +223,10 @@ namespace ET
 		public string FriendCode { get; set; }
 
 		[ProtoMember(4)]
-		public uint Gold { get; set; }
+		public int Gold { get; set; }
 
 		[ProtoMember(5)]
-		public uint Diamond { get; set; }
+		public int Diamond { get; set; }
 
 		[ProtoMember(6)]
 		public int HeroId { get; set; }
@@ -526,7 +532,7 @@ namespace ET
 	public partial class TeamPlayerInfo: Object
 	{
 		[ProtoMember(1)]
-		public int Uid { get; set; }
+		public long Uid { get; set; }
 
 		[ProtoMember(2)]
 		public int HeroId { get; set; }
@@ -593,7 +599,7 @@ namespace ET
 	public partial class FriendInfo: Object
 	{
 		[ProtoMember(1)]
-		public int Uid { get; set; }
+		public long Uid { get; set; }
 
 		[ProtoMember(2)]
 		public string Nickname { get; set; }

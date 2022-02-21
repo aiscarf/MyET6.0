@@ -95,24 +95,14 @@ message ObjectGetResponse // IActorResponse
 	int64 InstanceId = 1;
 }
 
-//ResponseType R2G_VerifyTokenResponse
-message G2R_VerifyTokenRequest // IActorRequest
-{
-	int32 RpcId = 90;
-	string RealmToken = 1;
-}
-message R2G_VerifyTokenResponse // IActorResponse
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-}
-
 //ResponseType R2G_PlayerOnlineResponse
 message G2R_PlayerOnlineRequest // IActorRequest
 {
 	int32 RpcId = 90;
-	string RealmToken = 1;
+	
+	long Uid = 1;
+	string RealmToken = 2;
+	long GateId = 3;
 }
 message R2G_PlayerOnlineResponse // IActorResponse
 {
@@ -125,7 +115,10 @@ message R2G_PlayerOnlineResponse // IActorResponse
 message G2R_PlayerOfflineRequest // IActorRequest
 {
 	int32 RpcId = 90;
-	string RealmToken = 1;
+	
+	long Uid = 1;
+	string RealmToken = 2;
+	
 }
 message R2G_PlayerOfflineResponse // IActorResponse
 {
@@ -138,7 +131,8 @@ message R2G_PlayerOfflineResponse // IActorResponse
 message R2G_PlayerKickOutRequest // IActorRequest
 {
 	int32 RpcId = 90;
-	string RealmToken = 1;
+	
+	long Uid = 1;
 }
 message G2R_PlayerKickOutResponse // IActorResponse
 {

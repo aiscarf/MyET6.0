@@ -11,18 +11,23 @@ namespace ET
             return zoneGates[n];
         }
 
-        public static async ETTask KickOutPlayer(Session session, string account)
+        public static async ETTask KickOutPlayer(Session session, long uid)
         {
-            //验证账号是否在线，在线则踢下线
-            string realmToken = session.DomainScene().GetComponent<RealmTokenComponent>().GetToken(account);
-            if (string.IsNullOrEmpty(realmToken) || string.IsNullOrWhiteSpace(realmToken))
+            // DONE: 验证账号是否在线，在线则踢下线
+            var onlineComponent = session.DomainScene().GetComponent<OnlineComponent>();
+            if (!onlineComponent.HasOnline(uid))
             {
                 return;
             }
-            
-            // TODO 通知Gate网关将其踢下线.
-            Log.Info($"账户[{account}]已被踢下线");
-            await ETTask.CompletedTask;
+
+            // DONE: 通知Gate网关将其踢下线.
+            long gateId = onlineComponent.GetGateId(uid);
+            var startSceneConfig = StartSceneConfigCategory.Instance.Get((int)gateId);
+            long actorId = startSceneConfig.InstanceId;
+            await MessageHelper.CallActor(actorId, new R2G_PlayerKickOutRequest() { Uid = uid });
+            onlineComponent.RemoveByUid(uid);
+
+            Log.Info($"RealmServer 玩家[{uid}]已被踢下线");
         }
     }
 }

@@ -1,32 +1,31 @@
+using System.Collections.Generic;
+
 namespace ET
 {
     public class OnlineComponent: Entity
     {
-        private DoubleMap<string, string> dictionary = new DoubleMap<string, string>();
+        private Dictionary<long, long> dictionary = new Dictionary<long, long>();
 
-        public void AddAccount(string account, string token)
+        public void AddUid(long uid, long gateId)
         {
-            this.dictionary.Add(account, token);
+            this.dictionary.Add(uid, gateId);
         }
 
-        public string GetAccount(string token)
+        public long GetGateId(long uid)
         {
-            return this.dictionary.GetKeyByValue(token);
+            long result = 0;
+            this.dictionary.TryGetValue(uid, out result);
+            return result;
         }
 
-        public string GetToken(string account)
+        public void RemoveByUid(long uid)
         {
-            return this.dictionary.GetValueByKey(account);
+            this.dictionary.Remove(uid);
         }
 
-        public void RemoveByAccount(string account)
+        public bool HasOnline(long uid)
         {
-            this.dictionary.RemoveByKey(account);
-        }
-
-        public void RemoveByToken(string token)
-        {
-            this.dictionary.RemoveByValue(token);
+            return this.dictionary.ContainsKey(uid);
         }
     }
 }

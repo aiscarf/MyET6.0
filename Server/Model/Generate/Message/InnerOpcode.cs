@@ -15,13 +15,11 @@ namespace ET
 		 public const ushort ObjectRemoveResponse = 20012;
 		 public const ushort ObjectGetRequest = 20013;
 		 public const ushort ObjectGetResponse = 20014;
-		 public const ushort G2R_VerifyTokenRequest = 20015;
-		 public const ushort R2G_VerifyTokenResponse = 20016;
-		 public const ushort G2R_PlayerOnlineRequest = 20017;
-		 public const ushort R2G_PlayerOnlineResponse = 20018;
-		 public const ushort G2R_PlayerOfflineRequest = 20019;
-		 public const ushort R2G_PlayerOfflineResponse = 20020;
-		 public const ushort R2G_PlayerKickOutRequest = 20021;
-		 public const ushort G2R_PlayerKickOutResponse = 20022;
+		 public const ushort G2R_PlayerOnlineRequest = 20015;
+		 public const ushort R2G_PlayerOnlineResponse = 20016;
+		 public const ushort G2R_PlayerOfflineRequest = 20017;
+		 public const ushort R2G_PlayerOfflineResponse = 20018;
+		 public const ushort R2G_PlayerKickOutRequest = 20019;
+		 public const ushort G2R_PlayerKickOutResponse = 20020;
 	}
 }
