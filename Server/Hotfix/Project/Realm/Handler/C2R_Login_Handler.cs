@@ -17,7 +17,7 @@ namespace ET
                     return;
                 }
 
-                var resultsInfos = await dbComponent.Query<DBAccountInfo>(c => c.Account == request.Account && c.Password == request.Account);
+                var resultsInfos = await dbComponent.Query<DBAccountInfo>(c => c.Account == request.Account && c.Password == request.Password);
                 if (resultsInfos.Count <= 0)
                 {
                     response.Error = ErrorCode.ERR_LOGIN_ACCOUNT_OR_PASSWORD;
