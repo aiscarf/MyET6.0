@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_Dungeon
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 74867aaaeed3f34448a47621eacc768b, type: 3}
+    totalSpriteSurfaceArea: 2359296
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: c00a2dd08e13fd848bbf69237b1c37f4, type: 3}
+  - {fileID: 21300000, guid: 03afdd4112a67ce44949848c9ebbd690, type: 3}
+  - {fileID: 21300000, guid: 87c482d179982bc49ba18bebcf43672f, type: 3}
+  - {fileID: 21300000, guid: ff69ad624651ffe4c96ad2335e993604, type: 3}
+  - {fileID: 21300000, guid: 972faa9281060d84ca38e65aa6aa466e, type: 3}
+  - {fileID: 21300000, guid: e25757a27b924b14895df37617506a7a, type: 3}
+  - {fileID: 21300000, guid: 495ae3244e5031440820162cf97e2ee1, type: 3}
+  - {fileID: 21300000, guid: 7e1399343a717204d93f14989ee7b512, type: 3}
+  - {fileID: 21300000, guid: 3a5f6da5b66dfc9498a11a873760ae30, type: 3}
+  - {fileID: 21300000, guid: d3be32266630ed14b87079f72fdd7371, type: 3}
+  - {fileID: 21300000, guid: 596771c68fc7803448090ff4552af96b, type: 3}
+  - {fileID: 21300000, guid: 540f8f186906b0641acbca14c0ebb81b, type: 3}
+  - {fileID: 21300000, guid: 3b7550585be92524b9070e03e9ba3119, type: 3}
+  - {fileID: 21300000, guid: 7fd30f2993e84fb439934586df4daa03, type: 3}
+  - {fileID: 21300000, guid: 30e0b2d94ad7c714cbcde7643b007fb5, type: 3}
+  - {fileID: 21300000, guid: d383db9c520470444816047d163859ae, type: 3}
+  - {fileID: 21300000, guid: 0d8998bd579284b40b10b1ab2cf8a5b5, type: 3}
+  - {fileID: 21300000, guid: 40eae9fea5c1bd84baba0dcbb3b935a0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ui_mmap_wolonggang
+  - ui_mmap_qunyinghui
+  - ui_mmap_xiapicheng
+  - ui_mmap_fenluoyang
+  - ui_mmap_chibi
+  - ui_mmap_jiedongfeng
+  - ui_mmap_meirenji
+  - ui_mmap_huarongdao
+  - ui_mmap_tianxiazhi
+  - ui_mmap_fayuanshao
+  - ui_mmap_zhanshenxue_mip_0
+  - ui_mmap_zhenlongyin
+  - ui_mmap_fadongzhuo
+  - ui_mmap_luofengpo_mip_0
+  - ui_mmap_bowangpo
+  - ui_mmap_taoyuanmeng
+  - ui_mmap_changbanpo
+  - ui_mmap_ganlusi
+  m_RenderDataMap: {}
+  m_Tag: Atlas_Dungeon
+  m_IsVariant: 0
