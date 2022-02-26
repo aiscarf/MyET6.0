@@ -16,6 +16,8 @@
         // 主场景
         public const string UIMain = nameof(UIMain);
         public const string UISelectMap = nameof(UISelectMap);
+
+        public const string UIMatching = nameof(UIMatching);
         // end
 
         // 战斗场景

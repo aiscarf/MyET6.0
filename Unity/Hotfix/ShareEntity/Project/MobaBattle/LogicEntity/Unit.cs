@@ -8,7 +8,7 @@ namespace ET
     public class Unit : Entity
     {
         public int TemplateId;
-        public int ServerId;
+        public long ServerId;
         public int SkinId;
         public int EntityId;
         public string NickName;

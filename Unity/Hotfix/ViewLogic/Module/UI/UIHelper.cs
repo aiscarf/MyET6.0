@@ -4,8 +4,6 @@ namespace ET
 {
     public static class UIHelper
     {
-        public static readonly ViewDataDomain ViewDataDomain = new ViewDataDomain();
-
         public static async ETTask<UI> GetOrCreateUI(string uiType)
         {
             UI result = null;
@@ -35,6 +33,14 @@ namespace ET
         {
             try
             {
+                if (!UIMediatorManager.Instance.m_allUiEvents.TryGetValue(uiType, out var uiEvent))
+                {
+                    Log.Error("UIHelper.OpenUI Error: 没有注册UIEvent");
+                    return;
+                }
+                
+                var ui = await UIHelper.GetOrCreateUI(uiType);
+                uiEvent.Bind(ui);
                 await UIMediatorManager.Instance.m_allUiEvents[uiType].PreOpen();
             }
             catch (Exception e)

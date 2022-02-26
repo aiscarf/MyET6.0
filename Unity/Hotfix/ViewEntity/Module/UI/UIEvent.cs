@@ -1,23 +1,40 @@
+using System;
+
 namespace ET
 {
-    public abstract class UIEvent : IUIEvent
+    public abstract class UIEvent<T> : IUIEvent where T : Entity
     {
-        public string Name { get; set; }
+        public UI ViewUI { get; private set; }
+
+        public T self { get; private set; }
+
+        public void Bind(UI ui)
+        {
+            ViewUI = ui;
+            self = (T)ui.GetComponent(GetGenericType());
+        }
+
+        public Type GetGenericType()
+        {
+            return typeof(T);
+        }
 
         public virtual async ETTask PreOpen()
         {
-            await UIManager.Instance.OpenUI(Name);
+            await UIManager.Instance.OpenUI(ViewUI.Name);
         }
 
         public virtual async ETTask PreClose()
         {
-            await UIManager.Instance.CloseUI(Name);
+            await UIManager.Instance.CloseUI(ViewUI.Name);
         }
     }
 
     public interface IUIEvent
     {
-        string Name { get; set; }
+        UI ViewUI { get; }
+        void Bind(UI ui);
+        Type GetGenericType();
         ETTask PreOpen();
 
         ETTask PreClose();

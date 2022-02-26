@@ -5,15 +5,27 @@ namespace ET
         protected override async ETTask Run(EventType.LoginRealmFinish args)
         {
             // DONE: 请求服务器列表.
-            await LoginHelper.RequestServerList();
+            await LoginMgr.RequestServerList();
             
-            // DONE: 设置默认选取的服务器大区.
-            var loginDataComponent = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
-            if (UIHelper.ViewDataDomain.CurSelectRegion == null)
+            // DONE: 获取最后一次登录的大区Id.
+            var loginViewDataComponent = LoginMgr.GetLoginViewDataComponent();
+            int lastSelectRegionId = PersistentHelper.GetInt("LastSelectRegionId");
+            GameRegionVO lastSelectRegionVo = null;
+            if (loginViewDataComponent.GameRegionVos.Count > 0)
             {
-                // TODO 应该读取本地的配置文件, 将之前选择的大区进行一次赋值.
-                UIHelper.ViewDataDomain.CurSelectRegion = loginDataComponent.GetRegionByIndex(0);
+                lastSelectRegionVo =
+                    loginViewDataComponent.GameRegionVos.Find((rVo) => rVo.RegionId == lastSelectRegionId) ??
+                    loginViewDataComponent.GameRegionVos[0];
             }
+            else
+            {
+                lastSelectRegionVo = new GameRegionVO()
+                {
+                    RegionId = lastSelectRegionId,
+                    RegionName = "请配置正确的大区数据",
+                };
+            }
+            loginViewDataComponent.CurSelectRegionProxy.SetValue(lastSelectRegionVo);
 
             // DONE: 关闭登录界面.
             await UIManager.Instance.DestroyUI(UIType.UILogin);

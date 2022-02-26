@@ -6,6 +6,8 @@ namespace ET
         {
             if (args.ZoneScene.SceneType == SceneType.Login)
             {
+                args.ZoneScene.AddComponent<LoginViewDataComponent>();
+                
                 await UIManager.Instance.CreateUI(UIType.UILoginScene);
                 await UIManager.Instance.CreateUI(UIType.UILogin);
                 await UIManager.Instance.CreateUI(UIType.UIRegister);
@@ -16,6 +18,8 @@ namespace ET
             }
             else if (args.ZoneScene.SceneType == SceneType.Main)
             {
+                args.ZoneScene.AddComponent<MainViewDataComponent>();
+                
                 await UIManager.Instance.CreateUI(UIType.UIMain);
                 await UIManager.Instance.CreateUI(UIType.UISelectMap);
             }

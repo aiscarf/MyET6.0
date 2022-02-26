@@ -9,6 +9,7 @@
 		Http = 4,
 		Location = 5,
 		Map = 6,
+		Match = 7,
 
 		// 客户端Model层
 		Login = 30,

@@ -1,7 +1,7 @@
 namespace ET
 {
 	[UIEventTag(UIType.UIAGm)]
-	public class UIAGmEvent : UIEvent
+	public class UIAGmEvent : UIEvent<UIAGmComponent>
 	{
 		public override async ETTask PreOpen()
 		{

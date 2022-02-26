@@ -11,6 +11,7 @@ namespace ET
                     args.ZoneScene.AddComponent<LoginDataComponent>();
                     break;
                 case SceneType.Main:
+                    args.ZoneScene.AddComponent<MainDataComponent>();
                     break;
                 case SceneType.Battle:
                     break;

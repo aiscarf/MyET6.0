@@ -35,7 +35,7 @@ namespace ET
 
         async void OnBtnRegisterClick()
         {
-            await LoginHelper.RegisterRealm(self.EUI_InputField_Account.text, self.EUI_InputField_Password.text);
+            await LoginMgr.RegisterRealm(self.EUI_InputField_Account.text, self.EUI_InputField_Password.text);
         }
 
         async void OnBtnCloseClick()

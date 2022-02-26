@@ -356,7 +356,7 @@ public class ReferenceCollectorEditor: Editor
         sb.AppendLine("namespace ET");
         sb.AppendLine("{");
         sb.AppendLine($"\t[UIEventTag(UIType.{codeName})]");
-        sb.AppendLine($"\tpublic class {codeName}Event : UIEvent");
+        sb.AppendLine($"\tpublic class {codeName}Event : UIEvent<{codeName}Component>");
         sb.AppendLine("\t{");
         sb.AppendLine("\t}");
         sb.AppendLine("}");
@@ -467,7 +467,7 @@ public class ReferenceCollectorEditor: Editor
         sb.AppendLine($"\t\tpublic override void OnDestroy()");
         sb.AppendLine("\t\t{");
         sb.AppendLine("\t\t}");
-        sb.AppendLine($"\t\tpublic override void OnOpen(object data)");
+        sb.AppendLine($"\t\tpublic override void OnOpen()");
         sb.AppendLine("\t\t{");
         sb.AppendLine("\t\t}");
         sb.AppendLine($"\t\tpublic override void OnClose()");

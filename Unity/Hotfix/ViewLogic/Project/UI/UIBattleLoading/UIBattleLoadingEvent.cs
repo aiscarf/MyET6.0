@@ -1,7 +1,7 @@
 namespace ET
 {
 	[UIEventTag(UIType.UIBattleLoading)]
-	public class UIBattleLoadingEvent : UIEvent
+	public class UIBattleLoadingEvent : UIEvent<UIBattleLoadingComponent>
 	{
 	}
 }

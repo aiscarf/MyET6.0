@@ -37,7 +37,7 @@ namespace ET
         private async void OnBtnLoginClick()
         {
             // TODO 1.应对账号密码进行初步的格式校验.
-            await LoginHelper.LoginRealm(self.EUI_InputField_Account.text, self.EUI_InputField_Password.text);
+            await LoginMgr.LoginRealm(self.EUI_InputField_Account.text, self.EUI_InputField_Password.text);
         }
     }
 }

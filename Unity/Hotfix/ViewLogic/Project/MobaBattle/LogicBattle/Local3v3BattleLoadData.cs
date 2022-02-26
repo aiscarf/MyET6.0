@@ -14,22 +14,22 @@ namespace ET
             {
                 new MobaPlayerInfo()
                 {
-                    uid = 1001,
-                    nickname = "玩家角色",
-                    heroId = 1001,
-                    heroSkinId = 101,
-                    towerSkinId = 1001,
-                    petId = 1001,
-                    petSkinId = 1001,
-                    score = 1000,
-                    chairId = 1,
-                    camp = 1,
-                    headId = 1,
-                    frameId = 1,
-                    showId = 1,
-                    heroLv = 1,
-                    petLv = 1,
-                    unlockedSkill = new List<int>() { 1001, 1002 },
+                    Uid = 1001,
+                    Nickname = "玩家角色",
+                    HeroId = 1001,
+                    HeroSkinId = 101,
+                    TowerSkinId = 1001,
+                    PetId = 1001,
+                    PetSkinId = 1001,
+                    Score = 1000,
+                    ChairId = 1,
+                    Camp = 1,
+                    HeadId = 1,
+                    FrameId = 1,
+                    ShowId = 1,
+                    HeroLv = 1,
+                    PetLv = 1,
+                    UnlockedSkill = new List<int>() { 1001, 1002 },
                 }
             };
             result.NeedLoadPanelIds = new List<string>(){UIType.UIBattle};

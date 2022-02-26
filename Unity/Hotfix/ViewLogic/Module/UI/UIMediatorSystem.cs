@@ -143,7 +143,6 @@ namespace ET
                 var uiEvent = Activator.CreateInstance(type) as IUIEvent;
                 if (uiEvent == null)
                     continue;
-                uiEvent.Name = uiEventTag.Name;
                 self.m_allUiEvents.Add(uiEventTag.Name, uiEvent);
             }
         }

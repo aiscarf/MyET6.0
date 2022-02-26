@@ -33,7 +33,7 @@ namespace ET
         public int BattleKilledExUp; // 死亡给予敌方经验成长系数
 
         public int TemplateId; // 模板id 可在策划表里查到的id
-        public int ServerId; // 服务器id 可在服务器上查到的id
+        public long ServerId; // 服务器id 可在服务器上查到的id
         public int SkinId; // 皮肤id 可在策划表里查到的id
         public string NickName; // 昵称
 

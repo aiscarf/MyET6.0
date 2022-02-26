@@ -94,7 +94,7 @@ namespace ET
             return LstFilter;
         }
 
-        public static Unit GetUnitByServerId(this BattleSceneComponent self, int serverId)
+        public static Unit GetUnitByServerId(this BattleSceneComponent self, long serverId)
         {
             for (int i = 0; i < self.m_lstAllUnits.Count; i++)
             {

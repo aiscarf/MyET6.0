@@ -1,7 +1,7 @@
 namespace ET
 {
 	[UIEventTag(UIType.UILogin)]
-	public class UILoginEvent : UIEvent
+	public class UILoginEvent : UIEvent<UILoginComponent>
 	{
 	}
 }

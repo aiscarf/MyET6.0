@@ -27,15 +27,24 @@ namespace ET
 		 public const ushort TaskSingleInfo = 10024;
 		 public const ushort MapInfo = 10025;
 		 public const ushort FriendInfo = 10026;
-		 public const ushort M2C_OnGameStart = 10027;
-		 public const ushort MobaPlayerInfo = 10028;
-		 public const ushort C2B_GameMainEnter = 10029;
-		 public const ushort B2C_GameMainEnter = 10030;
-		 public const ushort C2B_FrameMsg = 10031;
-		 public const ushort B2C_FrameMsg = 10032;
-		 public const ushort B2C_OnFrame = 10033;
-		 public const ushort FrameMsg = 10034;
-		 public const ushort C2G_Ping = 10035;
-		 public const ushort G2C_Ping = 10036;
+		 public const ushort C2G_Ping = 10027;
+		 public const ushort G2C_Ping = 10028;
+		 public const ushort C2G_StartReady = 10029;
+		 public const ushort G2C_StartReady = 10030;
+		 public const ushort C2G_CancelReady = 10031;
+		 public const ushort G2C_CancelReady = 10032;
+		 public const ushort G2C_OnStartMatch = 10033;
+		 public const ushort G2C_OnCancelMatch = 10034;
+		 public const ushort G2C_OnUpdateMatchPlayerNum = 10035;
+		 public const ushort G2C_OnGameStart = 10036;
+		 public const ushort MobaPlayerInfo = 10037;
+		 public const ushort C2B_GameMainEnter = 10038;
+		 public const ushort B2C_GameMainEnter = 10039;
+		 public const ushort C2B_FrameMsg = 10040;
+		 public const ushort B2C_FrameMsg = 10041;
+		 public const ushort B2C_OnFrame = 10042;
+		 public const ushort FrameMsg = 10043;
+		 public const ushort C2B_Ping = 10044;
+		 public const ushort B2C_Ping = 10045;
 	}
 }

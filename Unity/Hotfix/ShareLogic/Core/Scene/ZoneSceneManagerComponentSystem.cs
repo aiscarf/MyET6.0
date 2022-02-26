@@ -43,17 +43,14 @@
 
         public static async ETTask ChangeScene(this ZoneSceneManagerComponent self, SceneType sceneType)
         {
-            if (self.CurScene != null)
-            {
-                Game.EventSystem.Publish(new EventType.LeaveZoneScene() { LeaveZone = self.CurScene });
-            }
-            
-            var scene = self.Get((int) sceneType);
+            await Game.EventSystem.PublishAsync(new EventType.LeaveZoneScene() { LeaveZone = self.CurScene });
+
+            var scene = self.Get((int)sceneType);
             if (scene == null)
             {
                 scene = await SceneFactory.CreateZoneScene((int)sceneType, sceneType, sceneType.ToString(), Game.Scene);
             }
-            
+
             self.CurScene = scene;
 
             await Game.EventSystem.PublishAsync(new EventType.EnterZoneSceneBefore() { ZoneScene = self.CurScene });

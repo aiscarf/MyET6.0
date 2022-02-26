@@ -291,7 +291,10 @@
         <Compile Include="ShareEntity\Core\Timer\TimerComponent.cs" />
         <Compile Include="ShareEntity\Core\Timer\TimerType.cs" />
         <Compile Include="ShareEntity\Entry.cs" />
+        <Compile Include="ShareEntity\Generate\ConfigPartial\DungeonConfig.cs" />
         <Compile Include="ShareEntity\Generate\Config\AIConfig.cs" />
+        <Compile Include="ShareEntity\Generate\Config\DungeonConfig.cs" />
+        <Compile Include="ShareEntity\Generate\Config\HeroConfig.cs" />
         <Compile Include="ShareEntity\Generate\Config\StartMachineConfig.cs" />
         <Compile Include="ShareEntity\Generate\Config\StartProcessConfig.cs" />
         <Compile Include="ShareEntity\Generate\Config\StartSceneConfig.cs" />
@@ -316,6 +319,7 @@
         <Compile Include="ShareEntity\Module\CoroutineLock\CoroutineLockQueueType.cs" />
         <Compile Include="ShareEntity\Module\CoroutineLock\CoroutineLockTimer.cs" />
         <Compile Include="ShareEntity\Module\CoroutineLock\CoroutineLockType.cs" />
+        <Compile Include="ShareEntity\Module\Data\DataProxy.cs" />
         <Compile Include="ShareEntity\Module\Message\AMHandler.cs" />
         <Compile Include="ShareEntity\Module\Message\ErrorCode.cs" />
         <Compile Include="ShareEntity\Module\Message\IMessage.cs" />
@@ -348,8 +352,9 @@
         <Compile Include="ShareEntity\Module\Recast\PathfindingComponent.cs" />
         <Compile Include="ShareEntity\Module\Session\SessionComponent.cs" />
         <Compile Include="ShareEntity\Module\Session\SessionStreamDispatcherType.cs" />
+        <Compile Include="ShareEntity\Project\DAO\Login\LoginDataComponent.cs" />
+        <Compile Include="ShareEntity\Project\DAO\Main\MainDataComponent.cs" />
         <Compile Include="ShareEntity\Project\EventType.cs" />
-        <Compile Include="ShareEntity\Project\Login\LoginDataComponent.cs" />
         <Compile Include="ShareEntity\Project\MobaBattle\LockStepFrame\AStepFrame.cs" />
         <Compile Include="ShareEntity\Project\MobaBattle\LockStepFrame\EInputType.cs" />
         <Compile Include="ShareEntity\Project\MobaBattle\LockStepFrame\FrameSyncComponent.cs" />
@@ -412,10 +417,10 @@
         <Compile Include="ShareLogic\Module\Session\SessionStreamDispatcherClientOuter.cs" />
         <Compile Include="ShareLogic\Project\AHelper\DataHelper.cs" />
         <Compile Include="ShareLogic\Project\ConstValue.cs" />
+        <Compile Include="ShareLogic\Project\DAO\Login\LoginHelper.cs" />
+        <Compile Include="ShareLogic\Project\DAO\Main\MainHelper.cs" />
         <Compile Include="ShareLogic\Project\EventFlow\Event_EnterZoneSceneBefore_Share.cs" />
         <Compile Include="ShareLogic\Project\EventFlow\Event_LeaveScene.cs" />
-        <Compile Include="ShareLogic\Project\Login\LoginDataSystem.cs" />
-        <Compile Include="ShareLogic\Project\Login\LoginHelper.cs" />
         <Compile Include="ShareLogic\Project\MobaBattle\Event_MobaBattleCommitOperate.cs" />
         <Compile Include="ShareLogic\Project\MobaBattle\Event_MobaBattleDataInit.cs" />
         <Compile Include="ShareLogic\Project\MobaBattle\LockStepFrame\FrameSyncSystem.cs" />
@@ -445,9 +450,12 @@
         <Compile Include="ViewEntity\Module\UI\UIMediatorManager.cs" />
         <Compile Include="ViewEntity\Module\UI\UITagAttribute.cs" />
         <Compile Include="ViewEntity\Module\UI\UIType.cs" />
+        <Compile Include="ViewEntity\Project\BLL\Login\LoginViewDataComponent.cs" />
+        <Compile Include="ViewEntity\Project\BLL\Login\MainViewDataComponent.cs" />
         <Compile Include="ViewEntity\Project\MobaBattle\LogicBattle\IGetBattleLoadData.cs" />
         <Compile Include="ViewEntity\Project\MobaBattle\LogicBattle\MobaBattleViewComponent.cs" />
         <Compile Include="ViewEntity\Project\MobaBattle\LogicEntity\UnitViewComponent.cs" />
+        <Compile Include="ViewEntity\Project\PersistentHelper.cs" />
         <Compile Include="ViewEntity\Project\UI\UIAGm\UIAGmComponent.cs" />
         <Compile Include="ViewEntity\Project\UI\UIAGm\UIAGmComponentPartial.cs" />
         <Compile Include="ViewEntity\Project\UI\UIBattleLoading\UIBattleLoadingComponent.cs" />
@@ -460,13 +468,14 @@
         <Compile Include="ViewEntity\Project\UI\UILogin\UILoginComponentPartial.cs" />
         <Compile Include="ViewEntity\Project\UI\UIMain\UIMainComponent.cs" />
         <Compile Include="ViewEntity\Project\UI\UIMain\UIMainComponentPartial.cs" />
+        <Compile Include="ViewEntity\Project\UI\UIMatching\UIMatchingComponent.cs" />
+        <Compile Include="ViewEntity\Project\UI\UIMatching\UIMatchingComponentPartial.cs" />
         <Compile Include="ViewEntity\Project\UI\UIRegister\UIRegisterComponent.cs" />
         <Compile Include="ViewEntity\Project\UI\UIRegister\UIRegisterComponentPartial.cs" />
         <Compile Include="ViewEntity\Project\UI\UISelectMap\UISelectMapComponent.cs" />
         <Compile Include="ViewEntity\Project\UI\UISelectMap\UISelectMapComponentPartial.cs" />
         <Compile Include="ViewEntity\Project\UI\UIServerList\UIServerListComponent.cs" />
         <Compile Include="ViewEntity\Project\UI\UIServerList\UIServerListComponentPartial.cs" />
-        <Compile Include="ViewEntity\Project\UI\ViewDataDomain.cs" />
         <Compile Include="ViewLogic\Module\Config\ConfigComponent_SetConfigLoader_Awake.cs" />
         <Compile Include="ViewLogic\Module\Config\ConfigLoader.cs" />
         <Compile Include="ViewLogic\Module\Global\GlobalComponentSystem.cs" />
@@ -479,6 +488,8 @@
         <Compile Include="ViewLogic\Module\UI\UIMediatorSystem.cs" />
         <Compile Include="ViewLogic\Module\UnityWebRequest\UnityWebRequestAsync.cs" />
         <Compile Include="ViewLogic\Module\UnityWebRequest\UnityWebRequestRenewalAsync.cs" />
+        <Compile Include="ViewLogic\Project\BLL\Login\LoginMgr.cs" />
+        <Compile Include="ViewLogic\Project\BLL\Login\MainMgr.cs" />
         <Compile Include="ViewLogic\Project\Event_AppStart.cs" />
         <Compile Include="ViewLogic\Project\Helper\AtlasHelper.cs" />
         <Compile Include="ViewLogic\Project\Helper\PositionHelper.cs" />
@@ -505,7 +516,6 @@
         <Compile Include="ViewLogic\Project\UI\UIBattleLoading\UIBattleLoadingMediator.cs" />
         <Compile Include="ViewLogic\Project\UI\UIBattle\UIBattleBinding.cs" />
         <Compile Include="ViewLogic\Project\UI\UIBattle\UIBattleMediator.cs" />
-        <Compile Include="ViewLogic\Project\UI\UILoginScene\Event_LoginGateFinish.cs" />
         <Compile Include="ViewLogic\Project\UI\UILoginScene\UILoginSceneBinding.cs" />
         <Compile Include="ViewLogic\Project\UI\UILoginScene\UILoginSceneEvent.cs" />
         <Compile Include="ViewLogic\Project\UI\UILoginScene\UILoginSceneMediator.cs" />
@@ -513,9 +523,14 @@
         <Compile Include="ViewLogic\Project\UI\UILogin\UILoginBinding.cs" />
         <Compile Include="ViewLogic\Project\UI\UILogin\UILoginEvent.cs" />
         <Compile Include="ViewLogic\Project\UI\UILogin\UILoginMediator.cs" />
+        <Compile Include="ViewLogic\Project\UI\UIMain\Event_LoginGateFinish.cs" />
+        <Compile Include="ViewLogic\Project\UI\UIMain\G2C_OnGameStart_Handler.cs" />
         <Compile Include="ViewLogic\Project\UI\UIMain\UIMainBinding.cs" />
         <Compile Include="ViewLogic\Project\UI\UIMain\UIMainEvent.cs" />
         <Compile Include="ViewLogic\Project\UI\UIMain\UIMainMediator.cs" />
+        <Compile Include="ViewLogic\Project\UI\UIMatching\UIMatchingBinding.cs" />
+        <Compile Include="ViewLogic\Project\UI\UIMatching\UIMatchingEvent.cs" />
+        <Compile Include="ViewLogic\Project\UI\UIMatching\UIMatchingMediator.cs" />
         <Compile Include="ViewLogic\Project\UI\UIRegister\UIRegisterBinding.cs" />
         <Compile Include="ViewLogic\Project\UI\UIRegister\UIRegisterEvent.cs" />
         <Compile Include="ViewLogic\Project\UI\UIRegister\UIRegisterMediator.cs" />
@@ -523,8 +538,12 @@
         <Compile Include="ViewLogic\Project\UI\UISelectMap\UISelectMapEvent.cs" />
         <Compile Include="ViewLogic\Project\UI\UISelectMap\UISelectMapMediator.cs" />
         <Compile Include="ViewLogic\Project\UI\UIServerList\UIServerListBinding.cs" />
+        <Compile Include="ViewLogic\Project\UI\UIServerList\UIServerListSystem.cs" />
         <Compile Include="ViewLogic\Project\UI\UIServerList\UIServerListEvent.cs" />
         <Compile Include="ViewLogic\Project\UI\UIServerList\UIServerListMediator.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="ShareEntity\Project\DAO" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -65,7 +65,7 @@ namespace ET
             for (int i = 0; i < args.MobaBattleLoadData.PlayerInfos.Count; i++)
             {
                 var playerInfo = args.MobaBattleLoadData.PlayerInfos[i];
-                await ResourcesComponent.Instance.LoadBundleAsync(HeroLoadPath[playerInfo.heroId].StringToAB());
+                await ResourcesComponent.Instance.LoadBundleAsync(HeroLoadPath[playerInfo.HeroId].StringToAB());
             }
 
             // TODO 假的模拟进度条.

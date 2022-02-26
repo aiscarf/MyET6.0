@@ -23,10 +23,10 @@ namespace ET
 
                 var unit = battleSceneComponent.CreateUnit(new AttrData() 
                 {
-                    TemplateId = playerInfo.heroId,
-                    ServerId = playerInfo.uid,
-                    SkinId = playerInfo.heroSkinId,
-                    NickName = playerInfo.nickname,
+                    TemplateId = playerInfo.HeroId,
+                    ServerId = playerInfo.Uid,
+                    SkinId = playerInfo.HeroSkinId,
+                    NickName = playerInfo.Nickname,
                     BornPos = new SVector3(-52000, 0, 1200),
                     BornForward = new SVector3(0, 0, 1000),
                 });

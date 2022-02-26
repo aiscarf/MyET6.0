@@ -14,16 +14,17 @@ namespace ET
 
         public override void OnOpen()
         {
-            var loginDataComponent = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
-            bool bLoginRealm = loginDataComponent.IsLoginRealm;
-            self.EUI_Button_SelectServer.gameObject.SetActive(bLoginRealm);
-            if (!bLoginRealm) 
-                return;
-            self.EUI_Text_ServerName.text = UIHelper.ViewDataDomain.CurSelectRegion.RegionName;
+            self.IsLoginRealmProxy.AddListener(SetButtonActive);
+            SetButtonActive(self.IsLoginRealmProxy.GetValue());
+            
+            self.CurSelectRegionVoProxy.AddListener(SetServerName);
+            SetServerName(self.CurSelectRegionVoProxy.GetValue());
         }
 
         public override void OnClose()
         {
+            self.IsLoginRealmProxy.RemoveListener(SetButtonActive);
+            self.CurSelectRegionVoProxy.RemoveListener(SetServerName);
         }
 
         public override void OnBeCover()
@@ -32,32 +33,36 @@ namespace ET
 
         public override void OnUnCover()
         {
-            var loginDataComponent = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
-            bool bLoginRealm = loginDataComponent.IsLoginRealm;
-            self.EUI_Button_SelectServer.gameObject.SetActive(bLoginRealm);
+        }
+
+        void SetServerName(GameRegionVO data)
+        {
+            var bLoginRealm = self.IsLoginRealmProxy.GetValue();
             if (!bLoginRealm)
                 return;
-            self.EUI_Text_ServerName.text = UIHelper.ViewDataDomain.CurSelectRegion.RegionName;
+            self.EUI_Text_ServerName.text = data.RegionName;
+        }
+
+        void SetButtonActive(bool b)
+        {
+            self.EUI_Button_SelectServer.gameObject.SetActive(b);
         }
 
         void OnBtnEnterClick()
         {
-            var loginDataComponent = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
-            bool bLoginRealm = loginDataComponent.IsLoginRealm;
+            bool bLoginRealm = self.IsLoginRealmProxy.GetValue();
             if (!bLoginRealm)
             {
                 UIHelper.OpenUI(UIType.UILogin).Coroutine();
+                return;
             }
-            else
-            {
-                // DONE: 真正进入游戏
-                LoginHelper.LoginGate(UIHelper.ViewDataDomain.CurSelectRegion.Address).Coroutine();
-            }
+
+            // DONE: 真正进入游戏
+            LoginMgr.LoginGate(self.CurSelectRegionVoProxy.GetValue().Address).Coroutine();
         }
 
         async void OnBtnSelectServerClick()
         {
-            // TODO 当关闭UIServerList时, 刷新界面.
             await UIHelper.OpenUI(UIType.UIServerList);
         }
     }

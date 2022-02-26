@@ -6,13 +6,10 @@ namespace ET
 {
     public partial class UIServerListMediator : UIMediator<UIServerListComponent>
     {
-        private int m_nSelectServiceIndex;
-
         public override void OnInit()
         {
             self.EUI_LoopListView2_ServerList.InitListView(10, OnGetItemByIndex);
             self.EUI_LoopGridView_RegionGrid.InitGridView(6, OnGetItemByRowColumn);
-
             self.EUI_Button_Close.onClick.AddListener(OnBtnCloseClick);
         }
 
@@ -22,8 +19,7 @@ namespace ET
 
         public override void OnOpen()
         {
-            var list = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>().GameServices;
-            self.EUI_LoopListView2_ServerList.SetListItemCount(list.Count);
+            self.EUI_LoopListView2_ServerList.SetListItemCount(self.ServiceVos.Count);
             // DONE: 默认选择之前选择的服务器.
             OnServiceItemClick(0);
         }
@@ -42,7 +38,7 @@ namespace ET
 
         LoopListViewItem2 OnGetItemByIndex(LoopListView2 listView, int index)
         {
-            var data = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>().GetServiceByIndex(index);
+            var data = self.GetServiceByIndex(index);
             if (data == null)
                 return null;
             LoopListViewItem2 item = listView.NewListViewItem("ItemPrefab1");
@@ -53,26 +49,24 @@ namespace ET
             txtTime.text = data.ServiceStartTime.ToString();
             btn.onClick.RemoveAllListeners();
             btn.onClick.AddListener(() => { OnServiceItemClick(index); });
-            
+
             return item;
         }
 
         void OnServiceItemClick(int index)
         {
             // DONE: 获取该服务器的大区列表, 进行刷新.
-            this.m_nSelectServiceIndex = index;
-            var loginData = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
-            var serviceData = loginData.GetServiceByIndex(index);
-            var list = loginData.GetRegionByServiceId(serviceData.ServiceId);
+            self.m_nSelectServiceIndex = index;
+            var serviceData = self.GetServiceByIndex(index);
+            var list = self.GetRegionByServiceId(serviceData.ServiceId);
             self.EUI_LoopGridView_RegionGrid.SetListItemCount(list.Count);
             self.EUI_LoopGridView_RegionGrid.RefreshAllShownItem();
         }
 
         LoopGridViewItem OnGetItemByRowColumn(LoopGridView gridView, int itemIndex, int row, int column)
         {
-            var loginData = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
-            var serviceData = loginData.GetServiceByIndex(m_nSelectServiceIndex);
-            var list = loginData.GetRegionByServiceId(serviceData.ServiceId);
+            var serviceData = self.GetServiceByIndex(self.m_nSelectServiceIndex);
+            var list = self.GetRegionByServiceId(serviceData.ServiceId);
             if (itemIndex < 0 || itemIndex >= list.Count)
                 return null;
             var data = list[itemIndex];
@@ -102,15 +96,13 @@ namespace ET
 
         void OnRegionItemClick(int index, int row, int column)
         {
-            var loginData = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
-            var serviceData = loginData.GetServiceByIndex(m_nSelectServiceIndex);
-            var list = loginData.GetRegionByServiceId(serviceData.ServiceId);
+            var serviceData = self.GetServiceByIndex(self.m_nSelectServiceIndex);
+            var list = self.GetRegionByServiceId(serviceData.ServiceId);
             if (index < 0 || index >= list.Count)
                 return;
             var data = list[index];
             // DONE: 记录选择的大区.
-            UIHelper.ViewDataDomain.CurSelectRegion = data;
-            
+            self.CurSelectRegion = data;
             OnBtnCloseClick();
         }
 

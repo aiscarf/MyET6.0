@@ -37,7 +37,7 @@ namespace ET
             LoopGridViewItem item = gridView.NewListViewItem("ItemPrefab1");
             var btn = item.transform.Find("Button").GetComponent<Button>();
             var img = btn.transform.GetComponent<Image>();
-            img.sprite = AtlasHelper.LoadSprite(AtlasHelper.ATLAS_DUNGEON, data.ImageName);
+            img.sprite = AtlasHelper.LoadSprite(AtlasHelper.ATLAS_DUNGEON, data.Background);
             var txt = item.transform.Find("Name").GetComponent<Text>();
             txt.text = data.Name;
             btn.onClick.RemoveAllListeners();
@@ -48,7 +48,7 @@ namespace ET
         void OnBtnMapClick(int index)
         {
             var data = self.DungeonVos[index];
-            UIHelper.ViewDataDomain.CurSelectDungeon = data;
+            self.CurSelectDungeonVo = data;
             OnBtnCloseClick();
         }
 

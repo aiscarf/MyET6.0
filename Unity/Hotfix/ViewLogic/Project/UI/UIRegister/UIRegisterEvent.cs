@@ -1,7 +1,7 @@
 namespace ET
 {
-	[UIEventTag(UIType.UIRegister)]
-	public class UIRegisterEvent : UIEvent
-	{
-	}
+    [UIEventTag(UIType.UIRegister)]
+    public class UIRegisterEvent : UIEvent<UIRegisterComponent>
+    {
+    }
 }

@@ -61,6 +61,7 @@ namespace ET
             {
                 Session session = ZoneSceneManagerComponent.Instance.CurScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(ConstValue.LoginAddress));
                 R2C_ServiceList r2CServiceList = (R2C_ServiceList)await session.Call(new C2R_ServiceList());
+                session.Dispose();
                 if (r2CServiceList.Error > ErrorCode.ERR_Success)
                 {
                     Log.Info(r2CServiceList.Error + " " + r2CServiceList.Message);
@@ -71,7 +72,7 @@ namespace ET
                 var list1 = r2CServiceList.ServiceList;
                 var list2 = r2CServiceList.RegionList;
 
-                var loginData = session.ZoneScene().GetComponent<LoginDataComponent>();
+                var loginData = DataHelper.GetDataComponentFromCurScene<LoginDataComponent>();
                 loginData.GameServices = list1;
                 loginData.GameRegions = list2;
             }
@@ -106,8 +107,13 @@ namespace ET
                 // DONE: 切换至主场景.
                 await ZoneSceneManagerComponent.Instance.ChangeScene(SceneType.Main);
 
-                // TODO 获取到玩家PlayerId.
-                string gateToken = g2CLoginGate.GateToken;
+                // DONE: 存储服务器的数据.
+                var mainDataComponent = DataHelper.GetDataComponentFromCurScene<MainDataComponent>();
+                mainDataComponent.SessionId = gateSession.Id;
+                mainDataComponent.GateToken = g2CLoginGate.GateToken;
+                mainDataComponent.PlayerInfo = g2CLoginGate.PlayerInfo;
+                mainDataComponent.FriendInfos = g2CLoginGate.Friends;
+                mainDataComponent.ServerTime = g2CLoginGate.Time;
 
                 // DONE: 创建一个gate Session, 并且保存到SessionComponent中.
                 gateSession.AddComponent<PingComponent>();

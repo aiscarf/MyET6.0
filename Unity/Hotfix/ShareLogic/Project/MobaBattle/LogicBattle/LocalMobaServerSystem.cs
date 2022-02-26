@@ -40,7 +40,7 @@ namespace ET
 
     public static class LocalMobaServerSystem
     {
-        public static void ReceiveOperation(this LocalMobaServerComponent self, int uid, C2B_FrameMsg frameMsg)
+        public static void ReceiveOperation(this LocalMobaServerComponent self, long uid, C2B_FrameMsg frameMsg)
         {
             float delay = self.GetUplinkDelay();
             if (delay <= 0f)
@@ -55,7 +55,7 @@ namespace ET
             }
         }
 
-        private static void InsertOperation(this LocalMobaServerComponent self, int uid, C2B_FrameMsg frameMsg)
+        private static void InsertOperation(this LocalMobaServerComponent self, long uid, C2B_FrameMsg frameMsg)
         {
             // 收集客户端数据
             if (self.m_curFrameData.FrameId < self.m_nNetFrameId - LocalMobaServerComponent.DELAY_FRAME_COUNT)
