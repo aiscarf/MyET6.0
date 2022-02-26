@@ -295,4 +295,127 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(M2G_StartMatch))]
+	[Message(InnerOpcode.G2M_StartMatch)]
+	[ProtoContract]
+	public partial class G2M_StartMatch: Object, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long Uid { get; set; }
+
+	}
+
+	[Message(InnerOpcode.M2G_StartMatch)]
+	[ProtoContract]
+	public partial class M2G_StartMatch: Object, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2G_CancelMatch))]
+	[Message(InnerOpcode.G2M_CancelMatch)]
+	[ProtoContract]
+	public partial class G2M_CancelMatch: Object, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long Uid { get; set; }
+
+	}
+
+	[Message(InnerOpcode.M2G_CancelMatch)]
+	[ProtoContract]
+	public partial class M2G_CancelMatch: Object, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(InnerOpcode.M2G_OnSuccessMatch)]
+	[ProtoContract]
+	public partial class M2G_OnSuccessMatch: Object, IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public int MapId { get; set; }
+
+		[ProtoMember(2)]
+		public List<long> Uids = new List<long>();
+
+	}
+
+	[ResponseType(nameof(B2G_CreateBattle))]
+	[Message(InnerOpcode.G2B_CreateBattle)]
+	[ProtoContract]
+	public partial class G2B_CreateBattle: Object, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int MapId { get; set; }
+
+		[ProtoMember(2)]
+		public List<long> Uids = new List<long>();
+
+	}
+
+	[Message(InnerOpcode.B2G_CreateBattle)]
+	[ProtoContract]
+	public partial class B2G_CreateBattle: Object, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public string Token { get; set; }
+
+		[ProtoMember(2)]
+		public int MapId { get; set; }
+
+		[ProtoMember(3)]
+		public int RoomId { get; set; }
+
+		[ProtoMember(4)]
+		public int RandomSeed { get; set; }
+
+		[ProtoMember(5)]
+		public List<MobaPlayerInfo> Players = new List<MobaPlayerInfo>();
+
+	}
+
 }

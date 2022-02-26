@@ -21,5 +21,12 @@ namespace ET
 		 public const ushort R2G_PlayerOfflineResponse = 20018;
 		 public const ushort R2G_PlayerKickOutRequest = 20019;
 		 public const ushort G2R_PlayerKickOutResponse = 20020;
+		 public const ushort G2M_StartMatch = 20021;
+		 public const ushort M2G_StartMatch = 20022;
+		 public const ushort G2M_CancelMatch = 20023;
+		 public const ushort M2G_CancelMatch = 20024;
+		 public const ushort M2G_OnSuccessMatch = 20025;
+		 public const ushort G2B_CreateBattle = 20026;
+		 public const ushort B2G_CreateBattle = 20027;
 	}
 }

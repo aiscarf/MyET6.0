@@ -1,20 +1,24 @@
 
-"Realm*Realm0’N
-"Gate*Gate10“N
-"Gate*Gate20”N
-"Location*Location0•N
-"Map*Map0–N
 
 
-"Realm*ServerRealm70±ê
+"Realm*ServerRealm10±ê
 
 
-"Gate*ServerGate80²ê
+"Gate*ServerGate10²ê
 	
 
 "Map*
-ServerMap90³ê
- 
-"Realm*ServerRealm100±ê
-"Gate*ServerGate110²ê
-"Map*ServerMap120³ê
+ServerMap10³ê
+
+
+
+"Match*ServerMatch10´ê
+!
+
+"Battle*ServerBattle10µê
+!
+
+"Battle*ServerBattle20¶ê
+ "Realm*ServerRealm100±ê
+"Gate*ServerGate110²ê
+"Map*ServerMap120³ê
