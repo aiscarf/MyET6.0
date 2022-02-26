@@ -30,9 +30,11 @@ namespace ET
                     scene.AddComponent<PlayerComponent>();
                     // scene.AddComponent<GateSessionKeyComponent>();
                     break;
-                case SceneType.Map:
-                    // scene.AddComponent<UnitComponent>();
-                    // scene.AddComponent<AOIManagerComponent>();
+                case SceneType.Match:
+                    scene.AddComponent<MatchComponent>();
+                    break;
+                case SceneType.Battle:
+                    scene.AddComponent<BattleComponent>();
                     break;
                 case SceneType.Location:
                     scene.AddComponent<LocationComponent>();

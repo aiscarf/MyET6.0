@@ -645,36 +645,175 @@ namespace ET
 		Game									 = 3, // 对战日志
 	}
 
-	[Message(OuterOpcode.M2C_OnGameStart)]
+	[ResponseType(nameof(G2C_Ping))]
+	[Message(OuterOpcode.C2G_Ping)]
 	[ProtoContract]
-	public partial class M2C_OnGameStart: Object, IActorLocationMessage
+	public partial class C2G_Ping: Object, IRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
+	}
+
+	[Message(OuterOpcode.G2C_Ping)]
+	[ProtoContract]
+	public partial class G2C_Ping: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
 		[ProtoMember(1)]
-		public int code { get; set; }
+		public long Time { get; set; }
+
+	}
+
+	[ResponseType(nameof(G2C_StartReady))]
+	[Message(OuterOpcode.C2G_StartReady)]
+	[ProtoContract]
+	public partial class C2G_StartReady: Object, IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_StartReady)]
+	[ProtoContract]
+	public partial class G2C_StartReady: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(G2C_StartReady))]
+	[Message(OuterOpcode.C2G_CancelReady)]
+	[ProtoContract]
+	public partial class C2G_CancelReady: Object, IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_CancelReady)]
+	[ProtoContract]
+	public partial class G2C_CancelReady: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_OnStartMatch)]
+	[ProtoContract]
+	public partial class G2C_OnStartMatch: Object, IMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public int PlayerNum { get; set; }
 
 		[ProtoMember(2)]
-		public int gameT { get; set; }
+		public int NeedNum { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_OnCancelMatch)]
+	[ProtoContract]
+	public partial class G2C_OnCancelMatch: Object, IMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public int PlayerUid { get; set; }
+
+	}
+
+	[Message(OuterOpcode.G2C_OnUpdateMatchPlayerNum)]
+	[ProtoContract]
+	public partial class G2C_OnUpdateMatchPlayerNum: Object, IMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public int PlayerNum { get; set; }
+
+	}
+
+// 以下是战斗的协议.
+	[Message(OuterOpcode.G2C_OnGameStart)]
+	[ProtoContract]
+	public partial class G2C_OnGameStart: Object, IMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public string Token { get; set; }
+
+		[ProtoMember(2)]
+		public int MapId { get; set; }
 
 		[ProtoMember(3)]
-		public int roomId { get; set; }
+		public int RoomId { get; set; }
 
 		[ProtoMember(4)]
-		public int token { get; set; }
+		public int RandomSeed { get; set; }
 
 		[ProtoMember(5)]
-		public int randomSeed { get; set; }
-
-		[ProtoMember(6)]
-		public List<MobaPlayerInfo> players = new List<MobaPlayerInfo>();
+		public List<MobaPlayerInfo> Players = new List<MobaPlayerInfo>();
 
 		[ProtoMember(7)]
-		public string host { get; set; }
+		public string Host { get; set; }
 
 		[ProtoMember(8)]
-		public int port { get; set; }
+		public int Port { get; set; }
 
 	}
 
@@ -683,59 +822,59 @@ namespace ET
 	public partial class MobaPlayerInfo: Object
 	{
 		[ProtoMember(1)]
-		public int uid { get; set; }
+		public long Uid { get; set; }
 
 		[ProtoMember(2)]
-		public string nickname { get; set; }
+		public string Nickname { get; set; }
 
 		[ProtoMember(3)]
-		public int heroId { get; set; }
+		public int HeroId { get; set; }
 
 		[ProtoMember(4)]
-		public int heroSkinId { get; set; }
+		public int HeroSkinId { get; set; }
 
 		[ProtoMember(5)]
-		public int towerSkinId { get; set; }
+		public int TowerSkinId { get; set; }
 
 		[ProtoMember(6)]
-		public int petId { get; set; }
+		public int PetId { get; set; }
 
 		[ProtoMember(7)]
-		public int petSkinId { get; set; }
+		public int PetSkinId { get; set; }
 
 		[ProtoMember(8)]
-		public int score { get; set; }
+		public int Score { get; set; }
 
 		[ProtoMember(9)]
-		public int chairId { get; set; }
+		public int ChairId { get; set; }
 
 		[ProtoMember(10)]
-		public int camp { get; set; }
+		public int Camp { get; set; }
 
 		[ProtoMember(11)]
-		public int headId { get; set; }
+		public int HeadId { get; set; }
 
 		[ProtoMember(12)]
-		public int frameId { get; set; }
+		public int FrameId { get; set; }
 
 		[ProtoMember(13)]
-		public int showId { get; set; }
+		public int ShowId { get; set; }
 
 		[ProtoMember(14)]
-		public int heroLv { get; set; }
+		public int HeroLv { get; set; }
 
 		[ProtoMember(15)]
-		public int petLv { get; set; }
+		public int PetLv { get; set; }
 
 		[ProtoMember(16)]
-		public List<int> unlockedSkill = new List<int>();
+		public List<int> UnlockedSkill = new List<int>();
 
 	}
 
 	[ResponseType(nameof(B2C_GameMainEnter))]
 	[Message(OuterOpcode.C2B_GameMainEnter)]
 	[ProtoContract]
-	public partial class C2B_GameMainEnter: Object, IActorLocationRequest
+	public partial class C2B_GameMainEnter: Object, IRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -744,16 +883,16 @@ namespace ET
 		public int RoomId { get; set; }
 
 		[ProtoMember(2)]
-		public int Uid { get; set; }
+		public long Uid { get; set; }
 
 		[ProtoMember(3)]
-		public int Token { get; set; }
+		public string Token { get; set; }
 
 	}
 
 	[Message(OuterOpcode.B2C_GameMainEnter)]
 	[ProtoContract]
-	public partial class B2C_GameMainEnter: Object, IActorLocationResponse
+	public partial class B2C_GameMainEnter: Object, IResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -817,7 +956,7 @@ namespace ET
 	public partial class FrameMsg: Object
 	{
 		[ProtoMember(1)]
-		public int Uid { get; set; }
+		public long Uid { get; set; }
 
 		[ProtoMember(2)]
 		public int Optype { get; set; }
@@ -830,19 +969,19 @@ namespace ET
 
 	}
 
-	[ResponseType(nameof(G2C_Ping))]
-	[Message(OuterOpcode.C2G_Ping)]
+	[ResponseType(nameof(B2C_Ping))]
+	[Message(OuterOpcode.C2B_Ping)]
 	[ProtoContract]
-	public partial class C2G_Ping: Object, IRequest
+	public partial class C2B_Ping: Object, IActorLocationRequest
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
 	}
 
-	[Message(OuterOpcode.G2C_Ping)]
+	[Message(OuterOpcode.B2C_Ping)]
 	[ProtoContract]
-	public partial class G2C_Ping: Object, IResponse
+	public partial class B2C_Ping: Object, IActorLocationResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -852,9 +991,6 @@ namespace ET
 
 		[ProtoMember(92)]
 		public string Message { get; set; }
-
-		[ProtoMember(1)]
-		public long Time { get; set; }
 
 	}
 

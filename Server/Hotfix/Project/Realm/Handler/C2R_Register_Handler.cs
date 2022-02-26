@@ -68,6 +68,42 @@ namespace ET
                     FriendAsOk = 0,
                     IfTeamInvite = 0,
                 };
+                
+                // DONE: 初始化账号数据.
+                var config = InitAccountConfigCategory.Instance.Get(1);
+                newPlayerInfo.Gold = config.Gold;
+                newPlayerInfo.Diamond = config.Diamond;
+
+                // DONE: 1.初始化账号英雄数据.
+                if (config.Hero != null && config.Hero.Length > 0)
+                {
+                    newPlayerInfo.HeroId = config.Hero[0];
+                    for (int i = 0; i < config.Hero.Length; i++)
+                    {
+                        var heroConfig = HeroConfigCategory.Instance.Get(config.Hero[i]);
+                        if (heroConfig == null)
+                        {
+                            Log.Error($"初始化游戏账号数据错误Id={config.Id}, HeroId={config.Hero[i]}");
+                            continue;
+                        }
+
+                        var heroInfo = new HeroInfo();
+                        heroInfo.HeroId = heroConfig.Id;
+                        heroInfo.Level = 1;
+                        heroInfo.SkinId = heroConfig.SkillId;
+                        newPlayerInfo.HeroInfos.Add(heroInfo);
+                    }
+                }
+
+                // TODO: 2.初始化账号背包数据.
+                if (config.Item != null && config.Item.Length > 0)
+                {
+                    for (int i = 0; i < config.Item.Length; i++)
+                    {
+                        
+                    }
+                }
+                
 
                 await dbComponent.Save<DBPlayerInfo>(newPlayerInfo);
                 LogHelper.Console(SceneType.Realm, $"[{newAccount.Account}]注册成功");

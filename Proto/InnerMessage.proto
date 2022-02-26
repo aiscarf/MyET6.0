@@ -140,3 +140,62 @@ message G2R_PlayerKickOutResponse // IActorResponse
 	int32 Error = 91;
 	string Message = 92;
 }
+
+//ResponseType M2G_StartMatch
+message G2M_StartMatch // IActorRequest
+{
+	int32 RpcId = 90;
+	
+	long Uid = 1;
+}
+message M2G_StartMatch // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType M2G_CancelMatch
+message G2M_CancelMatch // IActorRequest
+{
+	int32 RpcId = 90;
+	
+	long Uid = 1;
+}
+message M2G_CancelMatch // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message M2G_OnSuccessMatch // IActorMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	
+	int32 MapId = 1;
+	repeated long Uids = 2;
+}
+
+//ResponseType B2G_CreateBattle
+message G2B_CreateBattle // IActorRequest
+{
+	int32 RpcId = 90;
+	
+	int32 MapId = 1;
+	repeated long Uids = 2;
+}
+message B2G_CreateBattle // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	
+	string Token = 1;
+    int32 MapId = 2;
+    int32 RoomId = 3;
+    int32 RandomSeed = 4;
+    repeated MobaPlayerInfo Players = 5;
+}

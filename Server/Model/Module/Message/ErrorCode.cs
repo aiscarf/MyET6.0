@@ -27,5 +27,7 @@ namespace ET
         public const int ERR_LOGIN_VERSION_INVALID               = 210008; // 登录-版本错误
         public const int ERR_LOGIN_REGISTER_ALREADY_ACCOUNT      = 210009; // 登录-注册-账户已经存在
         public const int ERR_LOGIN_VALID_REALMTOKEN              = 210010; // 登录-Token不存在
+
+        public const int ERR_GATE_ALREADY_MATCHING               = 310001; // 网关-玩家已经处于匹配队列.
     }
 }

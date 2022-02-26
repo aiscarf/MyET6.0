@@ -15,8 +15,6 @@ namespace ET
 	{
 		public static PlayerComponent Instance { get; private set; }
 
-		public Player MyPlayer;
-		
 		private readonly Dictionary<long, Player> idPlayers = new Dictionary<long, Player>();
 
 		public void Awake()
@@ -33,6 +31,11 @@ namespace ET
 		{
 			this.idPlayers.TryGetValue(id, out Player gamer);
 			return gamer;
+		}
+
+		public bool Contains(long id)
+		{
+			return this.idPlayers.TryGetValue(id, out var player);
 		}
 
 		public void Remove(long id)

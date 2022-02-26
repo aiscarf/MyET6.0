@@ -11,12 +11,19 @@
 
 	public sealed class Player : Entity
 	{
-		public long Uid { get; private set; }
 		public string RealmToken { get; private set; }
 
+		public Session ClientSession { get; set; }
+		public EPlayerState PlayerState { get; private set; } = EPlayerState.None;
+
+		public void ChangeState(EPlayerState ePlayerState)
+		{
+			this.PlayerState = ePlayerState;
+		}
+		
 		public void Awake(long uid, string token)
 		{
-			this.Uid = uid;
+			this.Id = uid;
 			this.RealmToken = token;
 		}
 	}

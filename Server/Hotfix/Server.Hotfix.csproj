@@ -37,6 +37,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Project\Const" />
-    <Folder Include="Project\Match\Handler" />
   </ItemGroup>
 </Project>

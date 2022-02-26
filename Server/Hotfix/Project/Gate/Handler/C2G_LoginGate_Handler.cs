@@ -116,13 +116,25 @@ namespace ET
                 response.Friends = new List<FriendInfo>();
                 reply();
 
-                // DONE: 创建Player对象.
+                
                 Scene scene = session.DomainScene();
                 PlayerComponent playerComponent = scene.GetComponent<PlayerComponent>();
-                Player player = playerComponent.AddChild<Player, long, string>(playerInfo.Id, request.RealmToken);
-                playerComponent.Add(player);
-                session.AddComponent<SessionPlayerComponent>().Player = player;
-                session.AddComponent<MailBoxComponent, MailboxType>(MailboxType.GateSession);
+                
+                // TODO: 判断玩家是否是断线重连.
+                if (playerComponent.Contains(playerInfo.Id))
+                {
+                    
+                }
+                else
+                {
+                    // DONE: 创建Player对象.
+                    Player player = playerComponent.AddChild<Player, long, string>(playerInfo.Id, request.RealmToken);
+                    player.ClientSession = session;
+                    player.ChangeState(EPlayerState.Hall);
+                    playerComponent.Add(player);
+                    session.AddComponent<SessionPlayerComponent>().Player = player;
+                    session.AddComponent<MailBoxComponent, MailboxType>(MailboxType.GateSession);
+                }
                 
                 Log.Info($"玩家{request.Uid}已正常上线");
                 LogHelper.Console(SceneType.Gate, $"玩家[{request.Uid}]已正常上线");

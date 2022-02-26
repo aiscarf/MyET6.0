@@ -29,9 +29,7 @@ namespace ET
             }
             catch (Exception e)
             {
-                response.Error = ErrorCore.ERR_RpcFail;
-                response.Message = e.ToString();
-                reply();
+                ReplyError(response, e, reply);
             }
         }
     }

@@ -284,50 +284,119 @@ enum EFriendFromT
 	Game									 = 3; // 对战日志
 }
 
+//ResponseType G2C_Ping
+message C2G_Ping // IRequest
+{
+	int32 RpcId = 90;
+}
+message G2C_Ping // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	
+	int64 Time = 1;
+}
+
+//ResponseType G2C_StartReady
+message C2G_StartReady	// IRequest
+{
+	int32 RpcId = 90;
+}
+message G2C_StartReady // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType G2C_StartReady
+message C2G_CancelReady // IRequest
+{
+	int32 RpcId = 90;
+}
+message G2C_CancelReady // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message G2C_OnStartMatch // IMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	
+	int32 PlayerNum = 1;
+	int32 NeedNum = 2;
+}
+
+message G2C_OnCancelMatch // IMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	
+	int32 PlayerUid = 1; // 取消匹配的玩家uid.
+}
+
+message G2C_OnUpdateMatchPlayerNum // IMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	
+	int32 PlayerNum = 1;
+}
 
 
-message M2C_OnGameStart // IActorLocationMessage
+// 以下是战斗的协议.
+message G2C_OnGameStart // IMessage
 { 
 	int32 RpcId = 90;
-    int32 code = 1;
-    int32 gameT = 2; // 游戏模式
-    int32 roomId = 3;
-    int32 token = 4;
-    int32 randomSeed = 5;
-    repeated MobaPlayerInfo players = 6;
-    string host = 7;
-    int32 port = 8;
+	int32 Error = 91;
+	string Message = 92;
+    
+	string Token = 1;
+    int32 MapId = 2;
+    int32 RoomId = 3;
+    int32 RandomSeed = 4;
+    repeated MobaPlayerInfo Players = 5;
+    string Host = 7;
+    int32 Port = 8;
 }
 
 message MobaPlayerInfo
 {
-	int32 uid = 1;
-	string nickname = 2;
-	int32 heroId = 3;
-	int32 heroSkinId = 4;
-	int32 towerSkinId = 5;
-	int32 petId = 6;
-	int32 petSkinId = 7;
-	int32 score = 8;
-	int32 chairId = 9;
-	int32 camp = 10;
-	int32 headId = 11;
-	int32 frameId = 12;
-	int32 showId = 13;
-	int32 heroLv = 14;
-	int32 petLv = 15;
-	repeated int32 unlockedSkill = 16;
+	long Uid = 1;
+	string Nickname = 2;
+	int32 HeroId = 3;
+	int32 HeroSkinId = 4;
+	int32 TowerSkinId = 5;
+	int32 PetId = 6;
+	int32 PetSkinId = 7;
+	int32 Score = 8;
+	int32 ChairId = 9;
+	int32 Camp = 10;
+	int32 HeadId = 11;
+	int32 FrameId = 12;
+	int32 ShowId = 13;
+	int32 HeroLv = 14;
+	int32 PetLv = 15;
+	repeated int32 UnlockedSkill = 16;
 }
 
 //ResponseType B2C_GameMainEnter
-message C2B_GameMainEnter // IActorLocationRequest
+message C2B_GameMainEnter // IRequest
 {
 	int32 RpcId = 90;
+	
 	int32 RoomId = 1;
-	int32 Uid = 2;
-	int32 Token = 3;
+	long Uid = 2;
+	string Token = 3;
 }
-message B2C_GameMainEnter // IActorLocationResponse
+message B2C_GameMainEnter // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
@@ -351,27 +420,27 @@ message B2C_FrameMsg // IActorLocationResponse
 message B2C_OnFrame // IActorLocationMessage
 {
 	int32 RpcId = 90;
+	
 	int32 FrameId = 1;
 	repeated FrameMsg Msg = 2;
 }
 
 message FrameMsg
 {
-	int32 Uid = 1;
+	long Uid = 1;
 	int32 Optype = 2;
 	int32 Arg1 = 3;
 	int32 Arg2 = 4;
 }
 
-//ResponseType G2C_Ping
-message C2G_Ping // IRequest
+//ResponseType B2C_Ping
+message C2B_Ping // IActorLocationRequest
 {
-	int32 RpcId = 90;
+	int32 RpcId = 90;	
 }
-message G2C_Ping // IResponse
+message B2C_Ping // IActorLocationResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-	int64 Time = 1;
 }
