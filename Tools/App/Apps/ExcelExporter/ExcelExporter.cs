@@ -303,9 +303,12 @@ namespace ET
                 case "int[]":
                 case "int32[]":
                 case "long[]":
-                    return $"[{value}]";
                 case "string[]":
-                    return $"[{value}]";
+                    if (value == "")
+                    {
+                        value = "[]";
+                    }
+                    return value;
                 case "int":
                 case "int32":
                 case "int64":
