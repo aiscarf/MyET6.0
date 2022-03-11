@@ -8,7 +8,7 @@ namespace ET
         public override void Awake(MatchComponent self)
         {
             // DONE: 创建计时器.
-            self.Timer = TimerComponent.Instance.NewRepeatedTimer(5000, TimerType.MatchTimer, self);
+            self.Timer = TimerComponent.Instance.NewRepeatedTimer(15000, TimerType.MatchTimer, self);
 
             var gateSceneConfig = StartSceneConfigCategory.Instance.GetBySceneType(self.DomainZone(), SceneType.Gate);
             self.GateActorId = gateSceneConfig.InstanceId;

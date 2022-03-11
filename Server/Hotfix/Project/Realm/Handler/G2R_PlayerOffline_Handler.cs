@@ -8,12 +8,12 @@ namespace ET
         {
             try
             {
-                await ETTask.CompletedTask;
                 scene.GetComponent<OnlineComponent>().RemoveByUid(request.Uid);
                 scene.GetComponent<RealmTokenComponent>().RemoveToken(request.Uid);
 
                 LogHelper.Console(SceneType.Realm, $"玩家[{request.Uid}]已下线");
                 reply();
+                await ETTask.CompletedTask;
             }
             catch (Exception e)
             {

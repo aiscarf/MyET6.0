@@ -31,11 +31,41 @@
     <Compile Include="..\..\Unity\Codes\Hotfix\Module\Message\**\*.cs">
       <Link>Module\Message\%(RecursiveDir)%(FileName)%(Extension)</Link>
     </Compile>
+
+    <Compile Include="..\..\Unity\Hotfix\ShareLogic\Project\MobaBattle\LockStepFrame\FrameSyncSystem.cs">
+      <Link>Project\MobaBattle\LockStepFrame\FrameSyncSystem.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Hotfix\ShareLogic\Project\MobaBattle\LockStepFrame\InputSystem.cs">
+      <Link>Project\MobaBattle\LockStepFrame\InputSystem.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Hotfix\ShareLogic\Project\MobaBattle\LogicBattle\BattleSceneSystem.cs">
+      <Link>Project\MobaBattle\LogicBattle\BattleSceneSystem.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Hotfix\ShareLogic\Project\MobaBattle\LogicBattle\MobaBattleSystem.cs">
+      <Link>Project\MobaBattle\LogicBattle\MobaBattleSystem.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Hotfix\ShareLogic\Project\MobaBattle\LogicMove\UnitMoveSystem.cs">
+      <Link>Project\MobaBattle\LogicMove\UnitMoveSystem.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Hotfix\ShareLogic\Project\MobaBattle\LogicUnit\UnitEntitySystem.cs">
+      <Link>Project\MobaBattle\LogicUnit\UnitEntitySystem.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Hotfix\ShareLogic\Project\MobaBattle\LogicUnit\UnitFactory.cs">
+      <Link>Project\MobaBattle\LogicUnit\UnitFactory.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Server.Model.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Project\Const" />
+    <Folder Include="..\..\Unity\Hotfix\ShareLogic\Project\MobaBattle\LogicGame">
+      <Link>Project\MobaBattle\LogicGame</Link>
+    </Folder>
   </ItemGroup>
 </Project>

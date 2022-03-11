@@ -26,4 +26,151 @@
     <ProjectReference Include="..\..\ThirdParty\ShareLib\ShareLib.csproj" />
     <ProjectReference Include="..\..\ThirdParty\UnityEngine\UnityEngine.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\IndexedSet.cs">
+      <Link>Project\MobaBattle\IndexedSet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LockStepFrame\AStepFrame.cs">
+      <Link>Project\MobaBattle\LockStepFrame\AStepFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LockStepFrame\EInputType.cs">
+      <Link>Project\MobaBattle\LockStepFrame\EInputType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LockStepFrame\FrameSyncComponent.cs">
+      <Link>Project\MobaBattle\LockStepFrame\FrameSyncComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LockStepFrame\InputComponent.cs">
+      <Link>Project\MobaBattle\LockStepFrame\InputComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LockStepFrame\IStepFrame.cs">
+      <Link>Project\MobaBattle\LockStepFrame\IStepFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LockStepFrame\StepFrameAttribute.cs">
+      <Link>Project\MobaBattle\LockStepFrame\StepFrameAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\AMobaBattleProcess.cs">
+      <Link>Project\MobaBattle\LogicBattle\AMobaBattleProcess.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\BattleSceneComponent.cs">
+      <Link>Project\MobaBattle\LogicBattle\BattleSceneComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\EBattleGameMode.cs">
+      <Link>Project\MobaBattle\LogicBattle\EBattleGameMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\Local1v1Process.cs">
+      <Link>Project\MobaBattle\LogicBattle\Local1v1Process.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\Local3v3Process.cs">
+      <Link>Project\MobaBattle\LogicBattle\Local3v3Process.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\MobaBattleData.cs">
+      <Link>Project\MobaBattle\LogicBattle\MobaBattleData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\MobaBattleEntity.cs">
+      <Link>Project\MobaBattle\LogicBattle\MobaBattleEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\MobaBattleLoadData.cs">
+      <Link>Project\MobaBattle\LogicBattle\MobaBattleLoadData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\NoviceGuideProcess.cs">
+      <Link>Project\MobaBattle\LogicBattle\NoviceGuideProcess.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\Server1v1Process.cs">
+      <Link>Project\MobaBattle\LogicBattle\Server1v1Process.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBattle\Server3v3Process.cs">
+      <Link>Project\MobaBattle\LogicBattle\Server3v3Process.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBuff\Buff.cs">
+      <Link>Project\MobaBattle\LogicBuff\Buff.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicBuff\UnitBuffComponent.cs">
+      <Link>Project\MobaBattle\LogicBuff\UnitBuffComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicGame\ECamp.cs">
+      <Link>Project\MobaBattle\LogicGame\ECamp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicMap\ETileType.cs">
+      <Link>Project\MobaBattle\LogicMap\ETileType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicMap\MapData.cs">
+      <Link>Project\MobaBattle\LogicMap\MapData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicMove\EForwardType.cs">
+      <Link>Project\MobaBattle\LogicMove\EForwardType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicMove\EMoveType.cs">
+      <Link>Project\MobaBattle\LogicMove\EMoveType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicMove\UnitMoveComponent.cs">
+      <Link>Project\MobaBattle\LogicMove\UnitMoveComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPathFinding\BinaryHeap.cs">
+      <Link>Project\MobaBattle\LogicPathFinding\BinaryHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPathFinding\Map.cs">
+      <Link>Project\MobaBattle\LogicPathFinding\Map.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPathFinding\ObstacleType.cs">
+      <Link>Project\MobaBattle\LogicPathFinding\ObstacleType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPathFinding\PathFinding.cs">
+      <Link>Project\MobaBattle\LogicPathFinding\PathFinding.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\CBox.cs">
+      <Link>Project\MobaBattle\LogicPhysics\CBox.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\CCollider.cs">
+      <Link>Project\MobaBattle\LogicPhysics\CCollider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\Cell.cs">
+      <Link>Project\MobaBattle\LogicPhysics\Cell.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\CMath.cs">
+      <Link>Project\MobaBattle\LogicPhysics\CMath.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\CPhysics.cs">
+      <Link>Project\MobaBattle\LogicPhysics\CPhysics.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\CQuadNode.cs">
+      <Link>Project\MobaBattle\LogicPhysics\CQuadNode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\CQuadTree.cs">
+      <Link>Project\MobaBattle\LogicPhysics\CQuadTree.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\CRaycastHit.cs">
+      <Link>Project\MobaBattle\LogicPhysics\CRaycastHit.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\CSphere.cs">
+      <Link>Project\MobaBattle\LogicPhysics\CSphere.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\CTrigonometric.cs">
+      <Link>Project\MobaBattle\LogicPhysics\CTrigonometric.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\SQuaternion.cs">
+      <Link>Project\MobaBattle\LogicPhysics\SQuaternion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\SRay.cs">
+      <Link>Project\MobaBattle\LogicPhysics\SRay.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\SRect.cs">
+      <Link>Project\MobaBattle\LogicPhysics\SRect.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicPhysics\SVector3.cs">
+      <Link>Project\MobaBattle\LogicPhysics\SVector3.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicUnit\AttrData.cs">
+      <Link>Project\MobaBattle\LogicUnit\AttrData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicUnit\EUnitType.cs">
+      <Link>Project\MobaBattle\LogicUnit\EUnitType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\LogicUnit\Unit.cs">
+      <Link>Project\MobaBattle\LogicUnit\Unit.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Hotfix\ShareEntity\Project\MobaBattle\MobaEventType.cs">
+      <Link>Project\MobaBattle\MobaEventType.cs</Link>
+    </Compile>
+  </ItemGroup>
 </Project>

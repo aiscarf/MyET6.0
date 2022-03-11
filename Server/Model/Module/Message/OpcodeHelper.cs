@@ -8,6 +8,9 @@ namespace ET
         {
             OuterOpcode.C2G_Ping,
             OuterOpcode.G2C_Ping,
+            OuterOpcode.C2B_FrameMsg,
+            OuterOpcode.B2C_FrameMsg,
+            OuterOpcode.B2C_OnFrame,
         };
 
         private static bool IsNeedLogMessage(ushort opcode)

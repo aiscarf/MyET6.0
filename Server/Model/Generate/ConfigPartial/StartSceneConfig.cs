@@ -40,6 +40,20 @@ namespace ET
 
             return null;
         }
+
+        public StartSceneConfig GetByInstanceId(int zone, long instanceId)
+        {
+            var map = this.ZoneScenesByName[zone];
+            foreach (var kv in map)
+            {
+                if (kv.Value.InstanceId == instanceId)
+                {
+                    return kv.Value;
+                }
+            }
+
+            return null;
+        }
         
         public override void AfterEndInit()
         {

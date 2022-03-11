@@ -105,6 +105,8 @@ namespace ET
 			this.Id = 0;
 			this.Service.Remove(id);
 			this.socket.Close();
+			this.innArgs.Completed -= this.OnComplete;
+			this.outArgs.Completed -= this.OnComplete;
 			this.innArgs.Dispose();
 			this.outArgs.Dispose();
 			this.innArgs = null;

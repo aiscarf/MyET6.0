@@ -17,6 +17,13 @@ namespace ET
             return battleRoom;
         }
 
+        public BattleRoom GetRoom(int roomId)
+        {
+            BattleRoom result = null;
+            this.battleRooms.TryGetValue(roomId, out result);
+            return result;
+        }
+
         public void DestroyBattleRoom(int battleId)
         {
             // TODO 销毁房间.

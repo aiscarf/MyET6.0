@@ -8,7 +8,8 @@ namespace ET
         {
             try
             {
-                var dbComponent = Game.Scene.GetComponent<DBManagerComponent>().GetZoneDB(session.DomainZone());
+                var scene = session.DomainScene();
+                var dbComponent = Game.Scene.GetComponent<DBManagerComponent>().GetZoneDB(scene.Zone);
                 if (dbComponent == null)
                 {
                     response.Error = ErrorCore.ERR_ConnectGateKeyError;
@@ -28,8 +29,8 @@ namespace ET
                 
                 var accountInfo = resultsInfos[0];
 
-                // DONE: 判断是否已经在线, 在线则踢掉
-                await RealmHelper.KickOutPlayer(session, accountInfo.Id);
+                // // DONE: 判断是否已经在线, 在线则踢掉
+                // await RealmHelper.KickOutPlayer(scene, accountInfo.Id);
 
                 // TODO 代码版本限制: 判断客户端版本是否足够.
 
@@ -43,10 +44,15 @@ namespace ET
 
                 // DONE: 生成一个唯一的Token.
                 response.Uid = accountInfo.Id;
-                response.RealmToken = IdGenerater.Instance.GenerateInstanceId().ToString();
                 
-                // DONE: 将其记录起来, 记录在登录列表中.
-                session.DomainScene().GetComponent<RealmTokenComponent>().AddToken(accountInfo.Id, response.RealmToken);
+                // DONE: 重新生成一个新的Token.
+                var realmTokenComponent = scene.GetComponent<RealmTokenComponent>();
+                if (realmTokenComponent.HasUid(accountInfo.Id))
+                {
+                    realmTokenComponent.RemoveToken(accountInfo.Id);
+                }
+                response.RealmToken = IdGenerater.Instance.GenerateInstanceId().ToString();
+                realmTokenComponent.AddToken(accountInfo.Id, response.RealmToken);
 
                 LogHelper.Console(SceneType.Realm, $"用户[{accountInfo.Account}]登录成功");
                 reply();

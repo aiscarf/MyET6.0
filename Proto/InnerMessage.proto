@@ -170,11 +170,7 @@ message M2G_CancelMatch // IActorResponse
 }
 
 message M2G_OnSuccessMatch // IActorMessage
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	string Message = 92;
-	
+{	
 	int32 MapId = 1;
 	repeated long Uids = 2;
 }
@@ -198,4 +194,31 @@ message B2G_CreateBattle // IActorResponse
     int32 RoomId = 3;
     int32 RandomSeed = 4;
     repeated MobaPlayerInfo Players = 5;
+}
+
+//ResponseType B2G_GetBattle
+message G2B_GetBattle // IActorRequest
+{
+	int32 RpcId = 90;
+	
+    int32 RoomId = 1;
+	string Token = 2;
+}
+message B2G_GetBattle // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	
+	string Token = 1;
+    int32 MapId = 2;
+    int32 RoomId = 3;
+    int32 RandomSeed = 4;
+    repeated MobaPlayerInfo Players = 5;
+}
+
+message B2G_OnBattleOver // IActorMessage
+{
+	int32 RoomId = 1;
+	repeated long Uids = 2;
 }

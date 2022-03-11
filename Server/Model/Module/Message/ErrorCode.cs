@@ -29,5 +29,15 @@ namespace ET
         public const int ERR_LOGIN_VALID_REALMTOKEN              = 210010; // 登录-Token不存在
 
         public const int ERR_GATE_ALREADY_MATCHING               = 310001; // 网关-玩家已经处于匹配队列.
+        public const int ERR_GATE_RECONNECT_FAILED               = 310002; // 网关-玩家重连失败.
+        public const int ERR_GATE_RECONNECT_TOKEN_FAILED         = 310003; // 网关-重连连接-Token错误的
+        public const int ERR_GATE_RECONNECT_PLAYER_NOT_EXIST     = 310004; // 网关-重新连接-玩家不存在.
+
+        public const int ERR_MATCH_CANCEL_FAILED                 = 410001; // 匹配-取消匹配失败.
+
+        public const int ERR_BATTLE_ROOM_NOT_EXIST               = 510001; // 战斗-房间不存在.
+        public const int ERR_BATTLE_PLAYER_NOT_EXIST             = 510002; // 战斗-玩家不存在.
+        public const int ERR_BATTLE_TOKEN_FAILED                 = 510003; // 战斗-Token不对.
+        public const int ERR_BATTLE_DISCONNECTED                 = 510004; // 战斗-Udp断开连接.
     }
 }

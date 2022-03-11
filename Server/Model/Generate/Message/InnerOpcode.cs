@@ -28,5 +28,8 @@ namespace ET
 		 public const ushort M2G_OnSuccessMatch = 20025;
 		 public const ushort G2B_CreateBattle = 20026;
 		 public const ushort B2G_CreateBattle = 20027;
+		 public const ushort G2B_GetBattle = 20028;
+		 public const ushort B2G_GetBattle = 20029;
+		 public const ushort B2G_OnBattleOver = 20030;
 	}
 }

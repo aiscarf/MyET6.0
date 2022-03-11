@@ -7,6 +7,8 @@ namespace ET
     {
         public const string ReloadDll = "R";
         public const string ReloadConfig = "C";
+        public const string Server = "server";
+        
         public const string ShowMemory = "M";
         public const string Repl = "Repl";
         public const string Debugger = "Debugger";

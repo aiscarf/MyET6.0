@@ -8,8 +8,6 @@ namespace ET
         {
             try
             {
-                await ETTask.CompletedTask;
-
                 // DONE: 验证服务器说要断开客户端连接.
                 var playerComponent = scene.GetComponent<PlayerComponent>();
                 var player = playerComponent.Get(request.Uid);
@@ -20,12 +18,20 @@ namespace ET
                     reply();
                     return;
                 }
-                playerComponent.Remove(request.Uid);
+
+                if (player.IsConnected && player.ClientSession != null && !player.ClientSession.IsDisposed)
+                {
+                    // DONE: 通知客户端, 被挤下线.
+                    player.ClientSession.Send(new G2C_OnPlayerKickOut());
+                    player.ClientSession.Dispose();
+                    player.ClientSession = null;
+                }
 
                 LogHelper.Console(SceneType.Gate, $"Gate服务器已将玩家{request.Uid}踢下线");
-                // TODO 应通知客户端.
-                
+
                 reply();
+
+                await ETTask.CompletedTask;
             }
             catch (Exception e)
             {

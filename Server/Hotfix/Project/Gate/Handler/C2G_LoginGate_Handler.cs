@@ -80,9 +80,6 @@ namespace ET
                 response.PlayerInfo.ShowIdArr = playerInfo.ShowIds;
 
                 // TODO 查找玩家是否处于组队中.
-                response.PlayerInfo.token = 0;
-                response.PlayerInfo.svr = "";
-                response.PlayerInfo.isMatch = false;
                 response.PlayerInfo.TeamId = "";
                 response.PlayerInfo.TeamUsers = new List<TeamPlayerInfo>();
 
@@ -114,28 +111,34 @@ namespace ET
 
                 // TODO 查表获取玩家好友数据.
                 response.Friends = new List<FriendInfo>();
-                reply();
 
-                
-                Scene scene = session.DomainScene();
-                PlayerComponent playerComponent = scene.GetComponent<PlayerComponent>();
-                
-                // TODO: 判断玩家是否是断线重连.
-                if (playerComponent.Contains(playerInfo.Id))
-                {
-                    
-                }
-                else
+                PlayerComponent playerComponent = session.DomainScene().GetComponent<PlayerComponent>();
+                Player player = null;
+                if (!playerComponent.Contains(playerInfo.Id))
                 {
                     // DONE: 创建Player对象.
-                    Player player = playerComponent.AddChild<Player, long, string>(playerInfo.Id, request.RealmToken);
+                    player = playerComponent.AddChild<Player, long, string>(playerInfo.Id, request.RealmToken);
+                    player.GateToken = response.GateToken;
                     player.ClientSession = session;
                     player.ChangeState(EPlayerState.Hall);
                     playerComponent.Add(player);
                     session.AddComponent<SessionPlayerComponent>().Player = player;
                     session.AddComponent<MailBoxComponent, MailboxType>(MailboxType.GateSession);
                 }
-                
+                else
+                {
+                    player = playerComponent.Get(playerInfo.Id);
+                    player.GateToken = response.GateToken;
+                    player.ClientSession = session;
+                    if (!player.CancellationToken.IsCancel())
+                    {
+                        playerComponent.StopCountdownRemovePlayer(playerInfo.Id);
+                    }
+                }
+
+                response.PlayerState = (int)player.PlayerState;
+                reply();
+
                 Log.Info($"玩家{request.Uid}已正常上线");
                 LogHelper.Console(SceneType.Gate, $"玩家[{request.Uid}]已正常上线");
             }
@@ -143,8 +146,6 @@ namespace ET
             {
                 ReplyError(response, e, reply);
             }
-
-            await ETTask.CompletedTask;
         }
     }
 }

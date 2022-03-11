@@ -81,8 +81,8 @@ message C2G_LoginGate // IRequest
 {
 	int32 RpcId = 90;
 	
-	long Uid = 2;
-	string RealmToken = 1;
+	long Uid = 1;
+	string RealmToken = 2;
 }
 message G2C_LoginGate // IResponse
 {
@@ -94,6 +94,32 @@ message G2C_LoginGate // IResponse
 	PlayerInfo PlayerInfo = 2;
 	long Time = 3;
 	repeated FriendInfo Friends = 4;
+	int32 PlayerState = 5;
+}
+
+//ResponseType G2C_ReconnectGate
+message C2G_ReconnectGate // IRequest
+{
+	int32 RpcId = 90;
+	
+	long Uid = 1;
+	string GateToken = 2;
+}
+message G2C_ReconnectGate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	
+	string GateToken = 1;
+	PlayerInfo PlayerInfo = 2;
+	long Time = 3;
+	repeated FriendInfo Friends = 4;
+}
+
+message G2C_OnPlayerKickOut // IMessage
+{
+	
 }
 
 message PlayerInfo
@@ -115,29 +141,26 @@ message PlayerInfo
     repeated int32 HeadIdArr			     = 15; // 头像Id数组
     repeated int32 FrameIdArr 				 = 16; // 头像框Id数组
     repeated int32 ShowIdArr				 = 17; // 展示Id数组
-    int32 token 							 = 18; // token
-    string svr 								 = 19; // 不为空则表示在匹配或战斗中
-    bool isMatch 							 = 20; // 根据 svr 字段，表示是否是在匹配
-    string TeamId 							 = 21; // 队伍id，空字符串表示无队伍
-    repeated TeamPlayerInfo TeamUsers		 = 22; // 队伍成员信息
-    int32 Score								 = 23; // 本赛季杯数
-    RoleWinInfo WinInfo						 = 24; // 战绩信息
-    int32 Guide								 = 25; // 新手引导标志
-    TaskInfo TaskInfo						 = 26; // 任务相关信息
-    repeated TaskSingleInfo TaskOverall		 = 27; // 各任务进度及领取情况
-    repeated int32 TaskIdArr				 = 28; // 当日能看到的任务id
-    int32 Charge 							 = 29; // 充值数
-    MinerInfo MinerInfo						 = 30; // 矿工系统信息
-    int32 MaxScore							 = 31; // 本赛季达到的最高分
-    repeated int32 SeasonAward				 = 32; // 本赛季积分奖励领取情况
-    int32 FriendAskOk 						 = 33; // 是否接收好友请求  1接收  0不接收
-    repeated MapInfo MapList				 = 34; // 副本列表
-    int32 MapId								 = 35; // 当前选择的副本Id
-    repeated int32 UnlockedSkills			 = 37; // 已解锁技能
-    repeated int32 TimeLimitItems		     = 38; // 限时体验的东西
-    repeated int32 TeamInviteBlack			 = 39; // 组队邀请屏蔽
-    int32 SeasonEndTime						 = 40; // 赛季结束时刻
-    int32 IfTeamInvite						 = 41; // 是否接收组队邀请，1接收，0拒绝
+    string TeamId 							 = 18; // 队伍id，空字符串表示无队伍
+    repeated TeamPlayerInfo TeamUsers		 = 19; // 队伍成员信息
+    int32 Score								 = 20; // 本赛季杯数
+    RoleWinInfo WinInfo						 = 21; // 战绩信息
+    int32 Guide								 = 22; // 新手引导标志
+    TaskInfo TaskInfo						 = 23; // 任务相关信息
+    repeated TaskSingleInfo TaskOverall		 = 24; // 各任务进度及领取情况
+    repeated int32 TaskIdArr				 = 25; // 当日能看到的任务id
+    int32 Charge 							 = 26; // 充值数
+    MinerInfo MinerInfo						 = 27; // 矿工系统信息
+    int32 MaxScore							 = 28; // 本赛季达到的最高分
+    repeated int32 SeasonAward				 = 29; // 本赛季积分奖励领取情况
+    int32 FriendAskOk 						 = 30; // 是否接收好友请求  1接收  0不接收
+    repeated MapInfo MapList				 = 31; // 副本列表
+    int32 MapId								 = 32; // 当前选择的副本Id
+    repeated int32 UnlockedSkills			 = 33; // 已解锁技能
+    repeated int32 TimeLimitItems		     = 34; // 限时体验的东西
+    repeated int32 TeamInviteBlack			 = 35; // 组队邀请屏蔽
+    int32 SeasonEndTime						 = 36; // 赛季结束时刻
+    int32 IfTeamInvite						 = 37; // 是否接收组队邀请，1接收，0拒绝
 }
 
 message HeroInfo
@@ -403,24 +426,35 @@ message B2C_GameMainEnter // IResponse
 	string Message = 92;
 }
 
-//ResponseType B2C_FrameMsg
-message C2B_FrameMsg // IActorLocationRequest
+//ResponseType B2C_BattleReady
+message C2B_BattleReady // IRequest
 {
 	int32 RpcId = 90;
-	int32 FrameId = 1;
-	FrameMsg Msg = 2;
 }
-message B2C_FrameMsg // IActorLocationResponse
+
+message B2C_BattleReady // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
 }
 
-message B2C_OnFrame // IActorLocationMessage
+//ResponseType B2C_FrameMsg
+message C2B_FrameMsg // IRequest
 {
 	int32 RpcId = 90;
-	
+	int32 FrameId = 1;
+	FrameMsg Msg = 2;
+}
+message B2C_FrameMsg // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message B2C_OnFrame // IMessage
+{	
 	int32 FrameId = 1;
 	repeated FrameMsg Msg = 2;
 }
@@ -434,11 +468,11 @@ message FrameMsg
 }
 
 //ResponseType B2C_Ping
-message C2B_Ping // IActorLocationRequest
+message C2B_Ping // IRequest
 {
 	int32 RpcId = 90;	
 }
-message B2C_Ping // IActorLocationResponse
+message B2C_Ping // IResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;

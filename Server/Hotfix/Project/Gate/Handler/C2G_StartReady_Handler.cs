@@ -8,7 +8,16 @@ namespace ET
         {
             try
             {
-                var player = session.GetComponent<SessionPlayerComponent>().Player;
+                var sessionPlayerComponent = session.GetComponent<SessionPlayerComponent>();
+                if (sessionPlayerComponent == null)
+                {
+                    response.Error = ErrorCode.ERR_DISCONNECTED;
+                    response.Message = "请重新连接";
+                    reply();
+                    return;
+                }
+
+                var player = sessionPlayerComponent.Player;
                 // DONE: 判断该玩家是否处于匹配中, 如果处于匹配中, 则不能再次匹配.
                 if (player.PlayerState == EPlayerState.Match)
                 {
@@ -17,7 +26,7 @@ namespace ET
                     reply();
                     return;
                 }
-                
+
                 // DONE: 去匹配服开始匹配.
                 var startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneType(session.DomainZone(), SceneType.Match);
                 long actorId1 = startSceneConfig.InstanceId;

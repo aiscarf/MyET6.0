@@ -9,6 +9,11 @@ namespace ET
             this.dictionary.Add(uid, token);
         }
 
+        public bool HasUid(long uid)
+        {
+            return this.dictionary.ContainsKey(uid);
+        }
+
         public long GetUid(string token)
         {
             return this.dictionary.GetKeyByValue(token);

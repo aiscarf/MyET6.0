@@ -35,7 +35,7 @@ namespace ET
 
 		public bool Contains(long id)
 		{
-			return this.idPlayers.TryGetValue(id, out var player);
+			return this.idPlayers.ContainsKey(id);
 		}
 
 		public void Remove(long id)

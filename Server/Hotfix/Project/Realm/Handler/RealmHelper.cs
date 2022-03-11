@@ -11,10 +11,10 @@ namespace ET
             return zoneGates[n];
         }
 
-        public static async ETTask KickOutPlayer(Session session, long uid)
+        public static async ETTask KickOutPlayer(Scene scene, long uid)
         {
             // DONE: 验证账号是否在线，在线则踢下线
-            var onlineComponent = session.DomainScene().GetComponent<OnlineComponent>();
+            var onlineComponent = scene.GetComponent<OnlineComponent>();
             if (!onlineComponent.HasOnline(uid))
             {
                 return;

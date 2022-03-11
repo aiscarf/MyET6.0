@@ -77,10 +77,6 @@ namespace ET
 		public int NeedPlayerNum { get; set; }
 		[ProtoMember(4)]
 		public string ConfigPath { get; set; }
-		[ProtoMember(5)]
-		public string Background { get; set; }
-		[ProtoMember(6)]
-		public string ScenePath { get; set; }
 
 	}
 }

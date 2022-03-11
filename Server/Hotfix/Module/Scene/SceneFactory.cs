@@ -34,6 +34,7 @@ namespace ET
                     scene.AddComponent<MatchComponent>();
                     break;
                 case SceneType.Battle:
+                    scene.AddComponent<NetKcpComponent, IPEndPoint, int>(startSceneConfig.OuterIPPort, SessionStreamDispatcherType.SessionStreamDispatcherServerOuter);
                     scene.AddComponent<BattleComponent>();
                     break;
                 case SceneType.Location:

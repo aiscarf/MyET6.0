@@ -15,6 +15,16 @@ namespace ET
             self.Start().Coroutine();
         }
     }
+    
+    public class ConsoleComponentDestroySystem: DestroySystem<ConsoleComponent>
+    {
+        public override void Destroy(ConsoleComponent self)
+        {
+            self.CancellationTokenSource.Cancel();
+            self.CancellationTokenSource.Dispose();
+            self.CancellationTokenSource = null;
+        }
+    }
 
     [ObjectSystem]
     public class ConsoleComponentLoadSystem: LoadSystem<ConsoleComponent>
@@ -62,6 +72,11 @@ namespace ET
             {
                 try
                 {
+                    if (self.CancellationTokenSource == null)
+                    {
+                        return;
+                    }
+                    
                     ModeContex modeContex = self.GetComponent<ModeContex>();
                     string line = await Task.Factory.StartNew(() =>
                     {

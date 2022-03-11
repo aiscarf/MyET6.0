@@ -39,6 +39,7 @@ namespace ET
 				LogManager.Configuration.Variables["appIdFormat"] = $"{Game.Options.Process:000000}";
 				
 				Log.Info($"server start........................ {Game.Scene.Id}");
+				LogHelper.Console(SceneType.Process, $"server start........................ {Game.Scene.Id}, Process:{Game.Options.Process:000000}");
 
 				Game.EventSystem.Publish(new EventType.AppStart());
 				

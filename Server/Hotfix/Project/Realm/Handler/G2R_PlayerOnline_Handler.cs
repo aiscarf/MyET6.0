@@ -8,8 +8,6 @@ namespace ET
         {
             try
             {
-                await ETTask.CompletedTask;
-
                 // DONE: 验证Token.
                 var realmToken = scene.GetComponent<RealmTokenComponent>().GetToken(request.Uid);
                 if (string.IsNullOrEmpty(realmToken) || string.IsNullOrWhiteSpace(realmToken) || realmToken != request.RealmToken)
@@ -19,10 +17,17 @@ namespace ET
                     reply();
                     return;
                 }
+                
+                var onlineComponent = scene.GetComponent<OnlineComponent>();
+                if (!onlineComponent.HasOnline(request.Uid))
+                {
+                    scene.GetComponent<OnlineComponent>().AddUid(request.Uid, request.GateId);
+                }
 
-                scene.GetComponent<OnlineComponent>().AddUid(request.Uid, request.GateId);
                 LogHelper.Console(SceneType.Realm, $"玩家[{request.Uid}]已上线");
                 reply();
+                
+                await ETTask.CompletedTask;
             }
             catch (Exception e)
             {
