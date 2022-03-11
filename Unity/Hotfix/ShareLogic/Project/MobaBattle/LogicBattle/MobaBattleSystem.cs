@@ -1,12 +1,45 @@
 namespace ET
 {
-    public class MobaBattleComponentAwakeSystem : AwakeSystem<MobaBattleComponent, MobaBattleData>
+    public sealed class MobaBattleEntityAwakeSystem : AwakeSystem<MobaBattleEntity>
     {
-        public override void Awake(MobaBattleComponent self, MobaBattleData data)
+        public override void Awake(MobaBattleEntity self)
         {
-            self.m_battleMode = data.BattleMode;
-            self.m_bIsNet = data.IsNet;
+        }
+    }
 
+    public sealed class MobaBattleEntityDestroySystem : DestroySystem<MobaBattleEntity>
+    {
+        public override void Destroy(MobaBattleEntity self)
+        {
+        }
+    }
+
+    public static class MobaBattleSystem
+    {
+        public static void Init(this MobaBattleEntity self, MobaBattleData data)
+        {
+            // DONE: 初始化地图数据.
+            var battleSceneComponent = self.AddComponent<BattleSceneComponent, MapData>(data.MapData);
+            self.m_bIsNet = data.IsNet;
+            
+            // DONE: 初始化角色数据.
+            for (int i = 0; i < data.Players.Count; i++)
+            {
+                var playerInfo = data.Players[i];
+
+                // TODO 根据地图数据, 根据阵营 从不同的位置出生.
+                var unit = battleSceneComponent.CreateUnit(new AttrData()
+                {
+                    TemplateId = playerInfo.HeroId,
+                    ServerId = playerInfo.Uid,
+                    SkinId = playerInfo.HeroSkinId,
+                    NickName = playerInfo.Nickname,
+                    BornPos = new SVector3(0, 0, -90000),
+                    BornForward = new SVector3(0, 0, 1000),
+                });
+            }
+
+            // DONE: 创建游戏玩法.
             switch (self.m_battleMode)
             {
                 case EBattleMode.EDefault:
@@ -17,6 +50,7 @@ namespace ET
                     self.m_battleProcess = new NoviceGuideProcess();
                     break;
                 case EBattleMode.E1v1:
+                    self.m_battleProcess = self.m_bIsNet ? new Server1v1Process() : new Local1v1Process();
                     break;
                 case EBattleMode.EBoss:
                     break;
@@ -25,21 +59,15 @@ namespace ET
                 case EBattleMode.EDefense:
                     break;
             }
-            
+
+            self.m_battleProcess.Init();
             Game.EventSystem.Publish(new EventType.MobaGameEntryAwake());
         }
-    }
-    
-    public class MobaBattleComponentDestroySystem: DestroySystem<MobaBattleComponent>
-    {
-        public override void Destroy(MobaBattleComponent self)
-        {
-            
-        }
-    }
 
-    public static class MobaBattleSystem
-    {
-        
+        public static void GameOver(this MobaBattleEntity self)
+        {
+            Log.Console("游戏结束");
+            self.m_battleProcess.Destroy();
+        }
     }
 }

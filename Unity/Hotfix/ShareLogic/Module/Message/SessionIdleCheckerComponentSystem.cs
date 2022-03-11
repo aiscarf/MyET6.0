@@ -35,15 +35,16 @@ namespace ET
             TimerComponent.Instance.Remove(ref self.RepeatedTimer);
         }
     }
-
+    
     public static class SessionIdleCheckerComponentSystem
     {
+        public const int CheckLimit = 6 * 1000;
         public static void Check(this SessionIdleCheckerComponent self)
         {
             Session session = self.GetParent<Session>();
             long timeNow = TimeHelper.ClientNow();
 
-            if (timeNow - session.LastRecvTime < 30 * 1000 && timeNow - session.LastSendTime < 30 * 1000)
+            if (timeNow - session.LastRecvTime < CheckLimit && timeNow - session.LastSendTime < CheckLimit)
             {
                 return;
             }

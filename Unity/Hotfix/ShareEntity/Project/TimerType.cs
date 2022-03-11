@@ -6,10 +6,11 @@
         public const int MoveTimer = 1001;
         public const int AITimer = 1002;
         public const int SessionAcceptTimeout = 1003;
+        public const int MatchTimer = 1004;
+        public const int BattleCheckReady = 1005;
         
-        public const int TestTimer = 1004;
-        public const int LocalDownlinkDelayTimer = 1005;
-        public const int LocalUplinkDelayTimer = 1006;
+        public const int LocalDownlinkDelayTimer = 1006;
+        public const int LocalUplinkDelayTimer = 1007;
         // 不能超过10000
     }
 }

@@ -159,7 +159,6 @@ namespace ET
             this.m_nHalfWidth = this.m_nWidth / 2; // 地图半宽度
             int num3 = this.m_mapCenterPos.x + (-this.m_nHalfWidth + this.m_nCellSize / 2);
             int num4 = this.m_mapCenterPos.y + (this.m_nHalfHeight - this.m_nCellSize / 2);
-//        this.mCellsArry = new Cell[this.rowCount, this.columnCount];
             this.mCellList = new List<Cell>(this.rowCount * this.columnCount);
 
             for (int index1 = 0; index1 < this.rowCount; ++index1)
@@ -170,14 +169,9 @@ namespace ET
                     SVector3 centerPos = new SVector3(num3 + index2 * this.cellSize, 0, z);
                     centerPos.y = 0; // 该Cell的高度
                     byte flag = 0; // 碰撞物体类型 {0,1}
-                    //byte num5 = 0; // 是否是草丛
-                    //if (num5 > (byte) 1)
-                    //    num5 = (byte) 1;
                     Cell cell = new Cell(centerPos, flag);
-//                this.mCellsArry[index1, index2] = cell;
                     cell.rowIndex = (short)index1; // 第几行索引
                     cell.columnIndex = (short)index2; // 第几列索引
-                    //cell.mGrassId = num5; // 草类型赋值
                     this.mCellList.Add(cell);
                 }
             }

@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using System.Collections.Generic;
+
+namespace ET
 {
     namespace EventType
     {
@@ -11,7 +13,6 @@
 
         public struct Reload
         {
-            
         }
 
         public struct CreateZoneScene
@@ -27,6 +28,7 @@
         public struct LeaveZoneScene
         {
             public Scene LeaveZone;
+            public SceneType NextSceneType;
         }
 
         public struct EnterZoneSceneBefore
@@ -39,32 +41,30 @@
             public Scene ZoneScene;
         }
 
-        public struct LoginRealmFinish
+        public struct SessionDisconnect
+        {
+            public SceneType SceneType;
+            public Session Session;
+        }
+
+        public struct PlayerKickOut
         {
             
+        }
+        
+        public struct LoginRealmFinish
+        {
         }
 
         public struct LoginGateFinish
         {
-            
         }
 
-        #region Moba事件流
-
-        /// <summary>
-        /// 开始加载moba场景资源
-        /// </summary>
-        public struct EnterMobaBegin
+        public struct LoginBattleFinish
         {
-            public MobaBattleLoadData MobaBattleLoadData;
+            public int MapId { get; set; }
+            public int RandomSeed { get; set; }
+            public List<MobaPlayerInfo> Players { get; set; }
         }
-
-        // 结束加载moba场景资源
-        public struct EnterMobaFinish
-        {
-            public MobaBattleLoadData MobaBattleLoadData;
-        }
-        
-        #endregion
     }
 }

@@ -4,12 +4,31 @@ namespace ET
 {
     namespace EventType
     {
-        public struct MobaBattleDataInit
+        public struct EnterMobaBegin
+        {
+            public EBattleMode BattleMode;
+            public int RandomSeed;
+            public string ScenePfbPath;
+            public string MapConfigPath;
+            public List<MobaPlayerInfo> PlayerInfos;
+            public List<string> NeedLoadPanelIds;
+        }
+        
+        public struct EnterMobaFinish
+        {
+        }
+        
+        public struct MobaBattleInit
         {
             public EBattleMode eBattleMode;
             public bool bIsNet;
             public MapData mapData;
-            public List<MobaPlayerInfo> lstPlayerInfos;
+            public List<MobaPlayerInfo> PlayerInfos;
+        }
+
+        public struct MobaBattleStart
+        {
+            
         }
 
         public struct MobaGameEntryAwake

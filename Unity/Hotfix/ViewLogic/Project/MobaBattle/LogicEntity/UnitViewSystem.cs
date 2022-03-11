@@ -8,8 +8,8 @@ namespace ET
         public override void Awake(UnitViewComponent self, Transform root)
         {
             self.m_cTransform = root;
-            self.m_cTransform.position = self.GetParent<Unit>().LogicPos.ToUnity();
-            self.m_cTransform.forward = self.GetParent<Unit>().LogicForward.ToUnity();
+            self.m_cTransform.position = self.GetParent<Unit>().BornPos.ToUnity();
+            self.m_cTransform.forward = self.GetParent<Unit>().BornForward.ToUnity();
             self.m_cAnimator = root.GetComponentInChildren<Animator>();
             self.m_dicUnitHangPoint = new Dictionary<int, Transform>()
             {

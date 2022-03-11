@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 namespace ET
 {
-    [ObjectSystem]
-    public class FrameSyncComponentAwakeSystem : AwakeSystem<FrameSyncComponent>
+    public class FrameSyncComponentAwakeSystem: AwakeSystem<FrameSyncComponent>
     {
         public override void Awake(FrameSyncComponent self)
         {
@@ -16,14 +15,14 @@ namespace ET
             self.m_fLogicFrameDelta = (float)self.LOGIC_FRAME_DELTA / (self.m_fTimeScale * 1000f);
             self.m_bTimeScale = false;
             self.m_bRunning = true;
-            self.m_dicFrameData = new Dictionary<int, B2C_OnFrame>(10000);
-            
+            self.m_dicFrameData = new Dictionary<int, B2C_OnFrame>(10000); // TODO 
+
             self.m_allEvents = new List<IStepFrame>();
-            HashSet<Type> types = Game.EventSystem.GetTypes(typeof(StepFrameAttribute));
+            var types = Game.EventSystem.GetTypes(typeof (StepFrameAttribute));
             foreach (Type type in types)
             {
                 IStepFrame obj = (IStepFrame)Activator.CreateInstance(type);
-                obj.Bind(self.GetMobaBattleComponent().GetComponent(obj.GetGenericType()));
+                obj.Bind(self);
                 if (self.m_allEvents.Contains(obj))
                     continue;
                 self.m_allEvents.Add(obj);
@@ -31,8 +30,7 @@ namespace ET
         }
     }
 
-    [ObjectSystem]
-    public class FrameSyncComponentDestroySystem : DestroySystem<FrameSyncComponent>
+    public class FrameSyncComponentDestroySystem: DestroySystem<FrameSyncComponent>
     {
         public override void Destroy(FrameSyncComponent self)
         {
@@ -44,44 +42,35 @@ namespace ET
         }
     }
 
-    [ObjectSystem]
-    public class FrameSyncComponentUpdateSystem : UpdateSystem<FrameSyncComponent>
+    public class FrameSyncComponentUpdateSystem: UpdateSystem<FrameSyncComponent>
     {
         public override void Update(FrameSyncComponent self)
         {
             if (!self.m_bRunning)
                 return;
-
-            int offset = (self.m_nNetFrame - self.m_nCurFrame);
-            int loop = offset < self.MAX_ACCELERATE_RATE
-                ? offset
-                : self.MAX_ACCELERATE_RATE;
-
-            if (offset != self.m_nLastOffsetFrame)
-            {
-                self.m_nLastOffsetFrame = offset;
-            }
+            int offset = self.m_nNetFrame - self.m_nCurFrame;
+            int loop = offset < self.MAX_ACCELERATE_RATE? offset : self.MAX_ACCELERATE_RATE;
 
             while (loop-- > 0)
             {
-                // // TODO 之后改为发送消息出去, 解耦合.
-                // self.GetMobaBattleComponent().GetComponent<InputComponent>().CollectInput();
-
                 var data = self.GetLogicFrame(self.m_nCurFrame);
                 if (data == null)
                     return;
                 self.RunOneFrame(data);
+                
+                // DONE: 读取过的数据释放掉.
+                self.m_dicFrameData.Remove(data.FrameId);
             }
         }
     }
 
     public static class FrameSyncSystem
     {
-        public static void DispatchStepFrame(this FrameSyncComponent self)
+        private static void DispatchStepFrame(this FrameSyncComponent self)
         {
             foreach (IStepFrame stepFrame in self.m_allEvents)
             {
-                stepFrame.OnStepFrame();
+                stepFrame.OnStepFrame(self.LOGIC_FRAME_DELTA);
             }
         }
 
@@ -107,12 +96,9 @@ namespace ET
         {
             lock (self.sync)
             {
-                if (!self.HasLogicFrame(frameId))
-                {
-                    return null;
-                }
-
-                return self.m_dicFrameData[frameId];
+                B2C_OnFrame result = null;
+                self.m_dicFrameData.TryGetValue(frameId, out result);
+                return result;
             }
         }
 
@@ -127,12 +113,13 @@ namespace ET
         public static void RunOneFrame(this FrameSyncComponent self, B2C_OnFrame data)
         {
             self.m_nTime += self.LOGIC_FRAME_DELTA;
-            
+
             // 分发一帧的操作数据下去.
-            self.GetMobaBattleComponent().GetComponent<InputComponent>().HandleFrameData(data);
+            self.GetParent<MobaBattleEntity>().GetComponent<InputComponent>().HandleFrameData(data);
 
             // 所有IStepFrame调度一次
             self.DispatchStepFrame();
+            
             // 步进一帧
             ++self.m_nCurFrame;
         }

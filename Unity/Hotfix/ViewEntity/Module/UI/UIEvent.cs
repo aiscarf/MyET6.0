@@ -19,7 +19,7 @@ namespace ET
             return typeof(T);
         }
 
-        public virtual async ETTask PreOpen()
+        public virtual async ETTask PreOpen(object args)
         {
             await UIManager.Instance.OpenUI(ViewUI.Name);
         }
@@ -35,7 +35,7 @@ namespace ET
         UI ViewUI { get; }
         void Bind(UI ui);
         Type GetGenericType();
-        ETTask PreOpen();
+        ETTask PreOpen(object args);
 
         ETTask PreClose();
     }

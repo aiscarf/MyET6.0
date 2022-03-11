@@ -2,6 +2,6 @@ namespace ET
 {
     public partial class UIBattleLoadingComponent
     {
-        public long m_testTimer;
+        public DataProxy<float> ProgressProxy = new DataProxy<float>(0f);
     }
 }

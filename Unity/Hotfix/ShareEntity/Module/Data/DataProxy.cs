@@ -38,7 +38,7 @@ namespace ET
                 Log.Error("正被驱动的服务, 不应逆向操作源头数据!.");
                 return;
             }
-            
+
             m_value = value;
 
             int addCount = m_lstAddListeners.Count;
@@ -102,7 +102,7 @@ namespace ET
         {
             if (m_bIterating)
             {
-                m_lstRemoveListners.Remove(action);
+                m_lstRemoveListners.Add(action);
                 return;
             }
 
@@ -131,5 +131,36 @@ namespace ET
         {
             m_syncProxy.Remove(proxy);
         }
+
+        #region 语法糖
+
+        public static implicit operator T(DataProxy<T> v)
+        {
+            return v.GetValue();
+        }
+        
+        public static bool operator ==(DataProxy<T> lhs, T rhs)
+        {
+            if (lhs == null)
+                return false;
+            return Equals(lhs.GetValue(), rhs);
+        }
+
+        public static bool operator !=(DataProxy<T> lhs, T rhs)
+        {
+            return !(lhs == rhs);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        #endregion
     }
 }

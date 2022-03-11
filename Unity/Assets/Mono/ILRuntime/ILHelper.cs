@@ -41,7 +41,15 @@ namespace ET
             list.Add(typeof(ListComponent<ETTask>));
             list.Add(typeof(ListComponent<Vector3>));
             
+            // 注册适配器
+            RegisterAdaptor(appdomain);
+            
             // 注册重定向函数
+            
+            //注册Json的CLR
+            LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(appdomain);
+            //注册ProtoBuf的CLR
+            PType.RegisterILRuntimeCLRRedirection(appdomain);
 
             // 注册委托
             appdomain.DelegateManager.RegisterMethodDelegate<List<object>>();
@@ -54,8 +62,8 @@ namespace ET
             appdomain.DelegateManager.RegisterMethodDelegate<long, IPEndPoint>();
             appdomain.DelegateManager.RegisterMethodDelegate<ILTypeInstance>();
             appdomain.DelegateManager.RegisterMethodDelegate<AsyncOperation>();
-            
-            
+            appdomain.DelegateManager.RegisterMethodDelegate<UnityEngine.Vector2>();
+
             appdomain.DelegateManager.RegisterFunctionDelegate<UnityEngine.Events.UnityAction>();
             appdomain.DelegateManager.RegisterFunctionDelegate<System.Object, ET.ETTask>();
             appdomain.DelegateManager.RegisterFunctionDelegate<ILTypeInstance, bool>();
@@ -68,6 +76,17 @@ namespace ET
             appdomain.DelegateManager.RegisterFunctionDelegate<int, int, int>();//Linq
             appdomain.DelegateManager.RegisterFunctionDelegate<KeyValuePair<int, List<int>>, bool>();
             appdomain.DelegateManager.RegisterFunctionDelegate<KeyValuePair<int, int>, KeyValuePair<int, int>, int>();
+            appdomain.DelegateManager.RegisterFunctionDelegate<ILRuntime.Runtime.Intepreter.ILTypeInstance, ILRuntime.Runtime.Intepreter.ILTypeInstance, System.Int32>();
+            appdomain.DelegateManager.RegisterFunctionDelegate<SuperScrollView.LoopListView2, System.Int32, SuperScrollView.LoopListViewItem2>();
+            appdomain.DelegateManager.RegisterFunctionDelegate<SuperScrollView.LoopGridView, System.Int32, System.Int32, System.Int32, SuperScrollView.LoopGridViewItem>();
+
+            appdomain.DelegateManager.RegisterDelegateConvertor<System.Comparison<ILRuntime.Runtime.Intepreter.ILTypeInstance>>((act) =>
+            {
+                return new System.Comparison<ILRuntime.Runtime.Intepreter.ILTypeInstance>((x, y) =>
+                {
+                    return ((Func<ILRuntime.Runtime.Intepreter.ILTypeInstance, ILRuntime.Runtime.Intepreter.ILTypeInstance, System.Int32>)act)(x, y);
+                });
+            });
             
             appdomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction>((act) =>
             {
@@ -85,15 +104,22 @@ namespace ET
                 });
             });
             
-            // 注册适配器
-            RegisterAdaptor(appdomain);
+            appdomain.DelegateManager.RegisterDelegateConvertor<System.Predicate<ILRuntime.Runtime.Intepreter.ILTypeInstance>>((act) =>
+            {
+                return new System.Predicate<ILRuntime.Runtime.Intepreter.ILTypeInstance>((obj) =>
+                {
+                    return ((Func<ILRuntime.Runtime.Intepreter.ILTypeInstance, System.Boolean>)act)(obj);
+                });
+            });
             
-            //注册Json的CLR
-            LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(appdomain);
-            //注册ProtoBuf的CLR
-            PType.RegisterILRuntimeCLRRedirection(appdomain);
-           
-            
+            appdomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction<UnityEngine.Vector2>>((act) =>
+            {
+                return new UnityEngine.Events.UnityAction<UnityEngine.Vector2>((arg0) =>
+                {
+                    ((Action<UnityEngine.Vector2>)act)(arg0);
+                });
+            });
+
             ////////////////////////////////////
             // CLR绑定的注册，一定要记得将CLR绑定的注册写在CLR重定向的注册后面，因为同一个方法只能被重定向一次，只有先注册的那个才能生效
             ////////////////////////////////////

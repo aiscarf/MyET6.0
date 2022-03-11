@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using ET.EventType;
 
 namespace ET
 {
-    [ObjectSystem]
     public class UnitMoveComponentAwakeSystem : AwakeSystem<UnitMoveComponent>
     {
         public override void Awake(UnitMoveComponent self)
@@ -12,7 +10,6 @@ namespace ET
         }
     }
 
-    [ObjectSystem]
     public class UnitMoveComponentDestroySystem : DestroySystem<UnitMoveComponent>
     {
         public override void Destroy(UnitMoveComponent self)
@@ -23,52 +20,38 @@ namespace ET
 
     public static class UnitMoveSystem
     {
-        public static void OnLogicFrame(this UnitMoveComponent self)
+        public static void OnLogicFrame(this UnitMoveComponent self, int delta)
         {
             if (!self.m_bIsMoving)
                 return;
             byte mask = self.GetMoveMask();
             int num = self.m_nSpeed;
             SVector3 svector3_1 = self.m_sNextPosition - self.Master.LogicPos;
-            SVector3 svector3_2 = svector3_1.normalizedXz * num / 1000 *
-                self.GetFrameSyncComponent().LOGIC_FRAME_DELTA / 1000;
+            SVector3 svector3_2 = svector3_1.normalizedXz * num / 1000 * delta / 1000;
 
-            if (svector3_1.sqrMagnitudeXz <= svector3_2.sqrMagnitudeXz)
+            bool b = svector3_1.sqrMagnitudeXz <= svector3_2.sqrMagnitudeXz;
+            SVector3 posTarget = b ? self.m_sNextPosition : self.Master.LogicPos + svector3_2;
+            
+            if (self.CheckObstacle(posTarget))
             {
-                if (self.CheckObstacle(self.m_sNextPosition))
-                {
-                    SVector3 sNextPosition = self.m_sNextPosition;
-                    self.GetMobaBattleComponent().GetComponent<BattleSceneComponent>().m_cPathfinding
-                        .GetReachablePosition(self.Master.LogicPos, ref sNextPosition, true, mask);
-                    self.Master.UpdateLogicPos(sNextPosition);
-                    self.Stop();
-                    return;
-                }
-
-                self.Master.UpdateLogicPos(self.m_sNextPosition);
-                if (self.m_quePath.Count > 0)
-                {
-                    self.ProcessNextPoint();
-                }
-                else
-                {
-                    self.Stop();
-                }
-            }
-            else
-            {
-                SVector3 posTarget = self.Master.LogicPos + svector3_2;
-                if (self.CheckObstacle(posTarget))
-                {
-                    self.GetMobaBattleComponent().GetComponent<BattleSceneComponent>().m_cPathfinding
-                        .GetReachablePosition(self.Master.LogicPos, ref posTarget, true, mask);
-                    self.Master.UpdateLogicPos(posTarget);
-                    self.Stop();
-                    return;
-                }
-
+                self.GetParent<Unit>().GetParent<BattleSceneComponent>().m_cPathfinding.GetReachablePosition(self.Master.LogicPos, ref posTarget, true, mask);
                 self.Master.UpdateLogicPos(posTarget);
+                self.Stop();
+                return;
             }
+            
+            self.Master.UpdateLogicPos(self.m_sNextPosition);
+
+            if (!b)
+                return;
+
+            if (self.m_quePath.Count <= 0)
+            {
+                self.Stop();
+                return;
+            }
+
+            self.ProcessNextPoint();
         }
 
         public static bool Move(this UnitMoveComponent self, List<SVector3> lstPath, int nSpeed, bool bChangeForward,
@@ -167,7 +150,7 @@ namespace ET
                 self.m_eMoveType == EMoveType.ESystemIgnoreTerrain ||
                 self.m_eMoveType == EMoveType.EHurtMoveIgnoreAll)
                 return false;
-            var battleSceneComponent = self.GetMobaBattleComponent().GetComponent<BattleSceneComponent>();
+            var battleSceneComponent = self.GetParent<Unit>().GetParent<BattleSceneComponent>();
             return !battleSceneComponent.m_cMap.IsReachable(sNewPos, self.GetMoveMask());
         }
 
@@ -179,8 +162,7 @@ namespace ET
             if (self.m_bChangeForward)
                 self.Master.SetForward((self.m_sNextPosition - self.Master.LogicPos).normalizedXz, false,
                     EForwardType.EMove);
-            Game.EventSystem.Publish(new MobaUnitTargetPos()
-                { unit = self.Master, targetPos = self.m_sNextPosition, speed = self.m_nSpeed });
+            Game.EventSystem.Publish(new EventType.MobaUnitTargetPos() { unit = self.Master, targetPos = self.m_sNextPosition, speed = self.m_nSpeed });
         }
 
         private static void Begin(this UnitMoveComponent self, int nSpeed, bool bChangeForward, EMoveType eMoveType)
@@ -208,7 +190,7 @@ namespace ET
             int angle = arg1;
             SVector3 inputForward = (SQuaternion.AngleAxis(angle, SVector3.up) * unit.BornForward).normalizedXz;
             int nSpeed = 10000;
-            var m_sNextPosition = unit.LogicPos + inputForward * nSpeed / 1000 * self.GetFrameSyncComponent().LOGIC_FRAME_DELTA / 1000;
+            var m_sNextPosition = unit.LogicPos + inputForward * nSpeed / 1000 * 100 / 1000;
             self.Move(m_sNextPosition, nSpeed, true, EMoveType.ENormal);
         }
 

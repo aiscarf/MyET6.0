@@ -1,0 +1,23 @@
+namespace ET
+{
+    public class Event_EnterZoneSceneBefore_Share : AEvent<EventType.EnterZoneSceneBefore>
+    {
+        protected override async ETTask Run(EventType.EnterZoneSceneBefore args)
+        {
+            var sceneType = args.ZoneScene.SceneType;
+            switch (sceneType)
+            {
+                case SceneType.Login:
+                    args.ZoneScene.AddComponent<LoginDataComponent>();
+                    break;
+                case SceneType.Main:
+                    args.ZoneScene.AddComponent<MainDataComponent>();
+                    break;
+                case SceneType.Battle:
+                    args.ZoneScene.AddComponent<BattleDataComponent>();
+                    break;
+            }
+            await ETTask.CompletedTask;
+        }
+    }
+}

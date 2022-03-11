@@ -3,7 +3,7 @@ namespace ET
     [UIEventTag(UIType.UIMain)]
     public class UIMainEvent : UIEvent<UIMainComponent>
     {
-        public override async ETTask PreOpen()
+        public override async ETTask PreOpen(object args)
         {
             var mainViewDataComponent = MainMgr.GetMainViewDataComponent();
             mainViewDataComponent.CurSelectDungeonProxy.BindProxy(self.CurDungeonProxy);

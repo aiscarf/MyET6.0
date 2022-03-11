@@ -3,7 +3,7 @@ namespace ET
     [UIEventTag(UIType.UISelectMap)]
     public class UISelectMapEvent : UIEvent<UISelectMapComponent>
     {
-        public override async ETTask PreOpen()
+        public override async ETTask PreOpen(object args)
         {
             // DONE: 准备数据.
             var list = DungeonConfigCategory.Instance.GetAllDungeonConfigs();
@@ -30,7 +30,7 @@ namespace ET
         public override async ETTask PreClose()
         {
             MainMgr.GetMainViewDataComponent().CurSelectDungeonProxy.SetValue(self.CurSelectDungeonVo);
-
+            
             // TODO 倒计时卸载界面.
             await UIManager.Instance.DestroyUI(ViewUI.Name);
             AtlasHelper.UnLoadAtlas(AtlasHelper.ATLAS_DUNGEON);

@@ -1,22 +1,11 @@
-using System;
-
 namespace ET
 {
     [StepFrame]
     public abstract class AStepFrame<T> : IStepFrame where T : Entity
     {
-        public T self;
+        protected T self;
+        public abstract void Bind(FrameSyncComponent frameSyncComponent);
 
-        public Type GetGenericType()
-        {
-            return typeof(T);
-        }
-
-        public void Bind(Entity component)
-        {
-            self = (T)component;
-        }
-
-        public abstract void OnStepFrame();
+        public abstract void OnStepFrame(int delta);
     }
 }

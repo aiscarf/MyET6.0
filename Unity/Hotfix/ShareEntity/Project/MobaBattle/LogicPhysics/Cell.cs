@@ -2,7 +2,6 @@
 {
     public class Cell
     {
-        public byte[] mArrAreaId = new byte[3];
         public int F;
         public int G;
         public int H;
@@ -13,7 +12,6 @@
         public byte mFlagValue;
         public Cell parent;
         public byte mDynamicCount;
-        public byte mGrassId;
         public int m_nSession;
 
         public Cell(SVector3 centerPos, byte flag)

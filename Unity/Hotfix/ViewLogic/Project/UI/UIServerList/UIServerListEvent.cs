@@ -3,7 +3,7 @@ namespace ET
     [UIEventTag(UIType.UIServerList)]
     public class UIServerListEvent : UIEvent<UIServerListComponent>
     {
-        public override async ETTask PreOpen()
+        public override async ETTask PreOpen(object args)
         {
             self.ServiceVos = LoginMgr.GetAllServiceVos();
             self.RegionVos = LoginMgr.GetAllRegionVos();

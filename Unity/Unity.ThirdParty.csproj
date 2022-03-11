@@ -110,8 +110,8 @@
      <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Cil\VariableReference.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Other\ByReferenceKeyComparer.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MemberReference.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\AssemblyNameReference.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\MemberReference.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\ProtoIgnoreAttribute.cs" />
      <Compile Include="Assets\ThirdParty\SuperScrollView\Demo\Scripts\Common\DataSourceMgr.cs" />
      <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Engine\EasyTouchInput.cs" />
@@ -222,9 +222,9 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\GenericParameterAttributes.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil.Metadata\Utilities.cs" />
      <Compile Include="Assets\ThirdParty\SuperScrollView\Demo\Scripts\ListView\ClickAndLoadMoreDemoScript.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\SourceLocationProvider.cs" />
      <Compile Include="Assets\ThirdParty\SuperScrollView\Demo\Scripts\ListView\DeleteItemDemoScript.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\AssemblyNameDefinition.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\SourceLocationProvider.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\FieldAttributes.cs" />
      <Compile Include="Assets\ThirdParty\SuperScrollView\Demo\Scripts\ListView\ChangeItemHeightDemoScript.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Intepreter\RegisterVM\JITCompiler.cs" />
@@ -540,9 +540,9 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Reflection\ILRuntimeWrapperType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\IMetadataTokenProvider.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\DefaultAssemblyResolver.cs" />
-     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\Interfaces.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\UriDecorator.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\CLR\TypeSystem\ILType.cs" />
+     <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\symbols\pdb\Microsoft.Cci.Pdb\Interfaces.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\BlobSerializer.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\PType.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\IGenericParameterProvider.cs" />

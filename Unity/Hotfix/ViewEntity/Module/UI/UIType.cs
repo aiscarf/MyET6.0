@@ -6,6 +6,12 @@
         public const string UIAGm = nameof(UIAGm);
         // end
         
+        // Common
+        public const string UIDoubleSelect = nameof(UIDoubleSelect);
+        public const string UISingleSelect = nameof(UISingleSelect);
+        public const string UITip = nameof(UITip);
+        // end
+        
         // 登录场景
         public const string UILoginScene = nameof(UILoginScene);
         public const string UILogin = nameof(UILogin);

@@ -14,7 +14,7 @@ namespace ET
             Game.Scene.AddComponent<ResourcesComponent>();
             await ResourcesComponent.Instance.LoadBundleAsync("config.unity3d");
             Game.Scene.AddComponent<ConfigComponent>();
-            await ConfigComponent.Instance.LoadAsync();
+            ConfigComponent.Instance.Load();
             ResourcesComponent.Instance.UnloadBundle("config.unity3d");
             
             // DONE: 添加网络组件

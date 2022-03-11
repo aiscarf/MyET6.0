@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace ET
 {
-    public class InputComponentAwakeSystem : AwakeSystem<InputComponent>
+    public class InputComponentAwakeSystem: AwakeSystem<InputComponent>
     {
         public override void Awake(InputComponent self)
         {
@@ -12,24 +12,17 @@ namespace ET
         }
     }
 
-    public class InputComponentDestroySystem : DestroySystem<InputComponent>
+    public class InputComponentDestroySystem: DestroySystem<InputComponent>
     {
         public override void Destroy(InputComponent self)
         {
         }
     }
-    
-    public class InputComponentUpdateSystem : UpdateSystem<InputComponent>
-    {
-        public override void Update(InputComponent self)
-        {
-            self.CollectInput();
-        }
-    }
 
     public static class InputSystem
     {
-        public static void InputOrderPriority(this InputComponent self, int serverId, EInputType eInputType, int arg1, int arg2)
+        public static void InputOrderPriority(this InputComponent self, long serverId, EInputType eInputType, int arg1,
+        int arg2)
         {
             if ((int)eInputType > self.m_operate.Optype)
             {
@@ -39,7 +32,7 @@ namespace ET
                 self.m_operate.Arg2 = arg2;
             }
         }
-
+        
         public static void CollectInput(this InputComponent self)
         {
             if (self.m_operate.Optype == (int)EInputType.None)
@@ -53,11 +46,9 @@ namespace ET
                 return;
             }
 
-            Game.EventSystem.Publish(new EventType.MobaBattleCommitOperate()
-                { inputComponent = self, frameMsg = self.m_operate });
+            Game.EventSystem.Publish(new EventType.MobaBattleCommitOperate() { inputComponent = self, frameMsg = self.m_operate });
             self.m_operate.Optype = (int)EInputType.None;
         }
-
 
         public static void HandleFrameData(this InputComponent self, B2C_OnFrame frameData)
         {
@@ -65,8 +56,8 @@ namespace ET
             {
                 return;
             }
-
-            var battleSceneComponent = self.GetParent<MobaBattleComponent>().GetComponent<BattleSceneComponent>();
+        
+            var battleSceneComponent = self.GetParent<MobaBattleEntity>().GetComponent<BattleSceneComponent>();
             for (int i = 0; i < frameData.Msg.Count; i++)
             {
                 var frameMsg = frameData.Msg[i];
@@ -79,7 +70,7 @@ namespace ET
             }
         }
 
-        static void HandleOperate(this InputComponent self, Unit heroUnit, int opt, int arg1, int arg2)
+        public static void HandleOperate(this InputComponent self, Unit heroUnit, int opt, int arg1, int arg2)
         {
             // 加个指令屏蔽
             if (self.m_lstExcludeTypes.Contains(opt))

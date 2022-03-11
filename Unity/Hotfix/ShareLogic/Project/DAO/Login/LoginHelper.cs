@@ -109,16 +109,23 @@ namespace ET
 
                 // DONE: 存储服务器的数据.
                 var mainDataComponent = DataHelper.GetDataComponentFromCurScene<MainDataComponent>();
-                mainDataComponent.SessionId = gateSession.Id;
+                mainDataComponent.GateAddress = gateAddress;
+                mainDataComponent.Uid = loginDataComponent.Uid;
                 mainDataComponent.GateToken = g2CLoginGate.GateToken;
                 mainDataComponent.PlayerInfo = g2CLoginGate.PlayerInfo;
                 mainDataComponent.FriendInfos = g2CLoginGate.Friends;
                 mainDataComponent.ServerTime = g2CLoginGate.Time;
-
+                
                 // DONE: 创建一个gate Session, 并且保存到SessionComponent中.
                 gateSession.AddComponent<PingComponent>();
+                gateSession.AddComponent<SessionStateComponent, SceneType>(mainScene.SceneType);
                 mainScene.AddComponent<SessionComponent>().Session = gateSession;
 
+                if (g2CLoginGate.PlayerState == 3)
+                {
+                    MainHelper.ReconnectGate().Coroutine();
+                }
+                
                 // DONE: 通知已经登录了Gate服务器.
                 await Game.EventSystem.PublishAsync(new EventType.LoginGateFinish());
             }

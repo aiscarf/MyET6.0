@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 
 namespace ET
 {
-    public class BattleSceneComponentAwakeSystem : AwakeSystem<BattleSceneComponent, MapData>
+    public class BattleSceneComponentAwakeSystem: AwakeSystem<BattleSceneComponent, MapData>
     {
         public override void Awake(BattleSceneComponent self, MapData mapData)
         {
@@ -15,7 +14,7 @@ namespace ET
         }
     }
 
-    public class BattleSceneComponentDestroySystem : DestroySystem<BattleSceneComponent>
+    public class BattleSceneComponentDestroySystem: DestroySystem<BattleSceneComponent>
     {
         public override void Destroy(BattleSceneComponent self)
         {
@@ -44,11 +43,9 @@ namespace ET
 
         #region Unit筛选
 
-        private static List<Unit> LstFilter = new List<Unit>();
-
         public static List<Unit> GetUnitsByUnitType(this BattleSceneComponent self, params EUnitType[] eUnitTypes)
         {
-            LstFilter.Clear();
+            self.LstFilter.Clear();
             for (int i = 0; i < self.m_lstAllUnits.Count; i++)
             {
                 var unit = self.m_lstAllUnits[i];
@@ -56,13 +53,13 @@ namespace ET
                 {
                     if (unit.UnitType == eUnitTypes[j])
                     {
-                        LstFilter.Add(unit);
+                        self.LstFilter.Add(unit);
                         break;
                     }
                 }
             }
 
-            return LstFilter;
+            return self.LstFilter;
         }
 
         public static Unit GetUnitById(this BattleSceneComponent self, int entityId)
@@ -81,17 +78,17 @@ namespace ET
 
         public static List<Unit> GetUnitsByTemplateId(this BattleSceneComponent self, int templateId)
         {
-            LstFilter.Clear();
+            self.LstFilter.Clear();
             for (int i = 0; i < self.m_lstAllUnits.Count; i++)
             {
                 var unit = self.m_lstAllUnits[i];
                 if (unit.TemplateId == templateId)
                 {
-                    LstFilter.Add(unit);
+                    self.LstFilter.Add(unit);
                 }
             }
 
-            return LstFilter;
+            return self.LstFilter;
         }
 
         public static Unit GetUnitByServerId(this BattleSceneComponent self, long serverId)
@@ -110,22 +107,31 @@ namespace ET
 
         #endregion
 
-        public static void OnFrameSyncUpdate(this BattleSceneComponent self)
+        #region 帧同步驱动
+
+        public static void OnFrameSyncUpdate(this BattleSceneComponent self, int delta)
         {
+            // DONE: 遍历所有角色.
             for (int i = 0; i < self.m_lstAllUnits.Count; i++)
             {
                 var unit = self.m_lstAllUnits[i];
-                unit.OnFrameSyncUpdate();
+                unit.OnFrameSyncUpdate(delta);
             }
         }
+
+        #endregion
     }
-    
-    [StepFrame]
+
     public class BattleSceneStepFrame: AStepFrame<BattleSceneComponent>
     {
-        public override void OnStepFrame()
+        public override void Bind(FrameSyncComponent frameSyncComponent)
         {
-            self.OnFrameSyncUpdate();
+            self = frameSyncComponent.GetParent<MobaBattleEntity>().GetComponent<BattleSceneComponent>();
+        }
+
+        public override void OnStepFrame(int delta)
+        {
+            self.OnFrameSyncUpdate(delta);
         }
     }
 }

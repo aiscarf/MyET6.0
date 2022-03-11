@@ -3,7 +3,7 @@ namespace ET
 	[UIEventTag(UIType.UIAGm)]
 	public class UIAGmEvent : UIEvent<UIAGmComponent>
 	{
-		public override async ETTask PreOpen()
+		public override async ETTask PreOpen(object args)
 		{
 			await UIManager.Instance.OpenForeverUI(UIType.UIAGm);
 		}

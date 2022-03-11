@@ -7,7 +7,6 @@ namespace ET
     {
         public override void OnInit()
         {
-            self.EUI_ETCJoystick_MoveJoystick = referenceCollector.Get<GameObject>("MoveJoystick").GetComponent<ETCJoystick>();
             self.m_rtFrontArrow = self.EUI_ETCJoystick_MoveJoystick.transform.Find("Front").GetComponent<RectTransform>();
             self.m_fFrontArrowRadius = self.m_rtFrontArrow.anchoredPosition.magnitude;
             self.m_rtFrontArrow.gameObject.SetActive(false);
@@ -43,8 +42,7 @@ namespace ET
         void OnMoveHandle(Vector2 offset)
         {
             double a = Mathf.Atan2(offset.x, offset.y);
-            a = a * (180 / Math.PI);
-
+            a *= (180 / Math.PI);
             Vector2 vPos2 = offset.normalized * self.m_fFrontArrowRadius;
             self.m_rtFrontArrow.anchoredPosition = vPos2;
             self.m_rtFrontArrow.localEulerAngles = new Vector3(0, 0, 360f - (float)a);
@@ -52,17 +50,16 @@ namespace ET
             {
                 self.m_rtFrontArrow.gameObject.SetActive(true);
             }
-            
-            ZoneSceneManagerComponent.Instance.CurScene.GetComponent<MobaBattleComponent>().GetComponent<InputComponent>()
-                .InputOrderPriority(1001, EInputType.Move, (int)a, 0);
+
+            // DONE: 转成模型自身的坐标系.
+            a += self.m_fCameraAngleY;
+            self.m_inputComonent.InputOrderPriority(self.Uid, EInputType.Move, (int)a, 0);
         }
 
         void OnMoveEndHandle()
         {
             self.m_rtFrontArrow.gameObject.SetActive(false);
-            
-            ZoneSceneManagerComponent.Instance.CurScene.GetComponent<MobaBattleComponent>().GetComponent<InputComponent>()
-                .InputOrderPriority(1001, EInputType.MoveEnd, 0, 0);
+            self.m_inputComonent.InputOrderPriority(self.Uid, EInputType.MoveEnd, 0, 0);
         }
 
         #endregion

@@ -5,7 +5,7 @@ namespace ET
     [UIEventTag(UIType.UILoginScene)]
     public class UILoginSceneEvent : UIEvent<UILoginSceneComponent>
     {
-        public override async ETTask PreOpen()
+        public override async ETTask PreOpen(object args)
         {
             var loginViewDataComponent = LoginMgr.GetLoginViewDataComponent();
             loginViewDataComponent.IsLoginRealmProxy.BindProxy(self.IsLoginRealmProxy);
