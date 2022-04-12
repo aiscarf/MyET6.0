@@ -462,9 +462,10 @@ message B2C_OnFrame // IMessage
 message FrameMsg
 {
 	long Uid = 1;
-	int32 Optype = 2;
-	int32 Arg1 = 3;
-	int32 Arg2 = 4;
+	int32 Optype = 2; // 操作类型
+	int32 Arg1 = 3; // 移动摇杆的角度
+	int32 Arg2 = 4; // 技能摇杆的角度
+	int32 Arg3 = 5; // 技能摇杆的百分比
 }
 
 //ResponseType B2C_Ping

@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-  - key: GlobalProto
-    gameObject: {fileID: 0}
   - key: UILoading
     gameObject: {fileID: 1386170326414932, guid: 0deea0b3b021a714d8c54816d4ee5fbe,
       type: 3}
