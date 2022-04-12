@@ -1,0 +1,549 @@
+{
+    "$id": 0,
+    "$type": "0|XNode.NodeGraph, XNode",
+    "Id": 0,
+    "TypeQualifiedName": "XNode.NodeGraph, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "nodes": {
+        "$id": 1,
+        "$type": "1|System.Collections.Generic.List`1[[XNode.Node, XNode]], mscorlib",
+        "$rlength": 6,
+        "$rcontent": [
+            {
+                "$id": 2,
+                "$type": "2|Scarf.ANode.Flow.Runtime.FlowCheckEvent, Assembly-CSharp",
+                "NodeId": 0,
+                "TypeQualifiedName": "Scarf.ANode.Flow.Runtime.FlowCheckEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "ports": {
+                    "$id": 3,
+                    "$type": "3|XNode.Node+NodePortDictionary, XNode",
+                    "$rlength": 2,
+                    "$rcontent": [
+                        {
+                            "$k": "exit",
+                            "$v": {
+                                "$id": 4,
+                                "$type": "4|XNode.NodePort, XNode",
+                                "_fieldName": "exit",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 5,
+                                    "$type": "5|System.Collections.Generic.List`1[[XNode.NodePort+PortConnection, XNode]], mscorlib",
+                                    "$rlength": 1,
+                                    "$rcontent": [
+                                        {
+                                            "$id": 6,
+                                            "$type": "6|XNode.NodePort+PortConnection, XNode",
+                                            "nodeId": 1,
+                                            "fieldName": "enter"
+                                        }
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 1,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "eventName",
+                            "$v": {
+                                "$id": 7,
+                                "$type": 4,
+                                "_fieldName": "eventName",
+                                "_typeQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                "connections": {
+                                    "$id": 8,
+                                    "$type": 5,
+                                    "$rlength": 0,
+                                    "$rcontent": [
+                                    ]
+                                },
+                                "_defaultValue": "test",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        }
+                    ]
+                },
+                "exit": {
+                    "$type": "7|XNode.Node+ControlPort, XNode"
+                },
+                "eventName": "test"
+            },
+            {
+                "$id": 9,
+                "$type": "8|Scarf.ANode.Flow.Runtime.FlowSequence, Assembly-CSharp",
+                "NodeId": 1,
+                "TypeQualifiedName": "Scarf.ANode.Flow.Runtime.FlowSequence, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "ports": {
+                    "$id": 10,
+                    "$type": 3,
+                    "$rlength": 2,
+                    "$rcontent": [
+                        {
+                            "$k": "enter",
+                            "$v": {
+                                "$id": 11,
+                                "$type": 4,
+                                "_fieldName": "enter",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 12,
+                                    "$type": 5,
+                                    "$rlength": 1,
+                                    "$rcontent": [
+                                        {
+                                            "$id": 13,
+                                            "$type": 6,
+                                            "nodeId": 0,
+                                            "fieldName": "exit"
+                                        }
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "exit",
+                            "$v": {
+                                "$id": 14,
+                                "$type": 4,
+                                "_fieldName": "exit",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 15,
+                                    "$type": 5,
+                                    "$rlength": 2,
+                                    "$rcontent": [
+                                        {
+                                            "$id": 16,
+                                            "$type": 6,
+                                            "nodeId": 2,
+                                            "fieldName": "enter"
+                                        },
+                                        {
+                                            "$id": 17,
+                                            "$type": 6,
+                                            "nodeId": 3,
+                                            "fieldName": "enter"
+                                        }
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 1,
+                                "_connectionType": 0,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        }
+                    ]
+                },
+                "enter": {
+                    "$type": 7
+                },
+                "exit": {
+                    "$type": 7
+                }
+            },
+            {
+                "$id": 18,
+                "$type": "9|Scarf.ANode.Flow.Runtime.FlowDebugger, Assembly-CSharp",
+                "NodeId": 2,
+                "TypeQualifiedName": "Scarf.ANode.Flow.Runtime.FlowDebugger, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "ports": {
+                    "$id": 19,
+                    "$type": 3,
+                    "$rlength": 3,
+                    "$rcontent": [
+                        {
+                            "$k": "enter",
+                            "$v": {
+                                "$id": 20,
+                                "$type": 4,
+                                "_fieldName": "enter",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 21,
+                                    "$type": 5,
+                                    "$rlength": 1,
+                                    "$rcontent": [
+                                        {
+                                            "$id": 22,
+                                            "$type": 6,
+                                            "nodeId": 1,
+                                            "fieldName": "exit"
+                                        }
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "exit",
+                            "$v": {
+                                "$id": 23,
+                                "$type": 4,
+                                "_fieldName": "exit",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 24,
+                                    "$type": 5,
+                                    "$rlength": 0,
+                                    "$rcontent": [
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 1,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "content",
+                            "$v": {
+                                "$id": 25,
+                                "$type": 4,
+                                "_fieldName": "content",
+                                "_typeQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                "connections": {
+                                    "$id": 26,
+                                    "$type": 5,
+                                    "$rlength": 0,
+                                    "$rcontent": [
+                                    ]
+                                },
+                                "_defaultValue": "aaa",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        }
+                    ]
+                },
+                "enter": {
+                    "$type": 7
+                },
+                "exit": {
+                    "$type": 7
+                },
+                "content": "aaa"
+            },
+            {
+                "$id": 27,
+                "$type": "10|Scarf.ANode.Flow.Runtime.FlowBranch, Assembly-CSharp",
+                "NodeId": 3,
+                "TypeQualifiedName": "Scarf.ANode.Flow.Runtime.FlowBranch, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "ports": {
+                    "$id": 28,
+                    "$type": 3,
+                    "$rlength": 4,
+                    "$rcontent": [
+                        {
+                            "$k": "enter",
+                            "$v": {
+                                "$id": 29,
+                                "$type": 4,
+                                "_fieldName": "enter",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 30,
+                                    "$type": 5,
+                                    "$rlength": 1,
+                                    "$rcontent": [
+                                        {
+                                            "$id": 31,
+                                            "$type": 6,
+                                            "nodeId": 1,
+                                            "fieldName": "exit"
+                                        }
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "condition",
+                            "$v": {
+                                "$id": 32,
+                                "$type": 4,
+                                "_fieldName": "condition",
+                                "_typeQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                "connections": {
+                                    "$id": 33,
+                                    "$type": 5,
+                                    "$rlength": 0,
+                                    "$rcontent": [
+                                    ]
+                                },
+                                "_defaultValue": "True",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "ifTure",
+                            "$v": {
+                                "$id": 34,
+                                "$type": 4,
+                                "_fieldName": "ifTure",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 35,
+                                    "$type": 5,
+                                    "$rlength": 1,
+                                    "$rcontent": [
+                                        {
+                                            "$id": 36,
+                                            "$type": 6,
+                                            "nodeId": 4,
+                                            "fieldName": "enter"
+                                        }
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 1,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "ifFalse",
+                            "$v": {
+                                "$id": 37,
+                                "$type": 4,
+                                "_fieldName": "ifFalse",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 38,
+                                    "$type": 5,
+                                    "$rlength": 1,
+                                    "$rcontent": [
+                                        {
+                                            "$id": 39,
+                                            "$type": 6,
+                                            "nodeId": 5,
+                                            "fieldName": "enter"
+                                        }
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 1,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        }
+                    ]
+                },
+                "enter": {
+                    "$type": 7
+                },
+                "condition": true,
+                "ifTure": {
+                    "$type": 7
+                },
+                "ifFalse": {
+                    "$type": 7
+                }
+            },
+            {
+                "$id": 40,
+                "$type": 9,
+                "NodeId": 4,
+                "TypeQualifiedName": "Scarf.ANode.Flow.Runtime.FlowDebugger, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "ports": {
+                    "$id": 41,
+                    "$type": 3,
+                    "$rlength": 3,
+                    "$rcontent": [
+                        {
+                            "$k": "enter",
+                            "$v": {
+                                "$id": 42,
+                                "$type": 4,
+                                "_fieldName": "enter",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 43,
+                                    "$type": 5,
+                                    "$rlength": 1,
+                                    "$rcontent": [
+                                        {
+                                            "$id": 44,
+                                            "$type": 6,
+                                            "nodeId": 3,
+                                            "fieldName": "ifTure"
+                                        }
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "exit",
+                            "$v": {
+                                "$id": 45,
+                                "$type": 4,
+                                "_fieldName": "exit",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 46,
+                                    "$type": 5,
+                                    "$rlength": 0,
+                                    "$rcontent": [
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 1,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "content",
+                            "$v": {
+                                "$id": 47,
+                                "$type": 4,
+                                "_fieldName": "content",
+                                "_typeQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                "connections": {
+                                    "$id": 48,
+                                    "$type": 5,
+                                    "$rlength": 0,
+                                    "$rcontent": [
+                                    ]
+                                },
+                                "_defaultValue": "bbb",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        }
+                    ]
+                },
+                "enter": {
+                    "$type": 7
+                },
+                "exit": {
+                    "$type": 7
+                },
+                "content": "bbb"
+            },
+            {
+                "$id": 49,
+                "$type": 9,
+                "NodeId": 5,
+                "TypeQualifiedName": "Scarf.ANode.Flow.Runtime.FlowDebugger, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "ports": {
+                    "$id": 50,
+                    "$type": 3,
+                    "$rlength": 3,
+                    "$rcontent": [
+                        {
+                            "$k": "enter",
+                            "$v": {
+                                "$id": 51,
+                                "$type": 4,
+                                "_fieldName": "enter",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 52,
+                                    "$type": 5,
+                                    "$rlength": 1,
+                                    "$rcontent": [
+                                        {
+                                            "$id": 53,
+                                            "$type": 6,
+                                            "nodeId": 3,
+                                            "fieldName": "ifFalse"
+                                        }
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "exit",
+                            "$v": {
+                                "$id": 54,
+                                "$type": 4,
+                                "_fieldName": "exit",
+                                "_typeQualifiedName": "XNode.Node+ControlPort, XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                                "connections": {
+                                    "$id": 55,
+                                    "$type": 5,
+                                    "$rlength": 0,
+                                    "$rcontent": [
+                                    ]
+                                },
+                                "_defaultValue": "",
+                                "_direction": 1,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        },
+                        {
+                            "$k": "content",
+                            "$v": {
+                                "$id": 56,
+                                "$type": 4,
+                                "_fieldName": "content",
+                                "_typeQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                                "connections": {
+                                    "$id": 57,
+                                    "$type": 5,
+                                    "$rlength": 0,
+                                    "$rcontent": [
+                                    ]
+                                },
+                                "_defaultValue": "ccc",
+                                "_direction": 0,
+                                "_connectionType": 1,
+                                "_typeConstraint": 2,
+                                "_dynamic": false
+                            }
+                        }
+                    ]
+                },
+                "enter": {
+                    "$type": 7
+                },
+                "exit": {
+                    "$type": 7
+                },
+                "content": "ccc"
+            }
+        ]
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "name": "Moba.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b8e24fd1eb19b4226afebb2810e3c19b",
+        "GUID:002c1bbed08fa44d282ef34fd5edb138",
+        "GUID:a97cad5995d1e954583ae2e2209fe592",
+        "GUID:9b0b0a3abe26e584ea416d954bda0971",
+        "GUID:f06555f75b070af458a003d92f9efb00",
+        "GUID:1aa3e8589868c80499255710874679c0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
