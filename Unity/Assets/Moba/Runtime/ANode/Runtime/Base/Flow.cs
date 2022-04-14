@@ -22,9 +22,19 @@ namespace Scarf.ANode.Flow.Runtime
             return ExecuteNextPort(m_flowHead);
         }
 
+        public void Stop()
+        {
+            InterruptNode(m_flowHead);
+        }
+
         public void InterruptPort(NodePort port)
         {
             var flowNode = port.node as FlowNode;
+            InterruptNode(flowNode);
+        }
+
+        private void InterruptNode(FlowNode flowNode)
+        {
             if (flowNode == null)
             {
                 return;
@@ -35,7 +45,7 @@ namespace Scarf.ANode.Flow.Runtime
                 return;
             }
 
-            flowNode.End();
+            flowNode.Interrupt();
         }
 
         public EFlowStatus ExecuteNextPort(NodePort port)
@@ -44,7 +54,7 @@ namespace Scarf.ANode.Flow.Runtime
             {
                 return EFlowStatus.ESuccess;
             }
-            
+
             return ExecuteNextPort(port.node as FlowNode);
         }
 

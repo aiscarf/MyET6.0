@@ -20,6 +20,11 @@ namespace Scarf.ANode.Flow.Runtime
 
         [NonSerialized] private NodePort _nextPort;
 
+        protected override void OnAwake()
+        {
+            
+        }
+
         protected override void OnStart()
         {
             condition = this.GetInputValue<bool>(nameof(condition));
@@ -35,6 +40,16 @@ namespace Scarf.ANode.Flow.Runtime
             }
 
             return this.Flow.ExecuteNextPort(_nextPort);
+        }
+
+        protected override void OnEnd()
+        {
+            
+        }
+
+        protected override void OnInterrupt()
+        {
+            this.Flow.InterruptPort(_nextPort);
         }
     }
 }

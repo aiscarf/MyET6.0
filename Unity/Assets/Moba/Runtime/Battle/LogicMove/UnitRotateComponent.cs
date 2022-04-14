@@ -2,14 +2,20 @@ namespace Scarf.Moba
 {
     public class UnitRotateComponent: CComponent
     {
-        public SVector3 m_sCurForward;
-        public int m_nOnFrameRotateAngle;
-        public SVector3 m_sTargetForward;
-        public bool m_bRotating;
-        public EForwardType m_sForwardType;
-        public int m_nRemainAngle;
-        public bool m_bIsClockwise;
-        public int m_nRotateSpeed = 720;
+        public Unit Master { get; private set; }
+        private SVector3 m_sCurForward;
+        private int m_nOnFrameRotateAngle;
+        private SVector3 m_sTargetForward;
+        private bool m_bRotating;
+        private EForwardType m_sForwardType;
+        private int m_nRemainAngle;
+        private bool m_bIsClockwise;
+        private int m_nRotateSpeed = 720;
+
+        protected override void OnInit()
+        {
+            this.Master = this.Parent as Unit;
+        }
 
         public void SetForward(SVector3 sForward, bool bImmediately, EForwardType forwardType)
         {
@@ -45,6 +51,11 @@ namespace Scarf.Moba
                 this.m_sTargetForward = sForward;
                 this.m_sCurForward = sForward;
             }
+
+            this.Battle.EventMgr.Publish(new EventType.UnitRotate()
+            {
+                unit = this.Master, forward = this.m_sTargetForward, bImmediately = bImmediately
+            });
         }
 
         public bool CanForward(EForwardType forwardType)

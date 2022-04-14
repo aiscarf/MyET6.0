@@ -64,5 +64,15 @@ namespace Scarf.ANode.Flow.Runtime
         {
             return this.Flow.ExecuteNextPort(_exitPort);
         }
+
+        protected override void OnEnd()
+        {
+            
+        }
+
+        protected override void OnInterrupt()
+        {
+            this.Flow.InterruptPort(_exitPort);
+        }
     }
 }

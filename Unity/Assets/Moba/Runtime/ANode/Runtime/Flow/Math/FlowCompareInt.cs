@@ -75,9 +75,28 @@ namespace Scarf.ANode.Flow.Runtime
             }
         }
 
+        public override object GetValue(NodePort port)
+        {
+            if (port.fieldName == nameof (result))
+            {
+                return (object)result;
+            }
+            return null;
+        }
+
         protected override EFlowStatus OnUpdate()
         {
             return this.Flow.ExecuteNextPort(_exitPort);
+        }
+
+        protected override void OnEnd()
+        {
+            
+        }
+
+        protected override void OnInterrupt()
+        {
+            this.Flow.InterruptPort(_exitPort);
         }
     }
 }

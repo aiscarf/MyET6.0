@@ -11,6 +11,9 @@ namespace Scarf.Moba
         private List<BaseArea> m_lstAreas;
         private List<BaseBullet> m_lstBullets;
 
+        public Map Map => this.m_cMap;
+        public PathFinding Pathfinding => this.m_cPathfinding;
+        
         public BattleScene()
         {
             this.m_cMap = new Map();
@@ -80,6 +83,7 @@ namespace Scarf.Moba
 
         #region 添加Unit
 
+        public List<Unit> AllUnits => this.m_lstAllUnits;
         public void AddUnit(Unit unit)
         {
             if (unit == null)
@@ -124,7 +128,7 @@ namespace Scarf.Moba
             for (int i = 0; i < this.m_lstAllUnits.Count; i++)
             {
                 var unit = this.m_lstAllUnits[i];
-                if (unit.EntityId == entityId)
+                if (unit.Uid == entityId)
                 {
                     return unit;
                 }
@@ -167,7 +171,7 @@ namespace Scarf.Moba
         #region 添加地形
 
         private List<BaseArea> AreaFilter = new List<BaseArea>();
-
+        public List<BaseArea> AllAreas => this.m_lstAreas;
         public void AddArea(BaseArea area)
         {
             area.Init();

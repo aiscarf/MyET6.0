@@ -1,32 +1,43 @@
+using System;
 using System.Collections.Generic;
 using Scarf.ANode.Flow.Runtime;
 
 namespace Scarf.Moba
 {
-    public sealed class Skill: CObject
+    public abstract class Skill: CObject
     {
         public Unit Master { get; private set; }
-        public SkillData SkillData { get; private set; }
 
+        public SkillSignalSet SignalSet = new SkillSignalSet();
+        public SkillData SkillData { get; private set; }
         public FlowNodeGraph SkillGraph { get; set; }
 
-        // TODO 技能优先级, 魔化凯的2技能不能连续使用, 但是可以搭配大招使用.
         public int Priority { get; private set; }
         public int Angle { get; protected set; }
         public int Range { get; protected set; }
 
         private ESkillState m_eSkillState = ESkillState.ENone;
+        public ESkillState SkillState => this.m_eSkillState;
         public ESkillType SkillType => this.SkillData.SkillType;
-
         public int Id => this.SkillData.Id;
+
+        public string CurAnimationName { get; set; }
 
         // DONE: 技能目标缓存.
         private List<Unit> m_lstSkillTargets = new List<Unit>();
         public IEnumerable<Unit> SkillTargets => this.m_lstSkillTargets;
 
+        // DONE: 技能距离.
+        public int SkillDistance { get; protected set; }
+
+        public int SkillShapeArg1 => this.SkillData.IndicatorShapeArg1;
+
+        public int SkillShapeArg2 => this.SkillData.IndicatorShapeArg2;
+
         public Skill(SkillData skillData)
         {
             this.SkillData = skillData;
+            
             // DONE: 查表获取技能图.
             this.SkillGraph = this.Battle.BattleData.GetFlowNodeGraph(this.Id);
             this.SkillCoolBase = skillData.SkillCD;
@@ -36,7 +47,10 @@ namespace Scarf.Moba
 
         protected override void OnInit()
         {
-            this.SkillGraph.Init();
+            this.SkillGraph.BindSkill(this);
+
+            // DONE: 推送技能初始化事件.
+            this.PushSkillEvent(nameof (SkillSignalSet.OnSkillInitSignal));
         }
 
         protected override void OnStart()
@@ -49,8 +63,8 @@ namespace Scarf.Moba
 
         public override void OnFrameSyncUpdate(int delta)
         {
-            // TODO 迭代技能图.
-            // TODO 迭代动画线.
+            // DONE: 迭代技能图.
+            this.SkillGraph.Tick();
         }
 
         #endregion
@@ -177,15 +191,16 @@ namespace Scarf.Moba
 
         #region 技能释放
 
+        // TODO 不同的技能类型驱动模板.
         public void CastSkill(int angle, int range)
         {
             this.Angle = angle;
             this.Range = range;
 
-            // TODO 释放此次技能, 但上一次的技能还未结束, 如何解决Flow冲突.
-            // TODO 释放技能, 先待命技能图, 再播放技能动画驱动, 技能动画播放完毕, 便是技能结束.
-            
-            // TODO 不同的技能类型驱动模板.
+            // DONE: 播放技能动画.
+            this.Master.UnitAnimation.PlayAnimation(this.SkillData.SkillAnimationName);
+
+            this.SkillGraph.Tick();
         }
 
         public bool CanCastSkill(int angle, int range)
@@ -201,14 +216,121 @@ namespace Scarf.Moba
                 return false;
             }
 
-            // 当前技能是否处于释法状态, 如果是能否打断.
+            // DONE: 当前技能是否处于释法状态, 是的话能否打断.
             if (!CanBreakSkill())
             {
                 return false;
             }
 
-            // 是否是指向技能
+            // DONE: 是否是单体指向技能
+            if (this.SkillData.SkillTargetType == ESkillTargetType.ESingle)
+            {
+                var targets = FindTargets(angle, range);
+                if (targets.Count <= 0)
+                    return false;
+            }
+
             return true;
+        }
+
+        public virtual List<Unit> FindTargets(int angle, int range)
+        {
+            var results = new List<Unit>();
+            var units = this.Battle.BattleScene.AllUnits;
+            for (int i = 0; i < units.Count; i++)
+            {
+                var unit = units[i];
+
+                // DONE: 处于黑名单的.
+                if (this.SkillData.SkillTargetFilterBlacklist.Contains((int)unit.UnitType))
+                {
+                    continue;
+                }
+
+                // DONE: 技能过滤阵营类型.
+                switch (this.SkillData.SkillTargetFilterType)
+                {
+                    case ESkillTargetFilterType.ENone:
+                        break;
+                    case ESkillTargetFilterType.EEnemy:
+                        if (unit.Camp == this.Master.Camp)
+                        {
+                            continue;
+                        }
+
+                        break;
+                    case ESkillTargetFilterType.EFriendly:
+                        if (unit.Camp != this.Master.Camp)
+                        {
+                            continue;
+                        }
+
+                        break;
+                    case ESkillTargetFilterType.EFriendlyNotSelf:
+                        if (unit.Camp != this.Master.Camp)
+                        {
+                            continue;
+                        }
+
+                        if (unit.Uid == this.Master.Uid)
+                        {
+                            continue;
+                        }
+
+                        break;
+                    case ESkillTargetFilterType.EAll:
+                        break;
+                    case ESkillTargetFilterType.EAllNotSelf:
+                        if (unit.Uid == this.Master.Uid)
+                        {
+                            continue;
+                        }
+
+                        break;
+                }
+
+                // TODO 根据视野.
+
+                // DONE: 根据技能指示器形状范围.
+                switch (this.SkillData.IndicatorShapeType)
+                {
+                    case EIndicatorShapeType.ENone:
+                        break;
+                    case EIndicatorShapeType.ESector:
+                        SVector3 sectorForward = (SQuaternion.AngleAxis(angle, SVector3.up) * this.Master.BornForward).normalizedXz;
+                        SVector3 sectorCenter = this.Master.LogicPos + sectorForward * this.SkillDistance / 1000;
+                        if (!CPhysics.CheckCircleAndSector(unit.LogicPos, unit.Radius, sectorCenter, sectorForward, this.SkillShapeArg1,
+                                this.SkillShapeArg2))
+                        {
+                            continue;
+                        }
+
+                        break;
+                    case EIndicatorShapeType.ECircle:
+                        SVector3 sSkillForward = (SQuaternion.AngleAxis(angle, SVector3.up) * this.Master.BornForward).normalizedXz;
+                        SVector3 sCircleCenter = this.Master.LogicPos + sSkillForward * this.SkillDistance / 1000;
+                        if (!CPhysics.CheckCircleAndCircle(unit.LogicPos, unit.Radius, sCircleCenter, this.SkillShapeArg1))
+                        {
+                            continue;
+                        }
+
+                        break;
+                    case EIndicatorShapeType.ERectangle:
+                        SVector3 skillForward = (SQuaternion.AngleAxis(angle, SVector3.up) * this.Master.BornForward).normalizedXz;
+                        SVector3 sCenter = this.Master.LogicPos + skillForward * this.SkillDistance / 2000;
+                        if (!CPhysics.CheckRectangleAndCircle(sCenter, skillForward, this.SkillShapeArg2 / 2, SkillShapeArg1 / 2, unit.LogicPos,
+                                unit.Radius))
+                        {
+                            continue;
+                        }
+
+                        break;
+                }
+
+                results.Add(unit);
+            }
+
+            return results;
         }
 
         public void BreakSkill(bool bForce = false)
@@ -216,7 +338,36 @@ namespace Scarf.Moba
             // DONE: 二次验证.
             if (!bForce && !this.CanBreakSkill())
                 return;
-            // TODO 打断技能 
+
+            // DONE: 打断技能图.
+            this.SkillGraph.Stop();
+
+            if (bForce)
+            {
+                // DONE: 推送技能被强制打断事件.
+                this.PushSkillEvent(nameof (SkillSignalSet.OnSkillBeForceBreakSignal));
+            }
+            else
+            {
+                // DONE: 推送技能被打断事件.
+                this.PushSkillEvent(nameof (SkillSignalSet.OnSkillBeBreakSignal));
+            }
+        }
+
+        private void CastEnd()
+        {
+            // DONE: 预防多次技能结束
+            if (this.m_eSkillState == ESkillState.ECastEnd)
+                return;
+            this.ChangeSkillState(ESkillState.ECastEnd);
+
+            // DONE: 推送技能结束事件.
+            this.PushSkillEvent(nameof (SkillSignalSet.OnSkillEndSignal));
+
+            // 如果技能没有冷却功能则进入技能就绪状态.
+            if (this.IsCooling)
+                return;
+            this.ChangeSkillState(ESkillState.EReady);
         }
 
         public bool CanBreakSkill()
@@ -235,6 +386,43 @@ namespace Scarf.Moba
             //         break;
             // }
             return result;
+        }
+
+        public void PushAnimationEvent(string animationName, string eventName)
+        {
+            // TODO 动画名 + 事件名的组合.
+            this.SkillGraph.Eventboard.SetEvent(eventName);
+        }
+
+        private static readonly Dictionary<string, Func<Skill, Signal<Skill>>> SkillEventTable = new Dictionary<string, Func<Skill, Signal<Skill>>>()
+        {
+            { nameof (SkillSignalSet.OnSkillInitSignal), (skill) => skill.SignalSet.OnSkillInitSignal },
+            { nameof (SkillSignalSet.OnSkillUnsealSignal), (skill) => skill.SignalSet.OnSkillUnsealSignal },
+            { nameof (SkillSignalSet.OnSkillStartSignal), (skill) => skill.SignalSet.OnSkillStartSignal },
+            { nameof (SkillSignalSet.OnSkillHitSignal), (skill) => skill.SignalSet.OnSkillHitSignal },
+            { nameof (SkillSignalSet.OnSkillMissileSignal), skill => skill.SignalSet.OnSkillMissileSignal },
+            { nameof (SkillSignalSet.OnSkillBeBreakSignal), (skill) => skill.SignalSet.OnSkillBeBreakSignal },
+            { nameof (SkillSignalSet.OnSkillBeForceBreakSignal), (skill) => skill.SignalSet.OnSkillBeForceBreakSignal },
+            { nameof (SkillSignalSet.OnSkillEndSignal), (skill) => skill.SignalSet.OnSkillEndSignal },
+            { nameof (SkillSignalSet.OnSkillDestroySignal), (skill) => skill.SignalSet.OnSkillDestroySignal },
+            { nameof (SkillSignalSet.OnCastToggleOnSignal), (skill) => skill.SignalSet.OnCastToggleOnSignal },
+            { nameof (SkillSignalSet.OnCastToggleOffSignal), (skill) => skill.SignalSet.OnCastToggleOffSignal },
+            { nameof (SkillSignalSet.OnCastXuLiReleaseSignal), (skill) => skill.SignalSet.OnCastXuLiReleaseSignal },
+            { nameof (SkillSignalSet.OnDuTiaoBeBreakSignal), (skill) => skill.SignalSet.OnDuTiaoBeBreakSignal },
+            { nameof (SkillSignalSet.OnDuTiaoEndSignal), (skill) => skill.SignalSet.OnDuTiaoEndSignal },
+            { nameof (SkillSignalSet.OnChannelThinkSignal), (skill) => skill.SignalSet.OnChannelThinkSignal },
+            { nameof (SkillSignalSet.OnChannelFinishSignal), (skill) => skill.SignalSet.OnChannelFinishSignal },
+        };
+
+        protected void PushSkillEvent(string eventName)
+        {
+            if (!SkillEventTable.TryGetValue(eventName, out var func))
+            {
+                return;
+            }
+
+            func.Invoke(this).Dispatch(this);
+            this.SkillGraph.Eventboard.SetEvent(eventName.Replace("Signal", ""));
         }
 
         #endregion

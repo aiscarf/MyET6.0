@@ -4,8 +4,6 @@ namespace ET
     {
         protected override async ETTask Run(EventType.AppStart args)
         {
-            Log.Debug("App正确启动!");
-            
             // DONE: 添加基础开发组件
             Game.Scene.AddComponent<TimerComponent>();
             Game.Scene.AddComponent<CoroutineLockComponent>();
@@ -33,6 +31,10 @@ namespace ET
 
             // TODO: 添加全局声音管理器.
             
+            // TODO 如果是单机战斗模式, 则直接启动战斗场景.
+            await ZoneSceneManagerComponent.Instance.ChangeScene(SceneType.Battle);
+            return;
+
             // DONE: 切换至登录场景.
             await ZoneSceneManagerComponent.Instance.ChangeScene(SceneType.Login);
         }

@@ -13,15 +13,15 @@ namespace Scarf.ANode.Flow.Runtime
         // // DONE: 参数黑板, 编辑器可编辑.
         // private Blackboard _blackboard = new Blackboard();
 
-        // DONE: 事件黑板
-        [NonSerialized]
-        private Eventboard _eventboard = new Eventboard();
-
         // public Blackboard Blackboard
         // {
         //     get => _blackboard;
         //     set => _blackboard = value;
         // }
+
+        // DONE: 事件黑板
+        [NonSerialized]
+        private Eventboard _eventboard = new Eventboard();
 
         public Eventboard Eventboard => _eventboard;
 
@@ -56,19 +56,14 @@ namespace Scarf.ANode.Flow.Runtime
             }
         }
 
+        public void Stop()
+        {
+            this._flowScheduler.Stop();
+        }
+
         public void Tick()
         {
-            OnTickStart();
             _flowScheduler.Tick();
-            OnTickEnd();
-        }
-
-        private void OnTickStart()
-        {
-        }
-
-        private void OnTickEnd()
-        {
             _eventboard.Clear();
         }
     }

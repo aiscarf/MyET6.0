@@ -5,7 +5,7 @@ using XNode;
 namespace Scarf.ANode.Flow.Runtime
 {
     [CreateNodeMenu("Flow/Base/Sequence")]
-    public class FlowSequence : FlowNode
+    public class FlowSequence: FlowNode
     {
         [Input(ShowBackingValue.Never, ConnectionType.Override, TypeConstraint.Strict)]
         public ControlPort enter;
@@ -13,18 +13,23 @@ namespace Scarf.ANode.Flow.Runtime
         [Output(ShowBackingValue.Never, ConnectionType.Multiple, TypeConstraint.Strict)]
         public ControlPort exit;
 
-        [NonSerialized] private List<NodePort> _lstPorts = new List<NodePort>();
+        [NonSerialized]
+        private List<NodePort> _lstPorts = new List<NodePort>();
 
-        [NonSerialized] private int _index;
+        [NonSerialized]
+        private int _index;
+
+        private bool _bIsSuspend;
 
         protected override void OnAwake()
         {
-            _lstPorts = this.GetOutputPort(nameof(exit)).GetConnections();
+            _lstPorts = this.GetOutputPort(nameof (exit)).GetConnections();
         }
 
         protected override void OnStart()
         {
             _index = 0;
+            _bIsSuspend = false;
         }
 
         protected override EFlowStatus OnUpdate()
@@ -46,7 +51,8 @@ namespace Scarf.ANode.Flow.Runtime
                 {
                     // DONE: 记录中断时的索引, 当恢复执行时继续执行下一个节点.
                     _index = i;
-                    return childStatus;
+                    _bIsSuspend = true;
+                    return EFlowStatus.ERunning;
                 }
             }
 
@@ -56,6 +62,14 @@ namespace Scarf.ANode.Flow.Runtime
         protected override void OnEnd()
         {
             _index = 0;
+            _bIsSuspend = false;
+        }
+
+        protected override void OnInterrupt()
+        {
+            if (!_bIsSuspend)
+                return;
+            this.Flow.InterruptPort(_lstPorts[_index]);
         }
     }
 }

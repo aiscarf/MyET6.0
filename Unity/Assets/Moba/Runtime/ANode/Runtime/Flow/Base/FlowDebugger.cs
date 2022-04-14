@@ -30,5 +30,15 @@ namespace Scarf.ANode.Flow.Runtime
             UnityEngine.Debug.Log(content);
             return this.Flow.ExecuteNextPort(_exitPort);
         }
+
+        protected override void OnEnd()
+        {
+            
+        }
+
+        protected override void OnInterrupt()
+        {
+            this.Flow.InterruptPort(_exitPort);
+        }
     }
 }

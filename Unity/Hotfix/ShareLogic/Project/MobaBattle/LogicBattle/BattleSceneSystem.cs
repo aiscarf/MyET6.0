@@ -34,7 +34,7 @@ namespace ET
 
         public static void RemoveUnit(this BattleSceneComponent self, Unit unit)
         {
-            if (self == null)
+            if (unit == null)
                 return;
             self.m_lstRemoveUnits.Add(unit);
         }

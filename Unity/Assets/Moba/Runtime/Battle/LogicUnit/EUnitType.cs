@@ -5,17 +5,16 @@ namespace Scarf.Moba
     [Flags]
     public enum EUnitType
     {
-        ENone = 0,
+        ENatual = 0, // 中立单位类型, 世界.
 
-        EHero = 1 << 0, // 玩家
+        EHero = 1 << 0, // 英雄
         EWild = 1 << 1, // 野怪
-        EGuard = 1 << 2, // 机关守卫
-        ETower = 1 << 3, // 防御塔
-        EBase = 1 << 4, // 基地
-        EArtificialGun = 1 << 5, // 人造炮
-        EAtkTower = 1 << 6, // 进攻塔
-        EScarecrow = 1 << 7, // 稻草人
-        ESummon1 = 1 << 8, // 召唤物1 : 图腾
-        ENatual = 1 << 9, // 中立地形 [复活点, 陷阱]
+        ESummon = 1 << 2, // 召唤物
+        EBuilding = 1 << 3, // 建筑
+        ESoldier = 1 << 4, // 小兵
+        EBoss = 1 << 5, // Boss
+        EOther = 1 << 6, // 其他
+
+        EAll = EHero | EWild | ESummon | EBuilding | ESoldier | EBoss | EOther, // 全部的
     }
 }

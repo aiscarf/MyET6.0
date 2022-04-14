@@ -10,7 +10,7 @@ namespace Scarf.ANode.Flow.Runtime
     /// 如果一个子节点返回失败, 并行节点将结束所有子节点并返回失败.
     /// </summary>
     [CreateNodeMenu("Flow/Base/Parallel")]
-    public class FlowParallel : FlowNode
+    public class FlowParallel: FlowNode
     {
         [Input(ShowBackingValue.Never, ConnectionType.Override, TypeConstraint.Strict)]
         public ControlPort enter;
@@ -18,15 +18,17 @@ namespace Scarf.ANode.Flow.Runtime
         [Output(ShowBackingValue.Never, ConnectionType.Multiple, TypeConstraint.Strict)]
         public ControlPort exit;
 
-        [NonSerialized] private List<NodePort> _lstPorts = new List<NodePort>();
+        [NonSerialized]
+        private List<NodePort> _lstPorts = new List<NodePort>();
 
-        [NonSerialized] private List<EFlowStatus> _lstStatus = new List<EFlowStatus>();
+        [NonSerialized]
+        private List<EFlowStatus> _lstStatus = new List<EFlowStatus>();
 
         private int _portCount;
 
         protected override void OnAwake()
         {
-            _lstPorts = this.GetOutputPort(nameof(exit)).GetConnections();
+            _lstPorts = this.GetOutputPort(nameof (exit)).GetConnections();
             _portCount = _lstPorts.Count;
             while (_lstStatus.Count < _portCount)
             {
@@ -63,7 +65,7 @@ namespace Scarf.ANode.Flow.Runtime
                 if (childStatus == EFlowStatus.EFailure)
                 {
                     // DONE: 打断其他几个节点的运行, 调用其OnEnd.
-                    Interrupt();
+                    this.InterruptChild();
                     return EFlowStatus.EFailure;
                 }
 
@@ -81,7 +83,7 @@ namespace Scarf.ANode.Flow.Runtime
             return EFlowStatus.ESuccess;
         }
 
-        private void Interrupt()
+        private void InterruptChild()
         {
             for (int i = 0; i < _portCount; i++)
             {
@@ -101,6 +103,12 @@ namespace Scarf.ANode.Flow.Runtime
             {
                 _lstStatus[i] = EFlowStatus.EInactive;
             }
+        }
+
+        protected override void OnInterrupt()
+        {
+            // DONE: 将所有处于Running的节点全部中断.
+            InterruptChild();
         }
     }
 }

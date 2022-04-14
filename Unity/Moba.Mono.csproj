@@ -41,8 +41,20 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Moba\Mono\Timeline\EventTrack.cs" />
-     <Compile Include="Assets\Moba\Mono\Timeline\EventShot.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicBullet\BulletGraphicComponent.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicBattle\BattleGraphicHelper.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicBattle\BattleGraphicComponent.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicUnit\Event_UnitMoveEnd_Graphic.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\SVector3Helper.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicUnit\UnitGraphicComponent.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicUnit\Event_CreateUnit_Graphic.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicUnit\Event_UnitMoveBegin_Graphic.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicComponent.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicUnit\Event_UnitRotate_Graphic.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicUnit\Event_UnitTargetPos_Graphic.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicArea\AreaGraphicComponent.cs" />
+     <Compile Include="Assets\Moba\Mono\Battle\GraphicUnit\UnitGraphicHelper.cs" />
+     <Compile Include="Assets\Moba\Mono\MobaLauncher.cs" />
      <None Include="Assets\Moba\Mono\Moba.Mono.asmdef" />
      <Reference Include="UnityEngine">
      <HintPath>D:/Unity/2020.3.3f1c1/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -644,17 +656,22 @@
      <Reference Include="System.Xml.XPath.XDocument">
      <HintPath>D:/Unity/2020.3.3f1c1/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Timeline">
-     <HintPath>E:/ServerProject/ET/Unity/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+     <Reference Include="UnityEngine.UI">
+     <HintPath>E:/ServerProject/ET/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
      <HintPath>E:/ServerProject/ET/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
      </Reference>
-     <Reference Include="UnityEngine.UI">
-     <HintPath>E:/ServerProject/ET/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Moba.Runtime.csproj">
+      <Project>{e92740c9-4768-e7a1-ca0b-03310396052c}</Project>
+      <Name>Moba.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mono.csproj">
+      <Project>{5910fa29-5797-199c-985b-fc9fc473328e}</Project>
+      <Name>Unity.Mono</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

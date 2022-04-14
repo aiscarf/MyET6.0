@@ -2,7 +2,9 @@
     "name": "Moba.Mono",
     "rootNamespace": "",
     "references": [
-        "GUID:f06555f75b070af458a003d92f9efb00"
+        "GUID:a97cad5995d1e954583ae2e2209fe592",
+        "GUID:6e17cd4649ea94c0cb18f30a60b9b4b4",
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

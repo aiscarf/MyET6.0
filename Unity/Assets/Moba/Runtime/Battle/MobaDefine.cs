@@ -61,7 +61,7 @@ namespace Scarf.Moba
         EChongNeng,
 
         [LabelText("开关技能")]
-        EOnOff,
+        EToggle,
     }
 
     public enum ESkillTargetType
@@ -323,6 +323,9 @@ namespace Scarf.Moba
 
         // 技能总等级数量
         public int MaxLevel { get; set; }
+
+        // 技能动画名
+        public string SkillAnimationName { get; set; }
 
         // 技能类型
         public ESkillType SkillType { get; set; }

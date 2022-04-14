@@ -88,7 +88,7 @@ namespace Scarf.Moba
                 // DONE: 曝露动画事件.
                 this.Battle.EventMgr.Publish(new EventType.AnimationEvent()
                 {
-                    AnimationName = this.curAniname, EventName = animationEvent.Name, EventUnit = this.Master
+                    animationName = this.curAniname, eventName = animationEvent.Name, unit = this.Master
                 });
 
                 ++curClipIndex;

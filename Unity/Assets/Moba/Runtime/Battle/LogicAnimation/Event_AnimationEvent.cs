@@ -8,12 +8,15 @@ namespace Scarf.Moba
         {
             try
             {
-                // TODO 将动画事件同步到技能状态机的事件图中.
+                // DONE: 将动画事件推送至技能图中.
+                var unit = args.unit;
+                if (unit.UnitSkill == null)
+                    return;
+                unit.UnitSkill.PushSkillEvent(args.animationName, args.eventName);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
             }
         }
     }

@@ -22,6 +22,7 @@ namespace Scarf.ANode.Flow.Runtime
         private NodePort _exitPort;
 
         private int timeEnd;
+        private bool bIsWaitSuccess;
 
         protected override void OnAwake()
         {
@@ -32,6 +33,7 @@ namespace Scarf.ANode.Flow.Runtime
         {
             time = this.GetInputValue<int>(nameof (time));
             timeEnd = TimerFrameSys.time + time;
+            bIsWaitSuccess = false;
         }
 
         protected override EFlowStatus OnUpdate()
@@ -41,7 +43,21 @@ namespace Scarf.ANode.Flow.Runtime
                 return EFlowStatus.ERunning;
             }
 
+            bIsWaitSuccess = true;
             return this.Flow.ExecuteNextPort(this._exitPort);
+        }
+
+        protected override void OnEnd()
+        {
+            bIsWaitSuccess = false;
+        }
+
+        protected override void OnInterrupt()
+        {
+            if (bIsWaitSuccess)
+            {
+                this.Flow.InterruptPort(this._exitPort);
+            }
         }
     }
 }

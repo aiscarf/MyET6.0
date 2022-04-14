@@ -14,9 +14,39 @@ namespace Scarf.Moba
 
         public struct AnimationEvent
         {
-            public Unit EventUnit;
-            public string AnimationName;
-            public string EventName;
+            public Unit unit;
+            public string animationName;
+            public string eventName;
+        }
+
+        public struct CreateUnit
+        {
+            public Unit unit;
+        }
+        
+        public struct UnitMoveBegin
+        {
+            public Unit unit;
+            public int speed;
+        }
+
+        public struct UnitMoveEnd
+        {
+            public Unit unit;
+        }
+
+        public struct UnitTargetPos
+        {
+            public Unit unit;
+            public SVector3 targetPos;
+            public int speed;
+        }
+
+        public struct UnitRotate
+        {
+            public Unit unit;
+            public SVector3 forward;
+            public bool bImmediately;
         }
     }
 }

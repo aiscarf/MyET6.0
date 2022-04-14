@@ -35,26 +35,28 @@ namespace Scarf.ANode.Flow.Runtime
             CurStatus = EFlowStatus.EInactive;
         }
 
+        public void Interrupt()
+        {
+            OnInterrupt();
+            OnEnd();
+        }
+
         public EFlowStatus Update()
         {
             return OnUpdate();
         }
 
-        protected virtual void OnAwake()
-        {
-        }
+        protected abstract void OnAwake();
 
-        protected virtual void OnStart()
-        {
-        }
+        protected abstract void OnStart();
 
         protected virtual EFlowStatus OnUpdate()
         {
             return EFlowStatus.ESuccess;
         }
 
-        protected virtual void OnEnd()
-        {
-        }
+        protected abstract void OnEnd();
+
+        protected abstract void OnInterrupt();
     }
 }

@@ -42,6 +42,8 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Moba\Editor\ANode\NodeValueDrawer.cs" />
+     <Compile Include="Assets\Moba\Editor\Timeline\EventTrack.cs" />
+     <Compile Include="Assets\Moba\Editor\Timeline\EventShot.cs" />
      <Compile Include="Assets\Moba\Editor\ANode\FlowNodeGraphProxy.cs" />
      <Compile Include="Assets\Moba\Editor\Timeline\EventTrackEditor.cs" />
      <None Include="Assets\Moba\Editor\Moba.Editor.asmdef" />

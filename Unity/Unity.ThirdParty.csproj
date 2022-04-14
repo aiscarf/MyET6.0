@@ -209,8 +209,8 @@
      <Compile Include="Assets\ThirdParty\ILRuntime\Reflection\ILRuntimeParameterInfo.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Debugger\Protocol\SCAttachResult.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\SByteSerializer.cs" />
-     <Compile Include="Assets\ThirdParty\SuperScrollView\Demo\Scripts\ListView\PullToRefreshDemoScript.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\ReferenceType.cs" />
+     <Compile Include="Assets\ThirdParty\SuperScrollView\Demo\Scripts\ListView\PullToRefreshDemoScript.cs" />
      <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Plugins\ETCButton.cs" />
      <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Editor\QuickEnterExitInspector.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\Extensions.cs" />
@@ -243,9 +243,9 @@
      <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouchControls\Examples\Version 1.X\LoadLevelScript.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Mono.Cecil\Mono.Cecil\TypeSystem.cs" />
      <Compile Include="Assets\ThirdParty\SuperScrollView\Demo\Scripts\Common\RotateScript.cs" />
+     <Compile Include="Assets\ThirdParty\SuperScrollView\Demo\Scripts\Common\ListItem18.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\JsonException.cs" />
      <Compile Include="Assets\ThirdParty\ILRuntime\Runtime\CLRBinding\BindingGeneratorExtensions.cs" />
-     <Compile Include="Assets\ThirdParty\SuperScrollView\Demo\Scripts\Common\ListItem18.cs" />
      <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickEnterOverExist.cs" />
      <Compile Include="Assets\ThirdParty\EasyTouchBundle\EasyTouch\Plugins\Components\QuickTwist.cs" />
      <Compile Include="Assets\ThirdParty\protobuf-net\Serializers\CharSerializer.cs" />
